@@ -1,3 +1,4 @@
 # README
 
-TECH::EXPERT KOCHI ２期Aチームのリポジトリです
+TECH::EXPERT KOCHI ２期Aチームのリポジトリです。
+
