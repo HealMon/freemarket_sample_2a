@@ -33,7 +33,7 @@ TECH::EXPERT KOCHI ２期Aチームのリポジトリです
 |----|------|----|-------|
 |商品ID|     |    |       |
 |商品イメージID|item_image_id|string|null: false|
-|商品名|item_name|string|null: false|
+|商品名|name|string|null: false|
 |商品説明 ( 1000字まで)|description|string|null: false|
 |価格|price|integer|null: false|
 |カテゴリーID|category_id|refences|null: false,foreign_key: true|
@@ -57,7 +57,7 @@ TECH::EXPERT KOCHI ２期Aチームのリポジトリです
 |     |Column|Type|Options|
 |-----|------|----|-------|
 |イメージID| | | |
-|イメージ名|image_name|string|null: false|
+|イメージ名|name|string|null: false|
 |商品ID|item_id|references|null: false,foreign_key: true|
 
 ### Association
