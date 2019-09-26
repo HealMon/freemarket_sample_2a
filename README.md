@@ -1,7 +1,5 @@
 # README
 
-TECH::EXPERT KOCHI ２期Aチームのリポジトリです
-
 ## user TB
 |    |Column|Type|Options|
 |----|------|------|-------|
