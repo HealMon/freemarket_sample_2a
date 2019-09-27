@@ -9,8 +9,8 @@
 |パスワード|password|string|null: false|
 |電話番号|phone_number|string||
 |郵便番号|zipcode|string||
-|都道府県ID|prefecture_id|integer||
-|市区町村ID|city_id|string||
+|都道府県ID|prefecture|integer||
+|市区町村ID|city|string||
 |番地|address|string||
 |建物名|building|string||
 |生年月日|birthday|integer|null: false|
@@ -42,7 +42,7 @@
 |発送の方法|shipping_method|string|null: false|
 |都道府県ID(発送の地域)|prefecture_id|integer|null: false|
 |発送の目安|estimated_delivery|string|null: false|
-|商品出品状態（出品中,売却済み)|trade_status|string||
+|商品出品状態（出品中,売却済み)|trade_status|integer|null: false|
 |商品者ID|user_id|references|null: false, foreign_key: true|
 
 ### Association
@@ -91,20 +91,9 @@ belongs_to :item
 |-|------|----|-------|
 |カテゴリー子要素ID| | | |
 |カテゴリー子要素名|categorie_child_name|string| |
-|カテゴリー子要素2ID|categorie_child2_id| | |
 
 ### Association
-- has_may :categorie_group2
 - belongs_to :categorie
-
-## categorie_group2 TB
-| |Column|Type|Options|
-|-|------|----|-------|
-|カテゴリー子要素2ID| | | |
-|カテゴリー子要素名2|categorie_child2_name|string| |
-
-### Association
-- belongs_to :categorie_group
 
 ## order TB
 | |Column|Type|Options|
@@ -128,25 +117,6 @@ belongs_to :item
 - belongs_to :buyer, class_name: "User"
 - belongs_to :seller, class_name: "User"
 - has_many:orders
-
-## prefecture TB
-| |Column|Type|Options|
-|-|------|----|-------|
-|都道府県ID| | | |
-|都道府県|prefecture|string||
-
-### Association
-- has_many :city
-
-## city TB
-| |Coiumn|Type|Options|
-|-|------|----|-------|
-|市区町村ID| | | |
-|都道府県ID|prefecture|integer|foreign_key: true|
-|市区町村|city|string| |
-
-### Association
-- belongs_to :prefecture
 
 ## credit_card TB
 | |Column|Type|Options|
