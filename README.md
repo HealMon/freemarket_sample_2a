@@ -54,6 +54,7 @@
 ## item_image TB
 |     |Column|Type|Options|
 |-----|------|----|-------|
+|商品イメージID| |   |   |
 |イメージ名|name|string|null: false|
 |商品ID|item_id|references|null: false,foreign_key: true|
 
@@ -84,16 +85,27 @@ belongs_to :item
 
  ### Association
 - has_many :items
-- has_many :categori_group
+- has_many :categori_parent
 
-## categorie_group TB
+## categorie_parent TB
+| |Column|Type|Options|
+|-|------|----|-------|
+|カテゴリー親要素ID| | | |
+|カテゴリー親要素名|categorie_parent_name|string| |
+|カテゴリー子要素ID|categorie_child_id|integer|foreign_key: true|
+
+### Association
+- belongs_to :categorie
+- has_many :categorie_childs
+
+## categorie_child TB
 | |Column|Type|Options|
 |-|------|----|-------|
 |カテゴリー子要素ID| | | |
 |カテゴリー子要素名|categorie_child_name|string| |
 
 ### Association
-- belongs_to :categorie
+- belongs_to :categorie_parent
 
 ## order TB
 | |Column|Type|Options|
