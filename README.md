@@ -22,9 +22,9 @@
 |プロフィール|profile|string||
 
 ### Association
-- has_many :items
-- has_many :trading_partners
-- has_many :creadit_cards
+- has_many :items , dependent: :destroy
+- has_many :trading_partners , dependent: :destroy
+- has_many :creadit_cards , dependent: :destroy
 
 ## item TB
 |    |column|Type|Options|
@@ -45,8 +45,8 @@
 |商品者ID|user_id|references|null: false, foreign_key: true|
 
 ### Association
-- has_many :images
-- has_many :orders
+- has_many :images , dependent: :destroy
+- has_many :orders , dependent: :destroy
 - belongs_to :category
 - belongs_to :user
 
