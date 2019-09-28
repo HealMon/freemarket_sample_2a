@@ -18,7 +18,7 @@
 |名前(漢字)(名前)|first_name|string|null: false|
 |名前(カナ)(苗字)|last_name_kana|string|null: false|
 |名前(カナ)(名前)|first_name_kana|string|null :false|
-|プロフィールイメージ|profile_image|string||
+|プロフィールイメージ|avatar|string||
 |プロフィール|profile|string||
 
 ### Association
@@ -30,11 +30,10 @@
 |    |column|Type|Options|
 |----|------|----|-------|
 |商品ID|     |    |       |
-|商品イメージID|item_image_id|string|null: false|
 |商品名|name|string|null: false|
 |商品説明 ( 1000字まで)|description|string|null: false|
 |価格|price|integer|null: false|
-|カテゴリーID|category_id|refences|null: false,foreign_key: true|
+|カテゴリーID|category_id|references|null: false,foreign_key: true|
 |状態(汚れなど)|condition|string|null: false|
 |ブランドID|brand|references|foreign_key: true|
 |サイズID|size_id|references|foreign_key: true|
@@ -65,13 +64,13 @@ belongs_to :item
 |-|Colimn|Type|Options|
 |-|------|----|-------|
 |サイズID| |   |   |
-|サイズ名|size_name|string|null: false,unique: true|
+|サイズ名|name|string|null: false,unique: true|
 
 ## brand TB
 | |Column|Type|Options|
 |-|------|----|-------|
 |ブランドID| |    |   |
-|ブランドID|brand_name|string|null: false,unique: true|
+|ブランドID|name|string|null: false,unique: true|
 
 ### Association
 - has_many :items
@@ -81,31 +80,10 @@ belongs_to :item
 |-|------|----|-------|
 |カテゴリーID| | | |
 |カテゴリー名|name|string| |
-|カテゴリー子要素ID|categorie_group_id|integer|foreign_key: true|
+|カテゴリー子要素ID|categorie_group_id|integer||
 
  ### Association
 - has_many :items
-- has_many :categori_parent
-
-## categorie_parent TB
-| |Column|Type|Options|
-|-|------|----|-------|
-|カテゴリー親要素ID| | | |
-|カテゴリー親要素名|categorie_parent_name|string| |
-|カテゴリー子要素ID|categorie_child_id|integer|foreign_key: true|
-
-### Association
-- belongs_to :categorie
-- has_many :categorie_childs
-
-## categorie_child TB
-| |Column|Type|Options|
-|-|------|----|-------|
-|カテゴリー子要素ID| | | |
-|カテゴリー子要素名|categorie_child_name|string| |
-
-### Association
-- belongs_to :categorie_parent
 
 ## order TB
 | |Column|Type|Options|
