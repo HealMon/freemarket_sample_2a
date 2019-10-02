@@ -1,17 +1,37 @@
-%h2 Log in
-= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    = f.label :password
-    %br/
-    = f.password_field :password, autocomplete: "current-password"
-  - if devise_mapping.rememberable?
-    .field
-      = f.check_box :remember_me
-      = f.label :remember_me
-  .actions
-    = f.submit "Log in"
-= render "devise/shared/links"
+.container
+  = render 'devise/shared/mercari-header'
+  %main.contents 
+    .signin-panel
+      .singin-no-account
+        %p アカウントをお持ちでない方はこちら
+        %a 新規会員登録
+      .singin-form-inner
+        %button#facebook-login.btn-default.btn-sns.btn-sns-facebook
+          = fa_icon 'facebook-square', class: 'facebook-button'
+          facebookでログイン
+        %button#google-login.btn-default.btn-sns.btn-sns-google
+          googleでログイン
+          
+      = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+        .singin-form-inner
+          .field
+            = f.email_field :email, placeholder: 'メールアドレス', autocomplete: "email", class: 'input-default'
+          .field
+            = f.password_field :password, placeholder: 'パスワード', autocomplete: "current-password", class: 'input-default'
+          .actions
+            = f.submit "ログイン", class: 'login-submit btn-default btn-red'
+        -# = render "devise/shared/links"
+          ↑ 「パスワードを忘れた方」の所   ja.ymlを使って日本語化する
+    %footer.single-footer
+      %nav
+        %ul
+          %li
+            %a(href="#") プライバシーポリシー
+          %li
+            %a(href="#") メルカリ利用規約
+          %li
+            %a(href="#") 特定商取引に関する表記
+      %a(href="#" class="single-footer-logo")
+        = image_tag "logo-gray.svg", width: 80, height: 65
+      %p
+        %small © 2019 Mercari
