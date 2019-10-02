@@ -73,3 +73,4 @@ gem 'aws-sdk-s3', require: false
 gem 'devise'
 gem 'rspec-rails'
 gem 'haml-rails'
+gem "font-awesome-rails"
