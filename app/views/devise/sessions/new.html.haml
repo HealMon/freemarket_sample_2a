@@ -1,37 +1,27 @@
 .container
   = render 'devise/shared/mercari-header'
-  %main.contents 
-    .signin-panel
-      .singin-no-account
-        %p アカウントをお持ちでない方はこちら
-        %a 新規会員登録
-      .singin-form-inner
+  %main.main 
+    .container-main
+      .container-main__inner
+        .container-main__inner--no-account
+          %p アカウントをお持ちでない方はこちら
+          = link_to "新規会員登録", new_user_information_path
+      .container-main__inner
         %button#facebook-login.btn-default.btn-sns.btn-sns-facebook
           = fa_icon 'facebook-square', class: 'facebook-button'
           facebookでログイン
         %button#google-login.btn-default.btn-sns.btn-sns-google
           googleでログイン
           
-      = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-        .singin-form-inner
-          .field
-            = f.email_field :email, placeholder: 'メールアドレス', autocomplete: "email", class: 'input-default'
-          .field
-            = f.password_field :password, placeholder: 'パスワード', autocomplete: "current-password", class: 'input-default'
-          .actions
-            = f.submit "ログイン", class: 'login-submit btn-default btn-red'
-        -# = render "devise/shared/links"
-          ↑ 「パスワードを忘れた方」の所   ja.ymlを使って日本語化する
-    %footer.single-footer
-      %nav
-        %ul
-          %li
-            %a(href="#") プライバシーポリシー
-          %li
-            %a(href="#") メルカリ利用規約
-          %li
-            %a(href="#") 特定商取引に関する表記
-      %a(href="#" class="single-footer-logo")
-        = image_tag "logo-gray.svg", width: 80, height: 65
-      %p
-        %small © 2019 Mercari
+      = form_for(resource, as: resource_name, url: new_user_session_path(resource_name)) do |f|
+        .container-main__inner
+          .container-main__inner--email-login
+            .field
+              = f.email_field :email, placeholder: 'メールアドレス', autocomplete: "email", class: 'input-default'
+            .field
+              = f.password_field :password, placeholder: 'パスワード', autocomplete: "current-password", class: 'input-default'
+            .actions
+              = f.submit "ログイン", class: 'login-submit btn-default btn-red'
+          -# = render "devise/shared/links"
+            ↑ 「パスワードを忘れた方」の所   ja.ymlを使って日本語化する
+    = render 'devise/shared/footer'

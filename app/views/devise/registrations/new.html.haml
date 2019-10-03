@@ -23,27 +23,47 @@
     %section.l-contents-container
       %h2.l-contents-head__registration
         会員情報入力
-      
-
-
-%h2 Sign up
-= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-  = render "devise/shared/error_messages", resource: resource
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    = f.label :password
-    - if @minimum_password_length
-      %em
-        (#{@minimum_password_length} characters minimum)
-    %br/
-    = f.password_field :password, autocomplete: "new-password"
-  .field
-    = f.label :password_confirmation
-    %br/
-    = f.password_field :password_confirmation, autocomplete: "new-password"
-  .actions
-    = f.submit "Sign up"
-= render "devise/shared/links"
+      = form_for(resource, as: resource_name, url: user_registration_path(resource_name)) do |f|
+        = render "devise/shared/error_messages", resource: resource
+        .l-contents
+          .form-group
+            .field
+              = f.label "ニックネーム"
+              %span.form-require　必須
+              %br/
+              = f.text_field :nickname, placeholder:"例）メルカリ太郎",class:'input-default'
+          .form-group
+            .field
+              = f.label "メールアドレス"
+              %span.form-require　必須
+              %br/
+              = f.email_field :email, placeholder:"PC・携帯どちらも可",class:'input-default'
+          .form-group
+            .field
+              = f.label "パスワード"
+              %span.form-require　必須
+              - if @minimum_password_length
+                %em
+                  (#{@minimum_password_length} characters minimum)
+              %br/
+              = f.password_field :password, placeholder:"7文字以上",class:'input-default'
+          .form-group
+            .field
+              = f.label "パスワード（確認）"
+              %span.form-require　必須
+              %br/
+              = f.password_field :password_confirmation, placeholder:"７文字以上",class:'input-default'
+          .form-group
+            %h3.text-left.l-chapter-sub-head
+              本人確認
+            %p.l-sinle-text
+              安心・安全にご利用いただくために、お客さまの本人情報の登録にご協力ください。他のお客さまに後悔させることはありません。
+          .form-group
+            .field
+              = f.label "お名前（全角）"
+              %span.form-require　必須
+              %br/
+              = f.text_field :last_name, placeholder:"例）山田",class:'input-default'
+            .actions
+              = f.submit "Sign up"
+          = render "devise/shared/links"
