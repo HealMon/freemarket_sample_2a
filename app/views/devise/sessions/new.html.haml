@@ -1,7 +1,7 @@
 .container
   = render 'devise/shared/mercari-header'
   %main.main 
-    .container-main
+    .container-main.login
       .container-main__inner
         .container-main__inner--no-account
           %p アカウントをお持ちでない方はこちら
@@ -13,7 +13,7 @@
         %button#google-login.btn-default.btn-sns.btn-sns-google
           googleでログイン
           
-      = form_for(resource, as: resource_name, url: new_user_session_path(resource_name)) do |f|
+      = form_for(resource, as: resource_name, url: new_user_session_path(resource_name), class: "login") do |f|   
         .container-main__inner
           .container-main__inner--email-login
             .field

@@ -8,6 +8,12 @@ Rails.application.routes.draw do
     post 'login' => 'devise/sessions#create', as: :user_registration
   end
   
+  # 仮置場
+  get 'signup/registration/phone1' => 'home#phone1'
+  get 'signup/registration/phone2' => 'home#phone2'
+  get 'signup/registration/address' => 'home#address'
+  get 'signup/registration/payment' => 'home#payment'
+  get 'signup/registration/congrats' => 'home#congrats'
 
   root to: 'home#index'
 end
