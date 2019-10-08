@@ -29,8 +29,8 @@
       %h2.container-main__head
         会員情報入力
       %hr
-      = form_for(resource, as: resource_name, url: user_registration_path(resource_name)) do |f|
-        = render "devise/shared/error_messages", resource: resource
+      = form_for @user, url: sms_confirmation_signup_index_path, method: :get, html: {class: 'new_user'} do |f|
+        = render "devise/shared/error_messages", resource: @user
         .container-main__inner__content
           .form-group
             .field
@@ -100,3 +100,5 @@
             %p.container-main__text-right
               %a{href:"https://www.mercari.com/jp/help_center/article/423/"} 本人情報の登録について＞
         = render 'devise/shared/footer'
+
+
