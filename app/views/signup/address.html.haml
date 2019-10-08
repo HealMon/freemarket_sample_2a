@@ -1,0 +1,81 @@
+.container
+  %header.header
+    %h1
+      = link_to "" do
+        = image_tag "https://www-mercari-jp.akamaized.net/assets/img/common/common/logo.svg?3054050720"
+
+    %nav.signup-bar
+      %oi.clearfix
+        %li.through
+          会員情報
+          .progress-status
+        %li.through
+          電話番号認証
+          .progress-status
+        %li.active
+          お届け先住所入力
+          .progress-status
+        %li
+          支払い方法
+          .progress-status
+        %li
+          完了
+          .progress-status
+
+  %main.main
+    %section.container-main
+      %h2.container-main__head
+        発送元・お届け先住所入力
+      %hr
+      = form_for @user, url: credit_card_signup_index_path, method: :get, html: {class: 'new_user'} do |f|
+        .container-main__inner__content
+          .form-group
+            .field
+              = f.label "お名前"
+              %span.form-group--require 必須
+              %br/
+              = f.text_field :delivery_last_name, class: "input-default", placeholder: "山田"           
+              = f.text_field :delivery_first_name, class: "input-default", placeholder: "彩"
+          .form-group
+            .field
+              = f.label "お名前カナ"
+              %span.form-group--require 必須
+              %br/
+              = f.text_field :delivery_last_name_kana, class: "input-default", placeholder: "ヤマダ"
+              = f.text_field :delivery_first_name_kana, class: "input-default", placeholder: "アヤ"
+          .form-group
+            .field
+              = f.label "郵便番号"
+              %span.form-group--require 必須
+              %br/
+              = f.text_field :zipcode, class: "input-default", placeholder: "例）123-4567"
+          .form-group
+            .field
+              = f.label "市区町村"
+              %span.form-group--require 必須
+              %br/
+              = f.text_field :city, class: "input-default", placeholder: "高知市"
+          .form-group
+            .field
+              = f.label "番地"
+              %span.form-group--require 必須
+              %br/
+              = f.text_field :address, class: "input-default", placeholder: "上町1-1"
+          .form-group
+            .field
+              = f.label "建物名"
+              %span.form-group--unrequire 任意
+              %br/
+              = f.text_field :building, class: "input-default", placeholder: "例）龍馬ビル101"              
+          .form-group
+            .field
+              = f.label "電話"
+              %span.form-group--unrequire 任意
+              %br/
+              = f.text_field :delivery_phone_number, class: "input-default", placeholder: "例）龍馬ビル101"  
+        .container-main__inner__content.pt-5
+          .form-group
+            %button.btn-default.btn-red{type: "submit"} 次へ進む      
+
+      
+      = render 'devise/shared/footer'
