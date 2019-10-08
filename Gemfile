@@ -74,5 +74,3 @@ gem 'devise'
 gem 'rspec-rails'
 gem 'haml-rails'
 gem "font-awesome-rails"
-gem "pry-rails"
-gem "pry-byebug"

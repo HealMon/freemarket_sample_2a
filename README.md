@@ -20,6 +20,11 @@
 |名前(カナ)(名前)|first_name_kana|string|null :false|
 |プロフィールイメージ|avatar|string||
 |プロフィール|profile|string||
+|お届け先名前(漢字)(苗字)|delivery_last_name|string|null: false|
+|お届け先名前(漢字)(名前)|delivery_first_name|string|null: false|
+|お届け先名前(カナ)(苗字)|delivery_last_name_kana|string|null: false|
+|お届け先名前(カナ)(名前)|delivery_first_name_kana|string|null: false|
+|お届け先電話番号|delivery_phone_number|string||
 
 ### Association
 - has_many :items , dependent: :destroy
@@ -112,10 +117,10 @@ belongs_to :item
 | |Column|Type|Options|
 |-|------|----|-------|
 |クレジットカードID| | | |
-|カード番号|card-number|integer|null: false|
-|有効期限|exporation_date|integer|null: false|
+|カード番号|card_number|string|null: false|
+|有効期限|exporation_date|string|null: false|
 |セキュリティーコード|cvc|integer|null: false|
 |ユーザID|user_id|references|null: false,foreign_key: true|
 
 ### Association
-- belongs_to :uesr
+- belongs_to :user
