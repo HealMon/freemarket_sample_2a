@@ -74,3 +74,4 @@ gem 'devise'
 gem 'rspec-rails'
 gem 'haml-rails'
 gem "font-awesome-rails"
+gem 'active_hash'

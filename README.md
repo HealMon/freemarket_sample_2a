@@ -8,10 +8,10 @@
 |メールアドレス|email|string|null: false, unique: true|
 |パスワード|password|string|null: false|
 |電話番号|phone_number|string||
-|郵便番号|zipcode|string||
-|都道府県ID|prefecture|integer||
-|市区町村ID|city|string||
-|番地|address|string||
+|郵便番号|zipcode|string|null: false|
+|都道府県ID|prefecture_id|integer|null: false|
+|市区町村|city|string|null: false|
+|番地|address|string|null: false|
 |建物名|building|string||
 |生年月日|birthday|integer|null: false|
 |名前(漢字)(苗字)|last_name|string|null: false|

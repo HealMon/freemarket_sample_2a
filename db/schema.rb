@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_07_062611) do
+ActiveRecord::Schema.define(version: 2019_10_08_090240) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -43,15 +43,20 @@ ActiveRecord::Schema.define(version: 2019_10_07_062611) do
     t.index ["user_id"], name: "index_credit_cards_on_user_id"
   end
 
+  create_table "prefectures", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "nickname", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "phone_number"
-    t.string "zipcode"
-    t.integer "prefecture"
-    t.string "city"
-    t.string "address"
+    t.string "zipcode", null: false
+    t.integer "prefecture_id", null: false
+    t.string "city", null: false
+    t.string "address", null: false
     t.string "building"
     t.integer "birthday", null: false
     t.string "last_name", null: false

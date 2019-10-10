@@ -1,6 +1,9 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to_active_hash :prefecture
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
@@ -17,6 +20,10 @@ class User < ApplicationRecord
   validates :last_name_kana,            presence: true
   validates :first_name_kana,           presence: true
   validates :birthday,                  presence: true
+  validates :zipcode,                   presence: true
+  validates :prefecture_id,             presence: true
+  validates :city,                      presence: true
+  validates :address,                   presence: true
   validates :delivery_last_name,        presence: true
   validates :delivery_first_name,       presence: true
   validates :delivery_last_name_kana,   presence: true
