@@ -30,39 +30,11 @@ class SignupController < ApplicationController
   end
 
   def create
-    # @user = User.new(
-    #   nickname:                 session[:nickname],
-    #   email:                    session[:email],
-    #   password:                 session[:password],
-    #   password_confirmation:    session[:password_confirmation],
-    #   last_name:                session[:last_name],
-    #   first_name:               session[:first_name],
-    #   last_name_kana:           session[:last_name_kana],
-    #   first_name_kana:          session[:first_name_kana],
-    #   phone_number:             session[:phone_number],
-    #   zipcode:                  session[:zipcode],
-    #   prefecture_id:            session[:prefecture_id],
-    #   city:                     session[:city],
-    #   address:                  session[:address],
-    #   birth_year:               session[:birth_year],
-    #   birth_month:              session[:birth_month],
-    #   birth_day:                session[:birth_day],
-    #   delivery_last_name:       session[:delivery_last_name],
-    #   delivery_first_name:      session[:delivery_first_name],
-    #   delivery_last_name_kana:  session[:delivery_last_name_kana],
-    #   delivery_first_name_kana: session[:delivery_first_name_kana],
-    #   delivery_phone_number:    session[:delivery_phone_number]
-    # )
-    
-  
-    
       if @credit_card.valid? # credit_cardもvalid: trueなら
         @credit_card.save
         session[:id] = @user.id
         redirect_to congrats_signup_index_path
       end
-    
-    
   end
 
 
@@ -92,7 +64,6 @@ class SignupController < ApplicationController
       :delivery_first_name_kana,
       :delivery_phone_number
     )
-    
   end
 
   def credit_card_params
@@ -136,8 +107,6 @@ class SignupController < ApplicationController
       building:                 "仮ハイツ１"  ,
       delivery_phone_number:    "09099999999",
     )
-
-
     render action: :new unless @user.valid?
   end
 
@@ -179,21 +148,12 @@ class SignupController < ApplicationController
     )
 
     render action: :address unless @user.valid?
-    # check_user_valid = @user.valid?
-
-    # unless check_user_valid
-    #   render action: :address 
-    # else
-    #   session[:through_second_valid] = "through_second_valid"
-    # end
-    # redirect_to address_signup_index_path unless session[:through_second_valid].present? && session[:through_second_valid] == "through_second_valid"
   end
 
   def validates_step3
       session[:card_number]      = credit_card_params[:card_number]
       session[:exporation_year]  = credit_card_params[:exporation_year]
       session[:exporation_month]  = credit_card_params[:exporation_month]
-      # params[:credit_card]["exporation_date(2i)"] + "/" + params[:credit_card]["exporation_date(1i)"] # exporation_date :integer
       session[:cvc]              = credit_card_params[:cvc]
       
       @user = User.create(
