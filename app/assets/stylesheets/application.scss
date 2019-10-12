@@ -95,7 +95,7 @@ body {
               .half:first-of-type {
                 margin-right: 8px;
               }
-                .half{
+              .half{
                 width: calc(50% - 6px);
               }
               .container-main__text {
@@ -107,6 +107,19 @@ body {
                 }
                 &-right{
                   text-align: right;
+                }
+              }
+              .field_with_errors{
+                .input-default,select{
+                  border-color: #ea352d !important; 
+                }
+              }
+              ul.error-message{
+                color: #ea352d;
+                line-height: 1.5;
+                font-size: 14px;
+                li{
+                  margin: 8px 0 0;
                 }
               }
               .select-wrap{
@@ -127,7 +140,7 @@ body {
                   font-size: 8px;
                   transform: translate(0, -50%);
                 }
-                .year, .month, .day{
+                .year, .month, .day,#user_prefecture_id{
                   padding: 0 10px;
                   position: relative;
                   z-index: 2;

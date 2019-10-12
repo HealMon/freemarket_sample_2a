@@ -28,46 +28,78 @@
         発送元・お届け先住所入力
       %hr
       = form_for @user, url: credit_card_signup_index_path, method: :get, html: {class: 'new_user'} do |f|
-        = render "devise/shared/error_messages", resource: @user
         .container-main__inner__content
           .form-group
             .field
               = f.label "お名前"
               %span.form-group--require 必須
               %br/
-              = f.text_field :delivery_last_name, class: "input-default", placeholder: "山田"           
+              = f.text_field :delivery_last_name, class: "input-default", placeholder: "山田"
+              - if @user.errors.messages[:delivery_last_name].present?
+                - @user.errors.messages[:delivery_last_name].each do |message|
+                  %ul.error-message
+                    %li= "お名前#{message}"           
               = f.text_field :delivery_first_name, class: "input-default", placeholder: "彩"
+              - if @user.errors.messages[:delivery_first_name].present?
+                - @user.errors.messages[:delivery_first_name].each do |message|
+                  %ul.error-message
+                    %li= "お名前#{message}"
           .form-group
             .field
               = f.label "お名前カナ"
               %span.form-group--require 必須
               %br/
               = f.text_field :delivery_last_name_kana, class: "input-default", placeholder: "ヤマダ"
+              - if @user.errors.messages[:delivery_last_name_kana].present?
+                - @user.errors.messages[:delivery_last_name_kana].each do |message|
+                  %ul.error-message
+                    %li= "お名前#{message}"
               = f.text_field :delivery_first_name_kana, class: "input-default", placeholder: "アヤ"
+              - if @user.errors.messages[:delivery_first_name_kana].present?
+                - @user.errors.messages[:delivery_first_name_kana].each do |message|
+                  %ul.error-message
+                    %li= "お名前#{message}"
           .form-group
             .field
               = f.label "郵便番号"
               %span.form-group--require 必須
               %br/
-              = f.text_field :zipcode, class: "input-default", placeholder: "例）123-4567"        
+              = f.text_field :zipcode, class: "input-default", placeholder: "例）123-4567"
+              - if @user.errors.messages[:zipcode].present?
+                - @user.errors.messages[:zipcode].each do |message|
+                  %ul.error-message
+                    %li= "郵便番号#{message}"
           .form-group
             .field
               = f.label "都道府県"
               %span.form-group--require 必須
               %br/
-              = f.collection_select :prefecture_id, Prefecture.all, :id, :name 
+              .select-wrap
+                = f.collection_select :prefecture_id, Prefecture.all, :id, :name ,class: 'year' ,prompt: "---"
+                - if @user.errors.messages[:prefecture_id].present?
+                  - @user.errors.messages[:prefecture_id].each do |message|
+                    %ul.error-message
+                      %li= "都道府県#{message}"
           .form-group
             .field
               = f.label "市区町村"
               %span.form-group--require 必須
               %br/
               = f.text_field :city, class: "input-default", placeholder: "高知市"
+              - if @user.errors.messages[:city].present?
+                - @user.errors.messages[:city].each do |message|
+                  %ul.error-message
+                    %li= "市区町村#{message}"
           .form-group
             .field
               = f.label "番地"
               %span.form-group--require 必須
               %br/
               = f.text_field :address, class: "input-default", placeholder: "上町1-1"
+              - if @user.errors.messages[:address].present?
+                - @user.errors.messages[:address].each do |message|
+                  %ul.error-message
+                    %li= "番地#{message}"
           .form-group
             .field
               = f.label "建物名"
@@ -79,7 +111,7 @@
               = f.label "電話"
               %span.form-group--unrequire 任意
               %br/
-              = f.text_field :delivery_phone_number, class: "input-default", placeholder: "例）龍馬ビル101"  
+              = f.text_field :delivery_phone_number, class: "input-default", placeholder: "例）012-1234-5678"  
         .container-main__inner__content.pt-5
           .form-group
             %button.btn-default.btn-red{type: "submit"} 次へ進む      

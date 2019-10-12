@@ -13,7 +13,9 @@
 |市区町村|city|string|null: false|
 |番地|address|string|null: false|
 |建物名|building|string||
-|生年月日|birthday|integer|null: false|
+|生年月日(年)|birth_year|integer|null: false|
+|生年月日(月)|birth_month|integer|null: false|
+|生年月日(日)|birth_day|integer|null: false|
 |名前(漢字)(苗字)|last_name|string|null: false|
 |名前(漢字)(名前)|first_name|string|null: false|
 |名前(カナ)(苗字)|last_name_kana|string|null: false|
@@ -118,7 +120,8 @@ belongs_to :item
 |-|------|----|-------|
 |クレジットカードID| | | |
 |カード番号|card_number|string|null: false|
-|有効期限|exporation_date|string|null: false|
+|有効期限(年)|exporation_year|string|null: false|
+|有効期限(月)|exporation_month|string|null: false|
 |セキュリティーコード|cvc|integer|null: false|
 |ユーザID|user_id|references|null: false,foreign_key: true|
 

@@ -35,19 +35,38 @@
               = f.label "カード番号"
               %span.form-group--require 必須
               = f.text_field :card_number, class: "input-default", placeholder: "半角数字のみ" 
+              - if @credit_card.errors.messages[:card_number].present?
+                - @credit_card.errors.messages[:card_number].each do |message|
+                  %ul.error-message
+                    %li= "カード番号#{message}"
               = image_tag 'card-brand-list', height: '25'
           .form-group
             .field
               = f.label "有効期限"
               %span.form-group--require 必須
               %br/
-              .select-wrap.card
-                != sprintf(f.date_select(:exporation_date, with_css_classes:'test', order:[:month,:year,:day], use_month_numbers:true, discard_day:true, start_year:Time.now.year-2000, end_year:Time.now.year-2000+10, date_separator:'%s'),'月') + '年'
+              .select-wrap
+                = f.select :exporation_year, options_for_select(19..25),{prompt: "---"},class:'year'
+                = f.label :"年"
+                - if @credit_card.errors.messages[:exporation_year].present?
+                  - @credit_card.errors.messages[:exporation_year].each do |message|
+                    %ul.error-message
+                      %li= "年#{message}"
+                = f.select :exporation_month, options_for_select(1..12),{prompt: "---"},class: 'month'
+                = f.label :"月"
+                - if @credit_card.errors.messages[:exporation_month].present?
+                  - @credit_card.errors.messages[:exporation_month].each do |message|
+                    %ul.error-message
+                      %li= "月#{message}"
           .form-group
             .field
               = f.label "セキュリティコード"
               %span.form-group--require 必須
               = f.text_field :cvc, class: "input-default", placeholder: "カード背面4桁もしくは3桁の番号" 
+              - if @credit_card.errors.messages[:cvc].present?
+                - @credit_card.errors.messages[:cvc].each do |message|
+                  %ul.error-message
+                    %li= "セキュリティコード#{message}"
               %p.container-main__text-right
                 %a{href:"https://www.mercari.com/jp/help_center/article/423/"}
                   = fa_icon 'question-circle'

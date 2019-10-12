@@ -1,6 +1,7 @@
 class SignupController < ApplicationController
   before_action :validates_step1, only: :phone1
   before_action :validates_step2, only: :payment
+  before_action :validates_step3, only: :create
 
   def new
     @user = User.new
@@ -24,53 +25,44 @@ class SignupController < ApplicationController
     @credit_card = CreditCard.new
   end
 
-  def congrats   
+  def congrats
+    
   end
 
   def create
-
-    @user = User.new(
-      nickname:                 session[:nickname],
-      email:                    session[:email],
-      password:                 session[:password],
-      password_confirmation:    session[:password_confirmation],
-      last_name:                session[:last_name],
-      first_name:               session[:first_name],
-      last_name_kana:           session[:last_name_kana],
-      first_name_kana:          session[:first_name_kana],
-      phone_number:             session[:phone_number],
-      zipcode:                  session[:zipcode],
-      prefecture_id:            session[:prefecture_id],
-      city:                     session[:city],
-      address:                  session[:address],
-      birthday:                 session[:birthday],
-      delivery_last_name:       session[:delivery_last_name],
-      delivery_first_name:      session[:delivery_first_name],
-      delivery_last_name_kana:  session[:delivery_last_name_kana],
-      delivery_first_name_kana: session[:delivery_first_name_kana],
-      delivery_phone_number:    session[:delivery_phone_number]
-    )
-    credit_card_params = {
-      card_number:      params[:credit_card][:card_number],
-      exporation_date:  params[:credit_card]["exporation_date(2i)"] + "/" + params[:credit_card]["exporation_date(1i)"], # exporation_date :integer
-      cvc:              params[:credit_card][:cvc]
-    }
-
-    render action: :payment unless @user.credit_cards.build(credit_card_params).valid?
+    # @user = User.new(
+    #   nickname:                 session[:nickname],
+    #   email:                    session[:email],
+    #   password:                 session[:password],
+    #   password_confirmation:    session[:password_confirmation],
+    #   last_name:                session[:last_name],
+    #   first_name:               session[:first_name],
+    #   last_name_kana:           session[:last_name_kana],
+    #   first_name_kana:          session[:first_name_kana],
+    #   phone_number:             session[:phone_number],
+    #   zipcode:                  session[:zipcode],
+    #   prefecture_id:            session[:prefecture_id],
+    #   city:                     session[:city],
+    #   address:                  session[:address],
+    #   birth_year:               session[:birth_year],
+    #   birth_month:              session[:birth_month],
+    #   birth_day:                session[:birth_day],
+    #   delivery_last_name:       session[:delivery_last_name],
+    #   delivery_first_name:      session[:delivery_first_name],
+    #   delivery_last_name_kana:  session[:delivery_last_name_kana],
+    #   delivery_first_name_kana: session[:delivery_first_name_kana],
+    #   delivery_phone_number:    session[:delivery_phone_number]
+    # )
     
-    if @user.save # userがvalid: trueで
-      if @user.credit_cards.build(credit_card_params).valid? # credit_cardもvalid: trueなら
-        credit_card = @user.credit_cards.build(credit_card_params)
-        credit_card.save
+  
+    
+      if @credit_card.valid? # credit_cardもvalid: trueなら
+        @credit_card.save
         session[:id] = @user.id
         redirect_to congrats_signup_index_path
-      else
-        User.last.delete # userをsaveしてしまっているので,delete
-        render 'signup/payment'
       end
-    else
-      render 'signup/payment'
-    end
+    
+    
   end
 
 
@@ -91,7 +83,9 @@ class SignupController < ApplicationController
       :prefecture_id,
       :city,
       :address,
-      :birthday,
+      :birth_year,
+      :birth_month,
+      :birth_day,
       :delivery_last_name,
       :delivery_first_name,
       :delivery_last_name_kana,
@@ -102,11 +96,13 @@ class SignupController < ApplicationController
   end
 
   def credit_card_params
-    params.require(:credit_card).permit(:card_number, :exporation_date, :cvc)
+    params.require(:credit_card).permit(:card_number, :exporation_year,:exporation_month, :cvc)
   end
 
   def validates_step1
-    session[:birthday] = params[:birthday]["birthday(1i)"] + "/" + params[:birthday]["birthday(2i)"] + "/" + params[:birthday]["birthday(3i)"]
+    session[:birth_year]            = user_params[:birth_year]
+    session[:birth_month]           = user_params[:birth_month]
+    session[:birth_day]             = user_params[:birth_day]
     session[:nickname]              = user_params[:nickname]
     session[:email]                 = user_params[:email]
     session[:password]              = user_params[:password]
@@ -117,7 +113,9 @@ class SignupController < ApplicationController
     session[:first_name_kana]       = user_params[:first_name_kana]
     
     @user = User.new(
-      birthday:                 session[:birthday],
+      birth_year:               session[:birth_year],
+      birth_month:              session[:birth_month],
+      birth_day:                session[:birth_day],
       nickname:                 session[:nickname],
       email:                    session[:email],
       password:                 session[:password] ,
@@ -139,16 +137,8 @@ class SignupController < ApplicationController
       delivery_phone_number:    "09099999999",
     )
 
+
     render action: :new unless @user.valid?
-    # check_user_valid = @user.valid?
-
-    # unless check_user_valid
-    #   render action: :new 
-    # else
-    #   session[:through_first_valid] = "through_first_valid"
-    # end
-
-    # redirect_to registration_signup_index_path unless session[:through_first_valid].present? && session[:through_first_valid] == "through_first_valid"
   end
 
   def validates_step2
@@ -164,7 +154,9 @@ class SignupController < ApplicationController
     session[:delivery_phone_number]     = user_params[:delivery_phone_number]
 
     @user = User.new(
-      birthday:                 session[:birthday],
+      birth_year:               session[:birth_year],
+      birth_month:              session[:birth_month],
+      birth_day:                session[:birth_day],
       nickname:                 session[:nickname],
       email:                    session[:email],
       password:                 session[:password] ,
@@ -197,7 +189,46 @@ class SignupController < ApplicationController
     # redirect_to address_signup_index_path unless session[:through_second_valid].present? && session[:through_second_valid] == "through_second_valid"
   end
 
+  def validates_step3
+      session[:card_number]      = credit_card_params[:card_number]
+      session[:exporation_year]  = credit_card_params[:exporation_year]
+      session[:exporation_month]  = credit_card_params[:exporation_month]
+      # params[:credit_card]["exporation_date(2i)"] + "/" + params[:credit_card]["exporation_date(1i)"] # exporation_date :integer
+      session[:cvc]              = credit_card_params[:cvc]
+      
+      @user = User.create(
+        nickname:                 session[:nickname],
+        email:                    session[:email],
+        password:                 session[:password],
+        password_confirmation:    session[:password_confirmation],
+        last_name:                session[:last_name],
+        first_name:               session[:first_name],
+        last_name_kana:           session[:last_name_kana],
+        first_name_kana:          session[:first_name_kana],
+        phone_number:             session[:phone_number],
+        zipcode:                  session[:zipcode],
+        prefecture_id:            session[:prefecture_id],
+        city:                     session[:city],
+        address:                  session[:address],
+        birth_year:               session[:birth_year],
+        birth_month:              session[:birth_month],
+        birth_day:                session[:birth_day],
+        delivery_last_name:       session[:delivery_last_name],
+        delivery_first_name:      session[:delivery_first_name],
+        delivery_last_name_kana:  session[:delivery_last_name_kana],
+        delivery_first_name_kana: session[:delivery_first_name_kana],
+        delivery_phone_number:    session[:delivery_phone_number]
+      )
+      @credit_card = @user.credit_cards.build(
+        card_number:            session[:card_number],
+        exporation_year:        session[:exporation_year],
+        exporation_month:       session[:exporation_month],
+        cvc:                    session[:cvc]
+      )
+      unless @credit_card.valid?
+        User.last.delete
+        render action: :payment 
+      end
+  end
 
-
-  
 end
