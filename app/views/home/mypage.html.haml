@@ -6,9 +6,8 @@
   %main.main-container
     .content
       %section.mypage-user-icon
-        %a{href: "#"}
+        = link_to '#' do
           %figure
-            -# %img{alt: "", height: "60", src: "//static.mercdn.net/images/member_photo_noimage_thumb.png", width: "60"}/
             = image_tag 'member_photo_noimage_thumb.png'
           %h2.bold テスト太郎
           .mypage-number
@@ -22,16 +21,16 @@
         %ul.mypage-tabs
           %li.active
             %h3
-              %a{href: "#"}
+              = link_to '#' do
                 お知らせ
           %li
             %h3
-              %a{href: "#"}
+              = link_to '#' do
                 やることリスト
         .tab-content
           %ul#mypage-tab-notification.mypage-item-list.tab-pane.active
             %li
-              %a.mypage-item-link{href: "#"}
+              = link_to '#', class: 'mypage-item-link' do
                 %figure
                   = image_tag 'mercari_profile.png'
                 .mypage-item-body
@@ -40,9 +39,8 @@
                     = fa_icon 'history'
                     %span 17 分前
                 = fa_icon 'chevron-right', class: 'icon-arrow-right'
-
             %li
-              %a.mypage-item-link{href: "#"}
+              = link_to '#', class: 'mypage-item-link' do
                 %figure
                   = image_tag 'mercari_profile.png'
                 .mypage-item-body
@@ -52,7 +50,7 @@
                     %span 3 日前
                 = fa_icon 'chevron-right', class: 'icon-arrow-right'
             %li
-              %a.mypage-item-link{href: "#"}
+              = link_to '#', class: 'mypage-item-link' do
                 %figure
                   = image_tag 'mercari_profile.png'
                 .mypage-item-body
@@ -62,7 +60,7 @@
                     %span 5 日前
                 = fa_icon 'chevron-right', class: 'icon-arrow-right'
             %li
-              %a.mypage-item-link{href: "#"}
+              = link_to '#', class: 'mypage-item-link' do
                 %figure
                   = image_tag 'mercari_profile.png'
                 .mypage-item-body
@@ -72,7 +70,7 @@
                     %span 6 日前
                 = fa_icon 'chevron-right', class: 'icon-arrow-right'
             %li
-              %a.mypage-item-link{href: "#"}
+              = link_to '#', class: 'mypage-item-link' do
                 %figure
                   = image_tag 'mercari_profile.png'
                 .mypage-item-body
@@ -82,7 +80,7 @@
                     %span 7 日前
                 = fa_icon 'chevron-right', class: 'icon-arrow-right'
             %li.mypage-go-list
-              %a{href: "#"} 一覧を見る
+              = link_to '一覧を見る', '#'
 
 
       // メインコンテンツ bottom
@@ -91,12 +89,10 @@
         %ul.mypage-tabs
           %li.active
             %h3
-              %a{href: "#"}
-                取引中
+              = link_to '取引中', '#'
           %li
             %h3
-              %a{href: "#"}
-                過去の取引
+              = link_to '過去の取引', '#'
         .tab-content
           %ul#mypage-tab-transaction-now.mypage-item-list.tab-pane.active
             %li.mypage-item-not-found.bold 取引中の商品がありません

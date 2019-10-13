@@ -4,75 +4,75 @@
       %h2.footer-head メルカリについて
       %ul
         %li
-          %a{href: "#"} 会社概要（運営会社）
+          = link_to '会社概要（運営会社）', '#' 
         %li
-          %a{href: "#"} 採用情報
+          = link_to '採用情報', '#' 
         %li
-          %a{href: "#"} プレスリリース
+          = link_to 'プレスリリース', '#' 
         %li
-          %a{href: "#", target: "_blank"} 公式ブログ
+          = link_to '公式ブログ', '#', target: '_blank'
         %li
-          %a{href: "#"} メルカリロゴ利用ガイドライン
+          = link_to 'メルカリロゴ利用ガイドライン', '#' 
         %li.footer-social-link
-          %a{href: "#", target: "_blank"}
+          = link_to '#', target: '_blank' do
             = fa_icon 'twitter'
         %li.footer-social-link
-          %a{href: "#", target: "_blank"}
+          = link_to '#', target: '_blank' do
             = fa_icon 'facebook'
     .global-footer__nav-box__cell
       %h2.footer-head ヘルプ＆ガイド
       %ul
         %li
-          %a{href: "#"} メルカリガイド
+          = link_to 'メルカリガイド', '#'
         %li
-          %a{href: "#"} らくらくメルカリ便
+          = link_to 'らくらくメルカリ便', '#'
         %li
-          %a{href: "#"} ゆうゆうメルカリ便
+          = link_to 'ゆうゆうメルカリ便', '#'
         %li
-          %a{href: "#"} 大型メルカリ便
+          = link_to '大型メルカリ便', '#'
         %li
-          %a{href: "#"} 車体取引ガイド
+          = link_to '車体取引ガイド', '#'
         %li
-          %a{href: "#"} メルカリあんしん・あんぜん宣言！
+          = link_to 'メルカリあんしん・あんぜん宣言！', '#'
         %li
-          %a{href: "#"} 偽ブランド品撲滅への取り組み
+          = link_to '偽ブランド品撲滅への取り組み', '#'
         %li
-          %a{href: "#"} メルカリボックス
+          = link_to 'メルカリボックス', '#'
     .global-footer__nav-box__cell.full-width
       %h2.footer-head プライバシーと利用規約
       .inner-footer-cell
         %ul
           %li
-            %a{href: "#"} プライバシーポリシー
+            = link_to 'プライバシーポリシー'
           %li
-            %a{href: "#"} メルカリ利用規約
+            = link_to 'メルカリ利用規約', '#'
           %li
-            %a{href: "#"} あんしんスマホサポート制度に関する利用特約
+            = link_to 'あんしんスマホサポート制度に関する利用特約', '#'
           %li
-            %a{href: "#"} コンプライアンスポリシー
+            = link_to 'コンプライアンスポリシー', '#'
       .inner-footer-cell
         %ul
           %li
-            %a{href: "#"} 個人データの安全管理に係る基本方針
+            = link_to '個人データの安全管理に係る基本方針', '#'
           %li
-            %a{href: "#"} 特定商取引に関する表記
+            = link_to '特定商取引に関する表記', '#'
           %li
-            %a{href: "#"} 資金決済法に基づく表示
+            = link_to '資金決済法に基づく表示', '#'
           %li
-            %a{href: "#"} 法令順守と犯罪抑止のために
+            = link_to '法令順守と犯罪抑止のために', '#'
     .global-footer__nav-box__cell.footer-nav-lang
       %h2.footer-head 国
       %ul
         %li
-          %a.active{href: "#"} 日本
+          = link_to '日本', '#'
         %li
-          %a{href: "#"} United States
+          = link_to 'United States', '#'
   .footer-bottom
-    %a.footer-logo{href: "#"}
+    = link_to '#', class: 'footer-logo' do
       = image_tag 'logo-white'
     %span.footer-copyright
       %small © 2019 Mercari
 
-  %a.footer-sell-btn{href: "#"}
+  = link_to '#', class: 'footer-sell-btn' do
     %div 出品
     = fa_icon 'camera'
