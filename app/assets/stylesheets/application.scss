@@ -1,0 +1,220 @@
+@import "reset";
+@import "default";
+@import "shared/*";
+@import "modules/footer-sell-btn";
+@import "font-awesome";
+
+
+/*******************************/
+/*****      マイページ     *****/
+/*****    rootURL/mypage   *****/
+/*******************************/
+
+.container {
+
+  // メインコンテナー
+  .main-container {
+    @include clearfix;
+    width: 1020px;
+    margin: 40px auto 0;
+    padding-bottom: 40px;
+
+    // メインコンテンツ
+    .content {
+      float: right;
+      width: 700px;
+
+      // メインコンテンツ main
+      .mypage-user-icon {
+        height: 200px;
+        position: relative;
+        padding: 20px;
+        background: image-url('backgroundimg.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        text-align: center;
+        a {
+          display: block;
+          position: absolute;
+          top: 50%;
+          left: 0;
+          right: 0;
+          -webkit-transform: translate(0, -50%);
+          transform: translate(0, -50%);
+          color: #333;
+        }
+        figure {
+          overflow: hidden;
+          width: 60px;
+          height: 60px;
+          margin: 0 auto;
+          border-radius: 50%;
+        }
+        h2 {
+          margin: 8px 0 0;
+          font-size: 14px;
+          line-height: 1.4;
+        }
+        .bold {
+          font-weight: 600;
+        }
+        .mypage-number {
+          margin-top: 8px;
+          div {
+            display: inline-block;
+            font-size: 14px;
+            margin-left: 14px;
+            span {
+              font-size: 16px;
+              margin-left: 8px;
+            }
+          }
+        }
+      }
+      .mypage-tab-container-notification-todo {
+        background: #fff;
+        margin: 0;
+        .mypage-tabs {
+          border: 0;
+          background: #eee;
+          font-size: 0;
+          li {
+            width: 50%;
+            display: inline-block;
+            text-align: center;
+            vertical-align: top;
+            &.active {
+              background-color: white;
+              a {
+                border-top: 2px solid #ea352d;
+              }
+            }
+            h3 {
+              font-size: 22px;
+              a {
+                position: relative;
+                display: block;
+                color: #333;
+                font-size: 16px;
+                line-height: 72px;
+              }
+            }
+          }
+        }
+        .tab-content {
+          .mypage-item-list {
+            li {
+              position: relative;
+              border-bottom: 1px solid #eee;
+              .mypage-item-link {
+                display: block;
+                min-height: 80px;
+                padding: 16px;
+                color: #333;
+                i.icon-arrow-right {
+                  position: absolute;
+                  top: 35px;
+                  right: 14px;
+                }
+                i.fa-history {
+                  margin: 4px 5px 0 0;
+                }
+                figure {
+                  position: relative;
+                  overflow: hidden;
+                  float: left;
+                  margin: 0 18px 0 5px;
+                  width: 48px;
+                  height: 48px;
+                }
+                .mypage-item-body {
+                  margin: 0 40px 0 68px;
+                }
+                time {
+                  display: inline-block;
+                  color: #888;
+                }
+              }
+            }
+            img {
+              position: absolute;
+              top: 0;
+              right: 0;
+              bottom: 0;
+              left: 0;
+              z-index: 1;
+              width: 100%;
+            }
+            .mypage-go-list {
+              padding: 16px;
+              li {
+                border: 0;
+              }
+              a {
+                display: block;
+                height: 56px;
+                margin: 0 auto;
+                background: #eee;
+                color: #333;
+                line-height: 56px;
+                text-align: center;
+              }
+            }
+          }
+        }
+      }
+
+      // メインコンテンツ bottom
+      .mypage-tab-container {
+        margin-top: 40px;
+        .mypage-tab-head {
+          background-color: #fafafa;
+          font-size: 16px;
+          line-height: 72px;
+          padding: 0 16px;
+        }
+        .mypage-tabs {
+          background: #eee;
+          border: 0;
+          font-size: 0;
+          li {
+            width: 50%;
+            display: inline-block;
+            text-align: center;
+            vertical-align: top;
+            &.active {
+              background-color: #fff;
+              a {
+                border-top: 2px solid #ea352d;
+              }
+            }
+            h3 {
+              font-size: 22px;
+            }
+          }
+          a {
+            position: relative;
+            display: block;
+            color: #333;
+            font-size: 16px;
+            line-height: 72px;
+          }
+        }
+        .tab-content {
+          .tab-pane {
+            &.active {
+              display: block;
+            }
+            .mypage-item-not-found {
+              padding: 110px 0 110px;
+              background-color: white;
+              text-align: center;
+              font-size: 16px;
+              color: #ccc;
+            }
+          }
+        }
+      }
+    }
+  }
+}

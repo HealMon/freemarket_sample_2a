@@ -1,0 +1,80 @@
+@import "mixin";
+
+.global-footer {
+  font-family: Arial,游ゴシック体,YuGothic,メイリオ,Meiryo,sans-serif;
+  font-weight: 500;
+  padding: 0 20px 10px 20px;
+  background: #212121;
+  color: #fff;
+  &__nav-box {
+    @include clearfix;
+    width: 1020px;
+    margin: 0 auto;
+    &__cell {
+      width: 20%;
+      margin-top: 18px;
+      padding-right: 20px;
+      float: left;
+      display: block;
+      &.full-width {
+        margin-top: 18px;
+        padding: 0 40px 0 0;
+        width: 40%;
+      }
+      &__head {
+        color: #fff;
+        font-size: 16px;
+        font-weight: 700;
+      }
+      li {
+        margin-top: 16px;
+        &.footer-social-link {
+          margin-top: 14px;
+          display: inline-block;
+          i {
+            background: transparent;
+            margin: 16px 18px 0 0;
+            font-size: 24px;
+          }
+          a {
+            opacity: 1;
+          }
+        }
+      }
+      a {
+        color: #fff;
+        font-size: 12px;
+        line-height: 1.5em;
+        display: block;
+        opacity: .7;
+      }
+      .inner-footer-cell {
+        float: left;
+        padding-left: 10px;
+        vertical-align: top;
+        width: 50%;
+      }
+    }
+  }
+
+  // footer-bottom
+  .footer-bottom {
+    margin: 30px auto 20px;
+    width: 1020px;
+    a.footer-logo {
+      color: #fff;
+      font-size: 12px;
+      line-height: 1.5em;
+      display: inline-block;
+      margin-right: 10px;
+      width: auto;
+    }
+    .footer-copyright {
+      width: 745px;
+      display: inline-block;
+      margin: 8px 0 0;
+      text-align: center;
+      vertical-align: sub;
+    }
+  }
+}
