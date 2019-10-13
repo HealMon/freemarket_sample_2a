@@ -1,2 +1,745 @@
-%h1 Home#index
-%p Find me in app/views/home/index.html.erb
+.container.global
+  = render 'shared/global-header'
+
+  // コンテンツスライダー
+  .top-image-slider
+    = link_to '#' do
+      = image_tag 'top-page-slider-image.png', class: 'slider-image'
+
+  // 人気のカテゴリ
+  .popular-category
+    %h2 人気のカテゴリー
+    .popular-category__list-box
+      %ul
+        %li.popular-category__list-box__list
+          = link_to 'レディース', '#'
+        %li.popular-category__list-box__list
+          = link_to 'メンズ', '#'
+        %li.popular-category__list-box__list
+          = link_to '家電・スマホ・カメラ', '#'
+        %li.popular-category__list-box__list
+          = link_to 'おもちゃ・ホビー・グッズ', '#'
+
+  .item-container-category
+    // レディース新着
+    .item-container-category.ladies
+      .item-container-category__header
+        %h3 レディース新着アイテム
+        = link_to 'もっと見る　＞', '#'
+      .item-container-category__content
+        .item-container-category__content__cards
+          %div
+            = link_to '#', class: 'style_link' do
+              %figure.style_card
+                .style_thumbnail
+                  %span ¥5,555
+                  %img{alt: "", src: "https://static.mercdn.net/thumb/photos/m69478695223_1.jpg?1570767276"}/
+                %figcaption
+                  %span アパートバイローリーズ　RyLiダブルジャケットシャツ
+          %div
+            = link_to '#', class: 'style_link' do
+              %figure.style_card
+                .style_thumbnail
+                  %span ¥5,555
+                  %img{alt: "", src: "https://static.mercdn.net/thumb/photos/m69478695223_1.jpg?1570767276"}/
+                %figcaption
+                  %span アパートバイローリーズ　RyLiダブルジャケットシャツ
+          %div
+            = link_to '#', class: 'style_link' do
+              %figure.style_card
+                .style_thumbnail
+                  %span ¥5,555
+                  %img{alt: "", src: "https://static.mercdn.net/thumb/photos/m69478695223_1.jpg?1570767276"}/
+                %figcaption
+                  %span アパートバイローリーズ　RyLiダブルジャケットシャツ
+          %div
+            = link_to '#', class: 'style_link' do
+              %figure.style_card
+                .style_thumbnail
+                  %span ¥5,555
+                  %img{alt: "", src: "https://static.mercdn.net/thumb/photos/m69478695223_1.jpg?1570767276"}/
+                %figcaption
+                  %span アパートバイローリーズ　RyLiダブルジャケットシャツ
+          %div
+            = link_to '#', class: 'style_link' do
+              %figure.style_card
+                .style_thumbnail
+                  %span ¥5,555
+                  %img{alt: "", src: "https://static.mercdn.net/thumb/photos/m69478695223_1.jpg?1570767276"}/
+                %figcaption
+                  %span アパートバイローリーズ　RyLiダブルジャケットシャツ
+          %div
+            = link_to '#', class: 'style_link' do
+              %figure.style_card
+                .style_thumbnail
+                  %span ¥5,555
+                  %img{alt: "", src: "https://static.mercdn.net/thumb/photos/m69478695223_1.jpg?1570767276"}/
+                %figcaption
+                  %span アパートバイローリーズ　RyLiダブルジャケットシャツ
+          %div
+            = link_to '#', class: 'style_link' do
+              %figure.style_card
+                .style_thumbnail
+                  %span ¥5,555
+                  %img{alt: "", src: "https://static.mercdn.net/thumb/photos/m69478695223_1.jpg?1570767276"}/
+                %figcaption
+                  %span アパートバイローリーズ　RyLiダブルジャケットシャツ
+          %div
+            = link_to '#', class: 'style_link' do
+              %figure.style_card
+                .style_thumbnail
+                  %span ¥5,555
+                  %img{alt: "", src: "https://static.mercdn.net/thumb/photos/m69478695223_1.jpg?1570767276"}/
+                %figcaption
+                  %span アパートバイローリーズ　RyLiダブルジャケットシャツ
+          %div
+            = link_to '#', class: 'style_link' do
+              %figure.style_card
+                .style_thumbnail
+                  %span ¥5,555
+                  %img{alt: "", src: "https://static.mercdn.net/thumb/photos/m69478695223_1.jpg?1570767276"}/
+                %figcaption
+                  %span アパートバイローリーズ　RyLiダブルジャケットシャツ
+          %div
+            = link_to '#', class: 'style_link' do
+              %figure.style_card
+                .style_thumbnail
+                  %span ¥5,555
+                  %img{alt: "", src: "https://static.mercdn.net/thumb/photos/m69478695223_1.jpg?1570767276"}/
+                %figcaption
+                  %span アパートバイローリーズ　RyLiダブルジャケットシャツ
+
+
+    .item-container-category.mens
+      .item-container-category__header
+        %h3 メンズ新着アイテム
+        = link_to 'もっと見る　＞', '#'
+      .item-container-category__content
+        .item-container-category__content__cards
+          %div
+            = link_to '#', class: 'style_link' do
+              %figure.style_card
+                .style_thumbnail
+                  %span ¥5,555
+                  %img{alt: "", src: "https://static.mercdn.net/thumb/photos/m69478695223_1.jpg?1570767276"}/
+                %figcaption
+                  %span アパートバイローリーズ　RyLiダブルジャケットシャツ
+          %div
+            = link_to '#', class: 'style_link' do
+              %figure.style_card
+                .style_thumbnail
+                  %span ¥5,555
+                  %img{alt: "", src: "https://static.mercdn.net/thumb/photos/m69478695223_1.jpg?1570767276"}/
+                %figcaption
+                  %span アパートバイローリーズ　RyLiダブルジャケットシャツ
+          %div
+            = link_to '#', class: 'style_link' do
+              %figure.style_card
+                .style_thumbnail
+                  %span ¥5,555
+                  %img{alt: "", src: "https://static.mercdn.net/thumb/photos/m69478695223_1.jpg?1570767276"}/
+                %figcaption
+                  %span アパートバイローリーズ　RyLiダブルジャケットシャツ
+          %div
+            = link_to '#', class: 'style_link' do
+              %figure.style_card
+                .style_thumbnail
+                  %span ¥5,555
+                  %img{alt: "", src: "https://static.mercdn.net/thumb/photos/m69478695223_1.jpg?1570767276"}/
+                %figcaption
+                  %span アパートバイローリーズ　RyLiダブルジャケットシャツ
+          %div
+            = link_to '#', class: 'style_link' do
+              %figure.style_card
+                .style_thumbnail
+                  %span ¥5,555
+                  %img{alt: "", src: "https://static.mercdn.net/thumb/photos/m69478695223_1.jpg?1570767276"}/
+                %figcaption
+                  %span アパートバイローリーズ　RyLiダブルジャケットシャツ
+          %div
+            = link_to '#', class: 'style_link' do
+              %figure.style_card
+                .style_thumbnail
+                  %span ¥5,555
+                  %img{alt: "", src: "https://static.mercdn.net/thumb/photos/m69478695223_1.jpg?1570767276"}/
+                %figcaption
+                  %span アパートバイローリーズ　RyLiダブルジャケットシャツ
+          %div
+            = link_to '#', class: 'style_link' do
+              %figure.style_card
+                .style_thumbnail
+                  %span ¥5,555
+                  %img{alt: "", src: "https://static.mercdn.net/thumb/photos/m69478695223_1.jpg?1570767276"}/
+                %figcaption
+                  %span アパートバイローリーズ　RyLiダブルジャケットシャツ
+          %div
+            = link_to '#', class: 'style_link' do
+              %figure.style_card
+                .style_thumbnail
+                  %span ¥5,555
+                  %img{alt: "", src: "https://static.mercdn.net/thumb/photos/m69478695223_1.jpg?1570767276"}/
+                %figcaption
+                  %span アパートバイローリーズ　RyLiダブルジャケットシャツ
+          %div
+            = link_to '#', class: 'style_link' do
+              %figure.style_card
+                .style_thumbnail
+                  %span ¥5,555
+                  %img{alt: "", src: "https://static.mercdn.net/thumb/photos/m69478695223_1.jpg?1570767276"}/
+                %figcaption
+                  %span アパートバイローリーズ　RyLiダブルジャケットシャツ
+          %div
+            = link_to '#', class: 'style_link' do
+              %figure.style_card
+                .style_thumbnail
+                  %span ¥5,555
+                  %img{alt: "", src: "https://static.mercdn.net/thumb/photos/m69478695223_1.jpg?1570767276"}/
+                %figcaption
+                  %span アパートバイローリーズ　RyLiダブルジャケットシャツ
+
+
+    .item-container-category.gadget
+      .item-container-category__header
+        %h3 家電・スマホ・カメラ新着アイテム
+        = link_to 'もっと見る　＞', '#'
+      .item-container-category__content
+        .item-container-category__content__cards
+          %div
+            = link_to '#', class: 'style_link' do
+              %figure.style_card
+                .style_thumbnail
+                  %span ¥5,555
+                  %img{alt: "", src: "https://static.mercdn.net/thumb/photos/m69478695223_1.jpg?1570767276"}/
+                %figcaption
+                  %span アパートバイローリーズ　RyLiダブルジャケットシャツ
+          %div
+            = link_to '#', class: 'style_link' do
+              %figure.style_card
+                .style_thumbnail
+                  %span ¥5,555
+                  %img{alt: "", src: "https://static.mercdn.net/thumb/photos/m69478695223_1.jpg?1570767276"}/
+                %figcaption
+                  %span アパートバイローリーズ　RyLiダブルジャケットシャツ
+          %div
+            = link_to '#', class: 'style_link' do
+              %figure.style_card
+                .style_thumbnail
+                  %span ¥5,555
+                  %img{alt: "", src: "https://static.mercdn.net/thumb/photos/m69478695223_1.jpg?1570767276"}/
+                %figcaption
+                  %span アパートバイローリーズ　RyLiダブルジャケットシャツ
+          %div
+            = link_to '#', class: 'style_link' do
+              %figure.style_card
+                .style_thumbnail
+                  %span ¥5,555
+                  %img{alt: "", src: "https://static.mercdn.net/thumb/photos/m69478695223_1.jpg?1570767276"}/
+                %figcaption
+                  %span アパートバイローリーズ　RyLiダブルジャケットシャツ
+          %div
+            = link_to '#', class: 'style_link' do
+              %figure.style_card
+                .style_thumbnail
+                  %span ¥5,555
+                  %img{alt: "", src: "https://static.mercdn.net/thumb/photos/m69478695223_1.jpg?1570767276"}/
+                %figcaption
+                  %span アパートバイローリーズ　RyLiダブルジャケットシャツ
+          %div
+            = link_to '#', class: 'style_link' do
+              %figure.style_card
+                .style_thumbnail
+                  %span ¥5,555
+                  %img{alt: "", src: "https://static.mercdn.net/thumb/photos/m69478695223_1.jpg?1570767276"}/
+                %figcaption
+                  %span アパートバイローリーズ　RyLiダブルジャケットシャツ
+          %div
+            = link_to '#', class: 'style_link' do
+              %figure.style_card
+                .style_thumbnail
+                  %span ¥5,555
+                  %img{alt: "", src: "https://static.mercdn.net/thumb/photos/m69478695223_1.jpg?1570767276"}/
+                %figcaption
+                  %span アパートバイローリーズ　RyLiダブルジャケットシャツ
+          %div
+            = link_to '#', class: 'style_link' do
+              %figure.style_card
+                .style_thumbnail
+                  %span ¥5,555
+                  %img{alt: "", src: "https://static.mercdn.net/thumb/photos/m69478695223_1.jpg?1570767276"}/
+                %figcaption
+                  %span アパートバイローリーズ　RyLiダブルジャケットシャツ
+          %div
+            = link_to '#', class: 'style_link' do
+              %figure.style_card
+                .style_thumbnail
+                  %span ¥5,555
+                  %img{alt: "", src: "https://static.mercdn.net/thumb/photos/m69478695223_1.jpg?1570767276"}/
+                %figcaption
+                  %span アパートバイローリーズ　RyLiダブルジャケットシャツ
+          %div
+            = link_to '#', class: 'style_link' do
+              %figure.style_card
+                .style_thumbnail
+                  %span ¥5,555
+                  %img{alt: "", src: "https://static.mercdn.net/thumb/photos/m69478695223_1.jpg?1570767276"}/
+                %figcaption
+                  %span アパートバイローリーズ　RyLiダブルジャケットシャツ
+
+
+    .item-container-category.hobby
+      .item-container-category__header
+        %h3 おもちゃ・ホビー・グッズ新着アイテム
+        = link_to 'もっと見る　＞', '#'
+      .item-container-category__content
+        .item-container-category__content__cards
+          %div
+            = link_to '#', class: 'style_link' do
+              %figure.style_card
+                .style_thumbnail
+                  %span ¥5,555
+                  %img{alt: "", src: "https://static.mercdn.net/thumb/photos/m69478695223_1.jpg?1570767276"}/
+                %figcaption
+                  %span アパートバイローリーズ　RyLiダブルジャケットシャツ
+          %div
+            = link_to '#', class: 'style_link' do
+              %figure.style_card
+                .style_thumbnail
+                  %span ¥5,555
+                  %img{alt: "", src: "https://static.mercdn.net/thumb/photos/m69478695223_1.jpg?1570767276"}/
+                %figcaption
+                  %span アパートバイローリーズ　RyLiダブルジャケットシャツ
+          %div
+            = link_to '#', class: 'style_link' do
+              %figure.style_card
+                .style_thumbnail
+                  %span ¥5,555
+                  %img{alt: "", src: "https://static.mercdn.net/thumb/photos/m69478695223_1.jpg?1570767276"}/
+                %figcaption
+                  %span アパートバイローリーズ　RyLiダブルジャケットシャツ
+          %div
+            = link_to '#', class: 'style_link' do
+              %figure.style_card
+                .style_thumbnail
+                  %span ¥5,555
+                  %img{alt: "", src: "https://static.mercdn.net/thumb/photos/m69478695223_1.jpg?1570767276"}/
+                %figcaption
+                  %span アパートバイローリーズ　RyLiダブルジャケットシャツ
+          %div
+            = link_to '#', class: 'style_link' do
+              %figure.style_card
+                .style_thumbnail
+                  %span ¥5,555
+                  %img{alt: "", src: "https://static.mercdn.net/thumb/photos/m69478695223_1.jpg?1570767276"}/
+                %figcaption
+                  %span アパートバイローリーズ　RyLiダブルジャケットシャツ
+          %div
+            = link_to '#', class: 'style_link' do
+              %figure.style_card
+                .style_thumbnail
+                  %span ¥5,555
+                  %img{alt: "", src: "https://static.mercdn.net/thumb/photos/m69478695223_1.jpg?1570767276"}/
+                %figcaption
+                  %span アパートバイローリーズ　RyLiダブルジャケットシャツ
+          %div
+            = link_to '#', class: 'style_link' do
+              %figure.style_card
+                .style_thumbnail
+                  %span ¥5,555
+                  %img{alt: "", src: "https://static.mercdn.net/thumb/photos/m69478695223_1.jpg?1570767276"}/
+                %figcaption
+                  %span アパートバイローリーズ　RyLiダブルジャケットシャツ
+          %div
+            = link_to '#', class: 'style_link' do
+              %figure.style_card
+                .style_thumbnail
+                  %span ¥5,555
+                  %img{alt: "", src: "https://static.mercdn.net/thumb/photos/m69478695223_1.jpg?1570767276"}/
+                %figcaption
+                  %span アパートバイローリーズ　RyLiダブルジャケットシャツ
+          %div
+            = link_to '#', class: 'style_link' do
+              %figure.style_card
+                .style_thumbnail
+                  %span ¥5,555
+                  %img{alt: "", src: "https://static.mercdn.net/thumb/photos/m69478695223_1.jpg?1570767276"}/
+                %figcaption
+                  %span アパートバイローリーズ　RyLiダブルジャケットシャツ
+          %div
+            = link_to '#', class: 'style_link' do
+              %figure.style_card
+                .style_thumbnail
+                  %span ¥5,555
+                  %img{alt: "", src: "https://static.mercdn.net/thumb/photos/m69478695223_1.jpg?1570767276"}/
+                %figcaption
+                  %span アパートバイローリーズ　RyLiダブルジャケットシャツ
+
+
+
+  .popular-brand
+    %h2 人気のブランド
+    .popular-brand__list-box
+      %ul
+        %li.popular-brand__list-box__list
+          = link_to 'シャネル', '#'
+        %li.popular-brand__list-box__list
+          = link_to 'ルイヴィトン', '#'
+        %li.popular-brand__list-box__list
+          = link_to 'シュプリーム', '#'
+        %li.popular-brand__list-box__list
+          = link_to 'ナイキ', '#'
+
+
+  .item-container-brand
+    // シャネル
+    .item-container-brand.chanel
+      .item-container-brand__header
+        %h3 シャネル新着アイテム
+        = link_to 'もっと見る　＞', '#'
+      .item-container-brand__content
+        .item-container-category__content__cards
+          %div
+            = link_to '#', class: 'style_link' do
+              %figure.style_card
+                .style_thumbnail
+                  %span ¥3,000
+                  %img{alt: "", src: "https://static.mercdn.net/thumb/photos/m57266219243_1.jpg?1570869335"}/
+                %figcaption
+                  %span CHANEL ショップ袋 シャネル
+          %div
+            = link_to '#', class: 'style_link' do
+              %figure.style_card
+                .style_thumbnail
+                  %span ¥3,000
+                  %img{alt: "", src: "https://static.mercdn.net/thumb/photos/m57266219243_1.jpg?1570869335"}/
+                %figcaption
+                  %span CHANEL ショップ袋 シャネル
+          %div
+            = link_to '#', class: 'style_link' do
+              %figure.style_card
+                .style_thumbnail
+                  %span ¥3,000
+                  %img{alt: "", src: "https://static.mercdn.net/thumb/photos/m57266219243_1.jpg?1570869335"}/
+                %figcaption
+                  %span CHANEL ショップ袋 シャネル
+          %div
+            = link_to '#', class: 'style_link' do
+              %figure.style_card
+                .style_thumbnail
+                  %span ¥3,000
+                  %img{alt: "", src: "https://static.mercdn.net/thumb/photos/m57266219243_1.jpg?1570869335"}/
+                %figcaption
+                  %span CHANEL ショップ袋 シャネル
+          %div
+            = link_to '#', class: 'style_link' do
+              %figure.style_card
+                .style_thumbnail
+                  %span ¥3,000
+                  %img{alt: "", src: "https://static.mercdn.net/thumb/photos/m57266219243_1.jpg?1570869335"}/
+                %figcaption
+                  %span CHANEL ショップ袋 シャネル
+          %div
+            = link_to '#', class: 'style_link' do
+              %figure.style_card
+                .style_thumbnail
+                  %span ¥3,000
+                  %img{alt: "", src: "https://static.mercdn.net/thumb/photos/m57266219243_1.jpg?1570869335"}/
+                %figcaption
+                  %span CHANEL ショップ袋 シャネル
+          %div
+            = link_to '#', class: 'style_link' do
+              %figure.style_card
+                .style_thumbnail
+                  %span ¥3,000
+                  %img{alt: "", src: "https://static.mercdn.net/thumb/photos/m57266219243_1.jpg?1570869335"}/
+                %figcaption
+                  %span CHANEL ショップ袋 シャネル
+          %div
+            = link_to '#', class: 'style_link' do
+              %figure.style_card
+                .style_thumbnail
+                  %span ¥3,000
+                  %img{alt: "", src: "https://static.mercdn.net/thumb/photos/m57266219243_1.jpg?1570869335"}/
+                %figcaption
+                  %span CHANEL ショップ袋 シャネル
+          %div
+            = link_to '#', class: 'style_link' do
+              %figure.style_card
+                .style_thumbnail
+                  %span ¥3,000
+                  %img{alt: "", src: "https://static.mercdn.net/thumb/photos/m57266219243_1.jpg?1570869335"}/
+                %figcaption
+                  %span CHANEL ショップ袋 シャネル
+          %div
+            = link_to '#', class: 'style_link' do
+              %figure.style_card
+                .style_thumbnail
+                  %span ¥3,000
+                  %img{alt: "", src: "https://static.mercdn.net/thumb/photos/m57266219243_1.jpg?1570869335"}/
+                %figcaption
+                  %span CHANEL ショップ袋 シャネル
+          
+    .item-container-brand.vuitton 
+      .item-container-brand__header
+        %h3 ルイヴィトン新着アイテム
+        = link_to 'もっと見る　＞', '#'
+      .item-container-brand__content
+        .item-container-category__content__cards
+          %div
+            = link_to '#', class: 'style_link' do
+              %figure.style_card
+                .style_thumbnail
+                  %span ¥3,000
+                  %img{alt: "", src: "https://static.mercdn.net/thumb/photos/m57266219243_1.jpg?1570869335"}/
+                %figcaption
+                  %span CHANEL ショップ袋 シャネル
+          %div
+            = link_to '#', class: 'style_link' do
+              %figure.style_card
+                .style_thumbnail
+                  %span ¥3,000
+                  %img{alt: "", src: "https://static.mercdn.net/thumb/photos/m57266219243_1.jpg?1570869335"}/
+                %figcaption
+                  %span CHANEL ショップ袋 シャネル
+          %div
+            = link_to '#', class: 'style_link' do
+              %figure.style_card
+                .style_thumbnail
+                  %span ¥3,000
+                  %img{alt: "", src: "https://static.mercdn.net/thumb/photos/m57266219243_1.jpg?1570869335"}/
+                %figcaption
+                  %span CHANEL ショップ袋 シャネル
+          %div
+            = link_to '#', class: 'style_link' do
+              %figure.style_card
+                .style_thumbnail
+                  %span ¥3,000
+                  %img{alt: "", src: "https://static.mercdn.net/thumb/photos/m57266219243_1.jpg?1570869335"}/
+                %figcaption
+                  %span CHANEL ショップ袋 シャネル
+          %div
+            = link_to '#', class: 'style_link' do
+              %figure.style_card
+                .style_thumbnail
+                  %span ¥3,000
+                  %img{alt: "", src: "https://static.mercdn.net/thumb/photos/m57266219243_1.jpg?1570869335"}/
+                %figcaption
+                  %span CHANEL ショップ袋 シャネル
+          %div
+            = link_to '#', class: 'style_link' do
+              %figure.style_card
+                .style_thumbnail
+                  %span ¥3,000
+                  %img{alt: "", src: "https://static.mercdn.net/thumb/photos/m57266219243_1.jpg?1570869335"}/
+                %figcaption
+                  %span CHANEL ショップ袋 シャネル
+          %div
+            = link_to '#', class: 'style_link' do
+              %figure.style_card
+                .style_thumbnail
+                  %span ¥3,000
+                  %img{alt: "", src: "https://static.mercdn.net/thumb/photos/m57266219243_1.jpg?1570869335"}/
+                %figcaption
+                  %span CHANEL ショップ袋 シャネル
+          %div
+            = link_to '#', class: 'style_link' do
+              %figure.style_card
+                .style_thumbnail
+                  %span ¥3,000
+                  %img{alt: "", src: "https://static.mercdn.net/thumb/photos/m57266219243_1.jpg?1570869335"}/
+                %figcaption
+                  %span CHANEL ショップ袋 シャネル
+          %div
+            = link_to '#', class: 'style_link' do
+              %figure.style_card
+                .style_thumbnail
+                  %span ¥3,000
+                  %img{alt: "", src: "https://static.mercdn.net/thumb/photos/m57266219243_1.jpg?1570869335"}/
+                %figcaption
+                  %span CHANEL ショップ袋 シャネル
+          %div
+            = link_to '#', class: 'style_link' do
+              %figure.style_card
+                .style_thumbnail
+                  %span ¥3,000
+                  %img{alt: "", src: "https://static.mercdn.net/thumb/photos/m57266219243_1.jpg?1570869335"}/
+                %figcaption
+                  %span CHANEL ショップ袋 シャネル
+
+
+          
+    .item-container-brand.supreme
+      .item-container-brand__header
+        %h3 シュプリーム新着アイテム
+        = link_to 'もっと見る　＞', '#'
+      .item-container-brand__content
+        .item-container-category__content__cards
+          %div
+            = link_to '#', class: 'style_link' do
+              %figure.style_card
+                .style_thumbnail
+                  %span ¥3,000
+                  %img{alt: "", src: "https://static.mercdn.net/thumb/photos/m57266219243_1.jpg?1570869335"}/
+                %figcaption
+                  %span CHANEL ショップ袋 シャネル
+          %div
+            = link_to '#', class: 'style_link' do
+              %figure.style_card
+                .style_thumbnail
+                  %span ¥3,000
+                  %img{alt: "", src: "https://static.mercdn.net/thumb/photos/m57266219243_1.jpg?1570869335"}/
+                %figcaption
+                  %span CHANEL ショップ袋 シャネル
+          %div
+            = link_to '#', class: 'style_link' do
+              %figure.style_card
+                .style_thumbnail
+                  %span ¥3,000
+                  %img{alt: "", src: "https://static.mercdn.net/thumb/photos/m57266219243_1.jpg?1570869335"}/
+                %figcaption
+                  %span CHANEL ショップ袋 シャネル
+          %div
+            = link_to '#', class: 'style_link' do
+              %figure.style_card
+                .style_thumbnail
+                  %span ¥3,000
+                  %img{alt: "", src: "https://static.mercdn.net/thumb/photos/m57266219243_1.jpg?1570869335"}/
+                %figcaption
+                  %span CHANEL ショップ袋 シャネル
+          %div
+            = link_to '#', class: 'style_link' do
+              %figure.style_card
+                .style_thumbnail
+                  %span ¥3,000
+                  %img{alt: "", src: "https://static.mercdn.net/thumb/photos/m57266219243_1.jpg?1570869335"}/
+                %figcaption
+                  %span CHANEL ショップ袋 シャネル
+          %div
+            = link_to '#', class: 'style_link' do
+              %figure.style_card
+                .style_thumbnail
+                  %span ¥3,000
+                  %img{alt: "", src: "https://static.mercdn.net/thumb/photos/m57266219243_1.jpg?1570869335"}/
+                %figcaption
+                  %span CHANEL ショップ袋 シャネル
+          %div
+            = link_to '#', class: 'style_link' do
+              %figure.style_card
+                .style_thumbnail
+                  %span ¥3,000
+                  %img{alt: "", src: "https://static.mercdn.net/thumb/photos/m57266219243_1.jpg?1570869335"}/
+                %figcaption
+                  %span CHANEL ショップ袋 シャネル
+          %div
+            = link_to '#', class: 'style_link' do
+              %figure.style_card
+                .style_thumbnail
+                  %span ¥3,000
+                  %img{alt: "", src: "https://static.mercdn.net/thumb/photos/m57266219243_1.jpg?1570869335"}/
+                %figcaption
+                  %span CHANEL ショップ袋 シャネル
+          %div
+            = link_to '#', class: 'style_link' do
+              %figure.style_card
+                .style_thumbnail
+                  %span ¥3,000
+                  %img{alt: "", src: "https://static.mercdn.net/thumb/photos/m57266219243_1.jpg?1570869335"}/
+                %figcaption
+                  %span CHANEL ショップ袋 シャネル
+          %div
+            = link_to '#', class: 'style_link' do
+              %figure.style_card
+                .style_thumbnail
+                  %span ¥3,000
+                  %img{alt: "", src: "https://static.mercdn.net/thumb/photos/m57266219243_1.jpg?1570869335"}/
+                %figcaption
+                  %span CHANEL ショップ袋 シャネル
+
+          
+    .item-container-brand.nike
+      .item-container-brand__header
+        %h3 ナイキ新着アイテム
+        = link_to 'もっと見る　＞', '#'
+      .item-container-brand__content
+        .item-container-category__content__cards
+          %div
+            = link_to '#', class: 'style_link' do
+              %figure.style_card
+                .style_thumbnail
+                  %span ¥3,000
+                  %img{alt: "", src: "https://static.mercdn.net/thumb/photos/m57266219243_1.jpg?1570869335"}/
+                %figcaption
+                  %span CHANEL ショップ袋 シャネル
+          %div
+            = link_to '#', class: 'style_link' do
+              %figure.style_card
+                .style_thumbnail
+                  %span ¥3,000
+                  %img{alt: "", src: "https://static.mercdn.net/thumb/photos/m57266219243_1.jpg?1570869335"}/
+                %figcaption
+                  %span CHANEL ショップ袋 シャネル
+          %div
+            = link_to '#', class: 'style_link' do
+              %figure.style_card
+                .style_thumbnail
+                  %span ¥3,000
+                  %img{alt: "", src: "https://static.mercdn.net/thumb/photos/m57266219243_1.jpg?1570869335"}/
+                %figcaption
+                  %span CHANEL ショップ袋 シャネル
+          %div
+            = link_to '#', class: 'style_link' do
+              %figure.style_card
+                .style_thumbnail
+                  %span ¥3,000
+                  %img{alt: "", src: "https://static.mercdn.net/thumb/photos/m57266219243_1.jpg?1570869335"}/
+                %figcaption
+                  %span CHANEL ショップ袋 シャネル
+          %div
+            = link_to '#', class: 'style_link' do
+              %figure.style_card
+                .style_thumbnail
+                  %span ¥3,000
+                  %img{alt: "", src: "https://static.mercdn.net/thumb/photos/m57266219243_1.jpg?1570869335"}/
+                %figcaption
+                  %span CHANEL ショップ袋 シャネル
+          %div
+            = link_to '#', class: 'style_link' do
+              %figure.style_card
+                .style_thumbnail
+                  %span ¥3,000
+                  %img{alt: "", src: "https://static.mercdn.net/thumb/photos/m57266219243_1.jpg?1570869335"}/
+                %figcaption
+                  %span CHANEL ショップ袋 シャネル
+          %div
+            = link_to '#', class: 'style_link' do
+              %figure.style_card
+                .style_thumbnail
+                  %span ¥3,000
+                  %img{alt: "", src: "https://static.mercdn.net/thumb/photos/m57266219243_1.jpg?1570869335"}/
+                %figcaption
+                  %span CHANEL ショップ袋 シャネル
+          %div
+            = link_to '#', class: 'style_link' do
+              %figure.style_card
+                .style_thumbnail
+                  %span ¥3,000
+                  %img{alt: "", src: "https://static.mercdn.net/thumb/photos/m57266219243_1.jpg?1570869335"}/
+                %figcaption
+                  %span CHANEL ショップ袋 シャネル
+          %div
+            = link_to '#', class: 'style_link' do
+              %figure.style_card
+                .style_thumbnail
+                  %span ¥3,000
+                  %img{alt: "", src: "https://static.mercdn.net/thumb/photos/m57266219243_1.jpg?1570869335"}/
+                %figcaption
+                  %span CHANEL ショップ袋 シャネル
+          %div
+            = link_to '#', class: 'style_link' do
+              %figure.style_card
+                .style_thumbnail
+                  %span ¥3,000
+                  %img{alt: "", src: "https://static.mercdn.net/thumb/photos/m57266219243_1.jpg?1570869335"}/
+                %figcaption
+                  %span CHANEL ショップ袋 シャネル
+
+  = render 'shared/global-footer'

@@ -3,6 +3,9 @@
 .header.global {
   background-color: white;
   height: auto;
+  box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
+  position: relative;
+  z-index: 3;
   h1.logo {
     margin: 0;
     img {
