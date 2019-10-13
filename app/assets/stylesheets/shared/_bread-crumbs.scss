@@ -1,0 +1,23 @@
+// パンくずリスト
+.bread-crumbs {
+  border-top: 1px solid #eee;
+  -webkit-box-shadow: 0 3px 3px 0 rgba(0,0,0,0.16);
+  box-shadow: 0 3px 3px 0 rgba(0,0,0,0.16);
+  background-color: white;
+  a {
+    color: #333;
+  }
+  ul {
+    width: 1020px;
+    margin: 0 auto;
+    padding: 16px 0;
+    li {
+      display: inline-block;
+      .icon-arrow-right {
+        font-size: 9px;
+        margin: 0.8px;
+        color: #888;
+      }
+    }
+  }
+}

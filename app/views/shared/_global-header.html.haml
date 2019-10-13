@@ -1,0 +1,43 @@
+%header.header.global
+  .header-inner
+    .header-inner__top
+      %h1.logo
+        =link_to root_path do
+          = image_tag 'logo', class: 'logo'
+      %form.header-inner__top__search-form
+        %input.input-default{name: "keyword", placeholder: "何かお探しですか？", type: "search"}/
+        = fa_icon 'search'
+    .header-inner__nav-box
+      %nav.header-inner__nav-box--left
+        %ul
+          %li
+            %h2
+              = link_to '#', class: 'pc-header-nav-root list-parent' do
+                = fa_icon 'list', class: 'pc-header-brand-icon'
+                %span カテゴリーから探す
+          %li
+            %h2
+              = link_to '#', class: 'pc-header-nav-root list-parent' do
+                = fa_icon 'tag', class: 'pc-header-brand-icon'
+                %span ブランドから探す
+
+      .header-inner__nav-box--right
+        %ul.header-inner__nav-box--right__user-nav
+          %li
+            = link_to '#', class: 'menu-link' do
+              = fa_icon 'heart'
+              %span いいね！一覧
+          %li
+            = link_to '#', class: 'menu-link' do
+              = fa_icon 'bell'
+              %span お知らせ
+            %ul
+          %li
+            = link_to '#', class: 'menu-link' do
+              = fa_icon 'check'
+              %span やることリスト
+            %ul
+          %li
+            = link_to '#', class: 'menu-link' do
+              = fa_icon 'user'
+              %span マイページ
