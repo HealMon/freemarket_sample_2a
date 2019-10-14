@@ -1,0 +1,31 @@
+footer.single-footer {
+    padding: 40px 0;
+    text-align: center;
+    width: 456px;
+    height: 200px;
+    margin: 0 auto;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    ul {
+      font-size: 11px;
+    }
+    li {
+      display: inline-block;
+      margin-left: 16px;
+    }
+    a {
+      display: block;
+      color: #333;
+      text-decoration: none;
+    }
+    .single-footer-logo {
+      margin: 40px auto 0;
+    }
+    p {
+      margin-top: 8px;
+    }
+  }
+
+
