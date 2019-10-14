@@ -34,6 +34,9 @@ class SignupController < ApplicationController
         @credit_card.save
         session[:id] = @user.id
         redirect_to congrats_signup_index_path
+      else 
+        User.last.delete
+        render action: :payment 
       end
   end
 
@@ -185,10 +188,7 @@ class SignupController < ApplicationController
         exporation_month:       session[:exporation_month],
         cvc:                    session[:cvc]
       )
-      unless @credit_card.valid?
-        User.last.delete
-        render action: :payment 
-      end
+      
   end
 
 end
