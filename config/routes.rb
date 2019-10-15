@@ -22,4 +22,5 @@ Rails.application.routes.draw do
 
   root to: 'home#index'
   get 'mypage' => 'home#mypage' # マイページ
+  get 'user-profile-edit' => 'home#user-profile-edit'
 end

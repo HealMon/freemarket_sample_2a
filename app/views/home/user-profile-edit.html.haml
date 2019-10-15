@@ -1,0 +1,19 @@
+.global
+  = render './shared/global-header'
+  = render './shared/bread-crumbs'
+  %main.main-container
+    .content
+      %h2.content__head
+        プロフィール
+      %br
+        .content__icon
+          = image_tag 'member_photo_noimage_thumb.png',height: '60'
+          %input{type: "text", class: 'input-default', placeholder: "名前を入力してください"}
+        .content__content
+          %input{type: "text_area", class: 'textarea-default', placeholder: "例）こんにちは☆ ご覧いただきありがとうございます！かわいいものやきれいめオフィスカジュアル中心に出品しています。服のサイズは主に9号です。気持ちよくお取引できるよう心がけていますので、商品や発送方法などご質問がありましたらお気軽にどうぞ♪"}
+            .form-group.pt-3
+              %button.btn-default.btn-red{type: "submit"} 変更する
+    // サイドメニュー
+    = render './shared/mypage-sidebar'
+  // フッター
+  = render './shared/global-footer'

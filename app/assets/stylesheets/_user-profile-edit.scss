@@ -1,0 +1,45 @@
+.main-container {
+  @include clearfix;
+  width: 1020px;
+  margin: 40px auto 0;
+  padding-bottom: 40px;
+
+  // メインコンテンツ
+  .content {
+    float: right;
+    width: 700px;
+      display: block;
+      background: #fff;
+        &__head {
+          height: 50px;
+          font-size: 24px;
+          padding: 8px 24px;
+          text-align:center;
+      }
+      &__icon{
+        color:#333333;
+        padding: 72px 16px 24px;
+        margin: 0 auto;
+        text-align: center;
+        background-image:url(backgroundimg.jpg);
+        .input-default{
+          margin: 0 0 0 8px;
+          padding: 10px 16px 8px;
+        }
+      }
+      &__content{
+        padding: 40px 16px;
+        .textarea-default{
+          min-height: 216px;
+          display: block;
+          width: 100%;
+          max-width: 100%;
+          padding: 10px;
+          border: 1px solid #ccc;
+          background: #fff;
+          font-size: 16px;
+          line-height: 1.5;
+        }
+      }
+  }
+}

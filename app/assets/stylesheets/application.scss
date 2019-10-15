@@ -13,6 +13,7 @@
 // 各ページ固有のスタイル
 @import "top-page";
 @import "mypage";
+@import "user-profile-edit";
 
 
 // *************  devise  **************
@@ -219,6 +220,7 @@ body {
           margin: 0 auto;
         }
       }
+      
     }
   }
 }
