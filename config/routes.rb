@@ -19,6 +19,12 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :item do
+    collection do
+      get '/sell' => 'item#new'
+    end
+  end
+
 
   root to: 'home#index'
   get 'mypage' => 'home#mypage' # マイページ
