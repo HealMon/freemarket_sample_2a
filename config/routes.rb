@@ -27,6 +27,12 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :credit_card do
+    collection do
+      get 'edit' => 'credit_card#edit'
+    end
+  end
+
   resources :item do
     collection do
       get '/sell' => 'item#new'
@@ -38,4 +44,5 @@ Rails.application.routes.draw do
 
     root to: 'home#index'
     get 'mypage' => 'home#mypage' # マイページ
+    get 'mypage/card/' => 'home#mypage_card'
   end

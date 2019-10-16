@@ -1,0 +1,60 @@
+.global
+  = render './shared/global-header'
+  = render './shared/bread-crumbs'
+
+  %main.main-container-credit-card
+    .content
+      %h2.container-main__head
+        クレジットカード情報入力
+      %hr
+      = form_for @credit_card, url: congrats_signup_index_path, method: :post, html: {class: 'new_user'} do |f|
+        .container-main__inner__content
+          .form-group
+            .field
+              = f.label "カード番号"
+              %span.form-group--require 必須
+              = f.text_field :card_number, class: "input-default", placeholder: "半角数字のみ" 
+              - if @credit_card.errors.messages[:card_number].present?
+                - @credit_card.errors.messages[:card_number].each do |message|
+                  %ul.error-message
+                    %li= "カード番号#{message}"
+              = image_tag 'card-brand-list.png', height: '25'
+          .form-group
+            .field
+              = f.label "有効期限"
+              %span.form-group--require 必須
+              %br/
+              .select-wrap
+                %select(name="year" class="select-default")
+                %span 年
+                - if @credit_card.errors.messages[:exporation_year].present?
+                  - @credit_card.errors.messages[:exporation_year].each do |message|
+                    %ul.error-message
+                      %li= "年#{message}"
+                %select(name="month" class="select-default")
+                %span 月
+                - if @credit_card.errors.messages[:exporation_month].present?
+                  - @credit_card.errors.messages[:exporation_month].each do |message|
+                    %ul.error-message
+                      %li= "月#{message}"
+          .form-group
+            .field
+              = f.label "セキュリティコード"
+              %span.form-group--require 必須
+              = f.text_field :cvc, class: "input-default", placeholder: "カード背面4桁もしくは3桁の番号" 
+              - if @credit_card.errors.messages[:cvc].present?
+                - @credit_card.errors.messages[:cvc].each do |message|
+                  %ul.error-message
+                    %li= "セキュリティコード#{message}"
+              %p.container-main__text-right
+                %a{href:"https://www.mercari.com/jp/help_center/article/423/"}
+                  = fa_icon 'question-circle'
+                  カード裏面の番号とは？
+        .container-main__inner__content.pt-3
+          .form-group
+            %button.btn-default.btn-red.mb-5{type: "submit"} 次へ進む
+
+    // サイドメニュー
+    = render './shared/mypage-sidebar'
+  // フッター
+  = render './shared/global-footer'
