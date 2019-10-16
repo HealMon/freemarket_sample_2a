@@ -25,6 +25,7 @@ Rails.application.routes.draw do
       get 'credit_card' => 'signup#payment'
       get 'congrats' => 'signup#congrats'
       get 'user_profile_edit' => 'signup#user_profile_edit'
+      get 'product-details' => 'signup#product-details'
       post 'congrats' => 'signup#create'
     end
   end
