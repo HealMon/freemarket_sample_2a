@@ -28,6 +28,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :credit_card, only: [:new]
+
   resources :item do
     collection do
       get '/sell' => 'item#new'
@@ -35,8 +37,7 @@ Rails.application.routes.draw do
   end
 
 
-
-
-    root to: 'home#index'
-    get 'mypage' => 'home#mypage' # マイページ
-  end
+  root to: 'home#index'
+  get 'mypage' => 'home#mypage' # マイページ
+  get 'mypage/card/' => 'home#mypage_card'
+end
