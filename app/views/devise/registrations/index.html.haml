@@ -1,0 +1,18 @@
+%body
+  .container
+    = render 'devise/shared/mercari-header'
+    %main.main
+      %section.container-main.signup
+        %h2.container-main__header 新規会員登録
+        .container-main__inner
+          .container-main__content
+            = link_to registration_signup_index_path, class: 'btn-default btn-mail' do           
+              = fa_icon 'envelope'
+              メールアドレスで登録する
+            %button#facebook-login.btn-default.btn-sns.btn-sns-facebook
+              = fa_icon 'facebook-square', class: 'facebook-button'
+              Facebookで登録する
+            %button#google-login.btn-default.btn-sns.btn-sns-google
+              Googleで登録する
+    = render 'devise/shared/footer'
+

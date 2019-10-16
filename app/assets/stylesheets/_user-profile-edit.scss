@@ -1,0 +1,104 @@
+.main-container {
+  @include clearfix;
+  width: 1020px;
+  margin: 40px auto 0;
+  padding-bottom: 40px;
+
+  // メインコンテンツ
+  .content {
+    float: right;
+    width: 700px;
+      display: block;
+      background: #fff;
+      &__head {
+          height: 50px;
+          font-size: 24px;
+          padding: 8px 24px;
+          text-align:center;
+      }
+      &__icon {
+        color:#333333;
+        padding: 72px 16px 24px;
+        margin: 0 auto;
+        text-align: center;
+        background-image:url(backgroundimg.jpg);
+        .input-default{
+          margin: 0 0 0 8px;
+          padding: 10px 16px 8px;
+        }
+      }
+      &__content {
+        padding: 40px 16px;
+        .textarea-default{
+          min-height: 216px;
+          display: block;
+          width: 100%;
+          max-width: 100%;
+          padding: 10px;
+          border: 1px solid #ccc;
+          background: #fff;
+          font-size: 16px;
+          line-height: 1.5;
+        }
+      }
+      &__inner {
+        padding: 64px;
+        &__text {
+        margin: 8px 0 0;
+        line-height: 1.5;
+        text-align: right;
+    }
+        &__main {
+          margin: 0 auto;
+          .form-group {
+            label {
+              font-weight: 600;
+            }
+            .field {
+              box-sizing: border-box;
+              margin: 40px 0 0;
+            .input-default {
+              width: 100%;
+              margin: 8px;
+            }
+          }
+          &--require {
+            background: #ea352d;
+            margin: 0 0 0 8px;
+            padding: 2px 4px;
+            border-radius: 2px;
+            color: #fff;
+            font-size: 12px;
+            vertical-align: top;
+          }
+          &--unrequire {
+            background: #999;
+            margin: 0 0 0 8px;
+            padding: 2px 4px;
+            border-radius: 2px;
+            color: #fff;
+            font-size: 12px;
+            vertical-align: top;
+          }
+        }
+        .select-wrap {
+          display: inline-block;
+          position: relative;
+          background: #fff;
+          width: 100% !important;
+          margin-top: 10px;
+          .select-default {
+            width: 76px;
+            height: 48px;
+            padding: 0 10px;
+            }
+          }
+            p.info-text {
+              margin: 8px 0 0;
+              line-height: 1.5;
+              color: #888;
+          }
+        }
+      }
+    }
+  }

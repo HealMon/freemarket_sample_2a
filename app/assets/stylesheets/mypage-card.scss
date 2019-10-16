@@ -1,0 +1,30 @@
+.main-container {
+  .content {
+    .container-main {
+      &__head {
+        font-size: 24px;
+        padding: 12px 24px;
+        text-align: center;
+      }
+      &__inner {
+        padding: 64px;
+        border: 1px solid #f5f5f5;
+        &__content {
+          width: 320px;
+          margin: 0 auto;
+          h3 {
+            font-size: 16px;
+          }
+          .settings-add-card {
+            padding: 24px 0;
+          }
+        }
+      }
+      &__text-right {
+        padding-top: 44px;
+        border-top: 1px solid #f5f5f5;
+        text-align: right;
+      }
+    }
+  }
+}

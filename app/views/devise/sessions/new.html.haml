@@ -1,0 +1,28 @@
+.container
+  = render 'devise/shared/mercari-header'
+  %main.main 
+    .container-main.login
+      .container-main__inner
+        .container-main__inner--no-account
+          %p アカウントをお持ちでない方はこちら
+          = link_to "新規会員登録", new_user_information_path
+      .container-main__inner
+        %button#facebook-login.btn-default.btn-sns.btn-sns-facebook
+          = fa_icon 'facebook-square', class: 'facebook-button'
+          facebookでログイン
+        %button#google-login.btn-default.btn-sns.btn-sns-google
+          googleでログイン
+          
+      .login
+        = form_for(resource, as: resource_name, url: new_user_session_path(resource_name)) do |f|   
+          .container-main__inner
+            .container-main__inner--email-login
+              .field
+                = f.email_field :email, placeholder: 'メールアドレス', autocomplete: "email", class: 'input-default'
+              .field
+                = f.password_field :password, placeholder: 'パスワード', autocomplete: "current-password", class: 'input-default'
+              .actions
+                = f.submit "ログイン", class: 'login-submit btn-default btn-red'
+            -# = render "devise/shared/links"
+              ↑ 「パスワードを忘れた方」の所   ja.ymlを使って日本語化する
+    = render 'devise/shared/footer'

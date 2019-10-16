@@ -1,0 +1,96 @@
+.global
+  = render './shared/global-header'
+  = render './shared/bread-crumbs'
+  %main.main-container
+    .content
+      %h2.content__head
+        本人情報の登録
+      %hr
+      .content__inner
+        お客さまの本人情報をご登録ください。
+        %br/
+        登録されたお名前・生年月日を変更する場合、本人確認書類の提出が必要になります。
+        %p.content__inner__text
+          %a{href:"#"} 本人確認書類のアップロードについて＞
+        %br/
+        .content__inner__main
+          .form-group
+            .field
+              %label お名前
+              %span.form-group--require 必須
+              %input{type: "text_box", class: 'input-default', placeholder: "例) 山田"}
+              %input{type: "text_box", class: 'input-default', placeholder: "例）彩"}
+          .form-group
+            .field
+              %label お名前カナ
+              %span.form-group--require 必須
+              %br/
+              %input{type: "text_box", class: 'input-default', placeholder: "例）ヤマダ"}
+              %input{type: "text_box", class: 'input-default', placeholder: "例）アヤ"}
+            %br
+          .form-group
+            .select
+              %label 生年月日
+              %span.form-group--require 必須
+              %br/
+              .select-wrap
+                .select
+                  %select{name: "year", class: 'select-default'}
+                  %span 年
+                  %br/
+              .select-wrap
+                .select
+                  %select{name: "month", class: 'select-default'}
+                  %span 月
+                  %br/
+              .select-wrap
+                .select
+                  %select{name: "day", class: 'select-default'}
+                  %span 日
+                  %br/
+              %p.info-text
+                ※出品されたことがある、本人情報未登録のお客さまもご対象となります。
+              -# 上にデータが入ってない + 大きさの変更ができてない
+              -#  form-forを使えるようにしてから変更する
+          .form-group
+            .field
+              %label 郵便番号
+              %span.form-group--unrequire 任意
+              %br/
+              %input{type: "text_box", class: 'input-default', placeholder: "例）123456"}
+          .form-group
+            .field
+              %label 都道府県
+              %span.form-group--unrequire 任意
+              %select{type: "day", class: 'input-default'}
+          .form-group
+            .field
+              %label 市町村
+              %span.form-group--unrequire 任意
+              %br/
+              %input{type: "text_box", class: 'input-default', placeholder: "例)横浜市緑区"}
+          .form-group
+            .field
+              %label 番地
+              %span.form-group--unrequire 任意
+              %br/
+              %input{type: "text_box", class: 'input-default', placeholder: "例）青山1-1-1"}
+          .form-group
+            .field
+              %label 建物名
+              %span.form-group--unrequire 任意
+              %br/
+              %input{type: "text_box", class: 'input-default', placeholder: "例）柳ビル"}
+      
+        .container-chapter__content
+          .form-group.pt-3
+          %button.btn-default.btn-red{type: "submit"} 変更する
+        .content__inner__main
+          .form-group
+            .field
+              %p.content__inner__text
+                %a{href:"#"} 本人情報の登録について＞
+    // サイドメニュー
+    = render './shared/mypage-sidebar'
+  // フッター
+  = render './shared/global-footer'
