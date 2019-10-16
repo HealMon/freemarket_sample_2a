@@ -19,11 +19,20 @@ Rails.application.routes.draw do
     end
   end
 
+
   resources :user do
     collection do
       get 'edit' => 'user#user-profile-edit' 
     end
   end
+
+  resources :item do
+    collection do
+      get '/sell' => 'item#new'
+    end
+  end
+
+
 
 
     root to: 'home#index'

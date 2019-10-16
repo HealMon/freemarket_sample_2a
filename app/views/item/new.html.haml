@@ -1,0 +1,118 @@
+.container
+  %header.header
+    %h1
+      = link_to "" do
+        = image_tag "https://www-mercari-jp.akamaized.net/assets/img/common/common/logo.svg?3054050720"
+  %main.main
+    %section.sell-container-main
+      #sell-container
+        .sell-container-inner
+          %h2.container-main__head
+            商品の情報を入力
+          %form.sell-form
+            .sell-upload-head
+              %h3.sell-upload-text
+                出品画像
+                %span.form-group--require 必須
+              %p 最大10枚までアップロードできます
+              .sell-image-uploader
+                .sell-image-container
+                  .sell-image-items-0
+                    %ul
+                .sell-image-drop-box-0
+                  %input.sell-image-drop-file{}
+                  %pre.visible-pc
+                    ドラッグ&ドロップまたはクリックしてファイルをアップロード
+            .sell-content
+              .form-group
+                %label 商品名
+                %span.form-group--require 必須
+                %br/
+                %input.input-default{placeholder:"商品名(必須40文字まで)",value:""}
+              .form-group
+                %label 商品の説明
+                %span.form-group--require 必須
+                %br/
+                %text_area.textarea-default{placeholder: "商品の説明(必須1,000文字以内) (色、素材、重さ、定価、注意点など) 例)2010年頃に1万円で購入したジャケットです。ライドグレーで傷はありません。合わせやすいのでおすすめです。",rows:"5",value:""}
+            .sell-content
+              %h3.sell-head
+                商品の詳細
+              .sell-select-box
+                .form-group
+                  %label カテゴリー
+                  %span.form-group--require 必須
+                  .select-wrap
+                    %select.select-default
+                .form-group
+                  %label 商品の状態
+                  %span.form-group--require 必須
+                  .select-wrap
+                    %select.select-default
+            .sell-content
+              %h3.sell-head 配送について
+              = link_to "https://www.mercari.com/jp/help_center/article/68", class:"form-question" do
+                ?
+              .sell-select-box
+                .form-group
+                  %label 配送料の負担
+                  %span.form-group--require 必須
+                  .select-wrap
+                    %select.select-default
+                .form-group
+                  %label 発送元の地域
+                  %span.form-group--require 必須
+                  .select-wrap
+                    %select.select-default
+                .form-group
+                  %label 発送までの日数
+                  %span.form-group--require 必須
+                  .select-wrap
+                    %select.select-default
+            .sell-content
+              %h3.sell-head
+                販売価格(300~9,999,999)
+              =link_to "https://www.mercari.com/jp/help_center/article/64/",class: "form-question" do
+                ?
+              .sell-select-box
+                %ul.sell-price
+                  %li.form-group
+                    .clearfix
+                      %label.l-left
+                        価格
+                        %span.form-group--require 必須
+                      .l-right-sell-price-input
+                        ¥
+                        %div
+                          %input.input-default{placeholder:"例）300",value:""}
+                  %li.clearfix
+                    .l-left
+                      販売手数料（10％）
+                    .l-right -
+                  %li.clearfix-bold
+                    .l-left
+                      販売利益
+                    .l-right -
+            .sell-content.sell-btn-box
+              %div
+                %p
+                  = link_to "https://www.mercari.com/jp/help_center/getting_started/prohibited_items/" do
+                    禁止されている出品
+                  、
+                  = link_to "https://www.mercari.com/jp/help_center/getting_started/prohibited_conduct/" do
+                    行為
+                  を必ずご確認ください。
+                %p
+                  またブランド品でシリアルナンバー等がある場合はご記載ください。
+                  = link_to "https://www.mercari.com/jp/help_center/getting_started/counterfeit_goods/" do
+                    偽ブランのの販売
+                  は犯罪であり処罰される可能性があります。
+                %p
+                  また、出品をもちまして
+                  = link_to "https://www.mercari.com/jp/seller_terms/" do
+                    加盟店契約
+                  に同意したことになります。
+              %button.btn-default.btn-red{type: "submit"}
+                出品する
+              = link_to "#" ,class:"btn-default btn-gray" do
+                もどる
+  = render 'devise/shared/footer'
