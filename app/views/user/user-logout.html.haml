@@ -1,0 +1,12 @@
+.global
+  = render './shared/global-header'
+  = render './shared/bread-crumbs'
+  %main.main-container
+    .content
+      .content__inner
+        = link_to new_user_session_path, class: 'btn-default btn-mail' do
+          ログアウト
+    // サイドメニュー
+    = render './shared/mypage-sidebar'
+  // フッター
+  = render './shared/global-footer'
