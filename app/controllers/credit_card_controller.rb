@@ -1,5 +1,5 @@
 class CreditCardController < ApplicationController
-  def edit
+  def new
     @credit_card = CreditCard.new
   end
 end
