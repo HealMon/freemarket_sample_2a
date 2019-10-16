@@ -24,6 +24,7 @@ Rails.application.routes.draw do
     collection do
       get 'edit' => 'user#user-profile-edit'
       get 'destroy' => 'user#user-logout'
+      get 'update' => 'user#user_ldentification'
     end
   end
 
