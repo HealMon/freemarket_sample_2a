@@ -22,7 +22,8 @@ Rails.application.routes.draw do
 
   resources :user do
     collection do
-      get 'edit' => 'user#user-profile-edit' 
+      get 'edit' => 'user#user-profile-edit'
+      get 'destroy' => 'user#user-logout'
     end
   end
 
