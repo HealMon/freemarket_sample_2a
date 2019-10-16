@@ -1,0 +1,165 @@
+.global
+  = render './shared/global-header'
+  = render './shared/bread-crumbs'
+
+%section.item-box-container
+  %h1.item-name COACHショルダーバッグ
+  %p.item-wording
+    coachショルダーバックです。
+  .item-main-content.clearfix
+    .item-photo
+      .owl-carousel.owl-loaded.owl-drag
+        .owl-stage-outer
+          .owl-stage{:style => "left: 0px;,width:1500px;"}
+            .owl-item.active{:style => "width: 300px;"}
+              .owl-item-inner.is-higher-height
+                %img.owl-lazy{:alt => "COACHショルダーバッグ", "data-src" => "https://static.mercdn.net/item/detail/orig/photos/m61354018553_1.jpg?1570595655", :src => "https://static.mercdn.net/item/detail/orig/photos/m61354018553_1.jpg?1570595655", :style => "opacity: 1;"}/
+            -# .owl-item{:style => "width: 300px;"}
+            -#   .owl-item-inner.is-higher-height
+            -#     %img.owl-lazy{:alt => "COACHショルダーバッグ", "data-src" => "https://static.mercdn.net/item/detail/orig/photos/m61354018553_2.jpg?1570595655", :src => "https://static.mercdn.net/item/detail/orig/photos/m61354018553_2.jpg?1570595655", :style => "opacity: 1;"}/
+            -# .owl-item{:style => "width: 300px;"}
+            -#   .owl-item-inner.is-higher-height
+            -#     %img.owl-lazy{:alt => "COACHショルダーバッグ", "data-src" => "https://static.mercdn.net/item/detail/orig/photos/m61354018553_3.jpg?1570595655", :src => "https://static.mercdn.net/item/detail/orig/photos/m61354018553_3.jpg?1570595655", :style => "opacity: 1;"}/
+            -# .owl-item{:style => "width: 300px;"}
+            -#   .owl-item-inner.is-higher-height
+            -#     %img.owl-lazy{:alt => "COACHショルダーバッグ", "data-src" => "https://static.mercdn.net/item/detail/orig/photos/m61354018553_4.jpg?1570595655", :src => "https://static.mercdn.net/item/detail/orig/photos/m61354018553_4.jpg?1570595655", :style => "opacity: 1;"}/
+            -# .owl-item{:style => "width: 300px;"}
+            -#   .owl-item-inner.is-higher-width
+            -#     %img.owl-lazy{:alt => "COACHショルダーバッグ", "data-src" => "https://static.mercdn.net/item/detail/orig/photos/m61354018553_5.jpg?1570595655", :src => "https://static.mercdn.net/item/detail/orig/photos/m61354018553_5.jpg?1570595655", :style => "opacity: 1;"}/
+            -# .owl-item{:style => "width: 300px;"}
+            -#   .owl-item-inner.is-higher-width
+            -#     %img.owl-lazy{:alt => "COACHショルダーバッグ", "data-src" => "https://static.mercdn.net/item/detail/orig/photos/m61354018553_6.jpg?1570595655", :src => "https://static.mercdn.net/item/detail/orig/photos/m61354018553_6.jpg?1570595655", :style => "opacity: 1;"}/
+        .owl-nav.disabled
+          .owl-prev prev
+          .owl-next next
+        .owl-dots
+          .owl-dot.active
+            %span
+            .owl-dot-inner
+              %img.is-higher-height{:src => "https://static.mercdn.net/item/detail/orig/photos/m61354018553_1.jpg?1570595655"}/
+          .owl-dot
+            %span
+            .owl-dot-inner
+              %img.is-higher-height{:src => "https://static.mercdn.net/item/detail/orig/photos/m61354018553_2.jpg?1570595655"}/
+          .owl-dot
+            %span
+            .owl-dot-inner
+              %img.is-higher-height{:src => "https://static.mercdn.net/item/detail/orig/photos/m61354018553_3.jpg?1570595655"}/
+          .owl-dot
+            %span
+            .owl-dot-inner
+              %img.is-higher-height{:src => "https://static.mercdn.net/item/detail/orig/photos/m61354018553_4.jpg?1570595655"}/
+          .owl-dot
+            %span
+            .owl-dot-inner
+              %img.is-higher-width{:src => "https://static.mercdn.net/item/detail/orig/photos/m61354018553_5.jpg?1570595655"}/
+          .owl-dot
+            %span
+            .owl-dot-inner
+              %img.is-higher-width{:src => "https://static.mercdn.net/item/detail/orig/photos/m61354018553_6.jpg?1570595655"}/
+    %table.item-detail-table
+      %tbody
+        %tr
+          %th 出品者
+          %td
+            = link_to "https://www.mercari.com/jp/u/108778184/" do 
+              sugi
+            %div
+              .item-user-ratings
+                %i.icon-good
+                %span 1
+              .item-user-ratings
+                %i.icon-normal
+                %span 0
+              .item-user-ratings
+                %i.icon-bad
+                %span 0
+        %tr
+          %th カテゴリー
+          %td
+            = link_to "https://www.mercari.com/jp/category/1/" do
+              %div レディース
+            = link_to"https://www.mercari.com/jp/category/20/" do
+              .item-detail-table-sub-category
+                %i.icon-arrow-right
+                バッグ
+            = link_to"https://www.mercari.com/jp/category/214/" do
+              .item-detail-table-sub-sub-category
+                %i.icon-arrow-right
+                ショルダーバッグ
+        %tr
+          %th ブランド
+          %td
+            = link_to"https://www.mercari.com/jp/brand/539/" do
+              %div
+                コーチ
+        %tr
+          %th 商品の状態
+          %td 目立った傷や汚れなし
+        %tr
+          %th 配送料の負担
+          %td 送料込み(出品者負担)
+        %tr
+          %th 配送の方法
+          %td らくらくメルカリ便
+        %tr
+          %th 配送元地域
+          %td
+            = link_to"https://www.mercari.com/jp/area/27/" do
+              大阪府
+        %tr
+          %th 発送日の目安
+          %td 2~3日で発送
+
+  .item-price-box.text-center
+    %span.item-price.bold ¥7,900
+    %span.item-tax (税込)
+    %span.item-shipping-fee 送料込み
+  = link_to "https://www.mercari.com/jp/transaction/buy/m61354018553/",class:"item-buy-btn" do
+    購入画面に進む
+  .item-description.f14
+    %p.item-description-inner
+      ご覧いただきありがとうございます。
+      
+      黒のパンチングネクチャー
+      
+      大きさ 幅32cm、高さ20cm、マチ8cm
+      
+      状態は良好ですが、新品ではないので、神経質な方はご遠慮下さい。
+      
+      人気の黒の革製で上品なバッグなので、年齢、洋服等気にせず合わせやすいと思います。
+      
+      ご不明な点がございましたらコメントよろしくお願いします。
+      
+      送料込みなので、簡易包装にさせていただきます。
+  .item-button-container.clearfix
+    .item-button-left
+      %button.item-button.item-button-like{"data-ga" => "element", "data-ga-category" => "LIKE", "data-ga-label" => "like!", "data-id" => "m61354018553", "data-toggle" => "like", :name => "like!", :type => "button"}
+        %i.icon-like-border
+        %span いいね!
+        %span.fade-in-down{"data-num" => "like"} 9
+      %button.item-button.item-button-report.clearfix{"data-modal" => "report-item", "data-open" => "modal", :href => ""}
+        %i.icon-flag
+        %span 不適切な商品の報告
+      %input{:name => "like_add_url", :type => "hidden", :value => "https://www.mercari.com/jp/like/add/m61354018553/"}/
+      %input{:name => "like_del_url", :type => "hidden", :value => "https://www.mercari.com/jp/like/delete/m61354018553/"}/
+      %input{:name => "__csrf_value", :type => "hidden", :value => "2ee3ef87b93078e25e5f53367d18bdf4ff687f333b583923c2174940bd0a5cd24d3e642fc3fe5d15afdd5713b614794da3f4331ba51dc85ebe905ad8bde490282"}/
+    .item-button-right
+      = link_to"https://www.mercari.com/jp/safe/description/" do
+        %i.icon-lock
+        %span あんしん・あんぜんへの取り組み
+
+.item-detail-message.pb-4
+  .message-container
+    .message-content
+      %form.message-form{:action => "https://www.mercari.com/jp/comment/add/", :method => "POST"}
+        %input{:name => "__csrf_value", :type => "hidden", :value => "2ee3ef87b93078e25e5f53367d18bdf4ff687f333b583923c2174940bd0a5cd24d3e642fc3fe5d15afdd5713b614794da3f4331ba51dc85ebe905ad8bde490282"}/
+        %p 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+        %input{:name => "item_id", :type => "hidden", :value => "m61354018553"}/
+        %input{:name => "redirect_url_key", :type => "hidden", :value => "item_detail"}/
+        %textarea.textarea-default{:name => "body", :type => "text", :value => ""}
+        %button.message-submit.btn-default.btn-gray{:type => "submit"}
+          %span コメントする
+      
+  
+= render './shared/global-footer'
