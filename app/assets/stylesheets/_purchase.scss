@@ -1,0 +1,146 @@
+.single-header {
+  height: 128px;
+  text-align: center;
+  h1 {
+    padding: 40px 0 0;
+    a {
+      width: 185px;
+      height: 49px;
+      line-height: 49px;
+    }
+    img {
+        width: 185px;
+        height: 49px;
+    }
+  }
+}
+
+.buy-item-container {
+  width: 700px;
+  margin: 0 auto;
+  background-color: #fff;
+}
+
+.l-single-head {
+  height: 65px;
+  line-height: 1.5;
+  padding: 16px;
+  h2 {
+    text-align: center;
+    font-size: 22px;
+  }
+}
+
+.buy-content{
+  padding: 24px 12.5% 40px;
+  border-top: 1px solid #f5f5f5;
+}
+
+.buy-content-inner2 { 
+  max-width: 320px;
+  margin: 0 auto;
+
+  .buy-user-info-text{
+    margin: 8px 0 0;
+    font-size: 14px;
+    line-height: 1.4;
+  }
+}
+
+.figure 
+  .buy-user-info-fix {
+    display: block;
+    text-align: right;
+  }
+
+.buy-content-inner {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 320px;
+  margin: 0 auto;
+  padding:24px 0 40px;
+  .h3 {
+    width: 64px;
+    height: 64px;
+    a {
+      width: 64px;
+      height: 64px;
+    }
+    img {
+        width: 64px;
+        height: 64px;
+    }
+    
+  }
+
+  .item-name.bold {
+    margin: 0 0 0 16px;
+    width: calc(100% - 80px);
+    text-align: left;
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  .buy-price-ja.bold {
+    margin: 8px 0 0;
+    width: 100%;
+    line-height: 1.5;
+    font-size: 22px;
+    font-weight: 600;
+    text-align: center;
+    .item-shipping-fee.f14.bold {
+      margin: 0 0 0 8px;
+      font-size: 14px;
+      font-weight: 400;
+      display: inline-block;
+      text-align: center;
+    }
+  }
+}
+
+.buy-accordion {
+  margin: 16px 0 0;
+  height: 48px;
+  width: 320px;
+  background: #ccc;
+  .accordion-parent{
+    padding: 16px;
+    text-align: center;
+    border: 1px solid #ccc;
+  }
+}
+
+.buy-price-table {
+  display: table;
+  width: 320px;
+  .buy-price-row {
+    border: 0;
+    font-size: 18px;
+    display: table-row;
+    .buy-price-cell-left {
+      text-align: left;
+      padding: 16px 0;
+      font-weight: 600;
+    }
+    .buy-price-cell-right {
+      display: table-cell;
+      padding: 16px 0;
+      text-align: right;
+      font-size: 28px;
+      font-weight: 600;
+    }
+  }
+}
+
+.btn-red {
+  margin: 8px 0 0;
+  background: #ea352d;
+  border: 1px solid #ea352d;
+  color: #fff;
+  display: block;
+  width: 320px;
+  line-height: 48px;
+  font-size: 14px;
+}
+
+

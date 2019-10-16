@@ -1,0 +1,56 @@
+%header.single-header
+  %section
+    %h1
+      %a{href: "https://www.mercari.com/jp/"}
+      = image_tag 'logo'
+/ #区分け１
+.buy-item-container
+  %section.l-single-head
+    %h2 購入内容の確認
+  / #区分け２
+  %section.buy-item-container
+    %div.buy-content-inner
+      / #スタイルシートにて横にまとめる
+      %h3
+        %a{href: "https://www.mercari.com/jp/"}
+        = image_tag 'member_photo_noimage_thumb', size: "64x64"
+      .item-name.bold ショルダーバッグコーチ　ショルダーバッグコーチ
+      .buy-price-ja.bold
+        ¥3,800
+        %span.item-shipping-fee.f14.bold 送料込み
+      %ul.buy-accordion
+        %li.accordion-parent
+          .accordion-toggle ポイントはありません
+      %ul.buy-price-table
+        %li.buy-price-row
+          .buy-price-cell-left 支払い金額
+          .buy-price-cell-right
+            %span{"data-buy-pay" => "3800"} ¥3,800
+      %button.btn-red{:type => "submit"} 購入する
+  / #区分け3
+  %section.buy-content
+    .buy-content-inner2
+      %h3 配送先
+      %address.buy-user-info-text
+        〒xxx-xxxx
+        = succeed "\u9AD8\u77E5\u770C" do
+          %br/
+        = succeed "\u771F\u934B" do
+          %br/
+      %p
+      %a.buy-user-info-fix{:href => "https://www.mercari.com/jp/transaction/address/m99710133600/"}
+        %span 変更する
+        = fa_icon 'chevron-right'
+  / #区分け4
+  %section.buy-content{"data-buy" => "pay-method"}
+    .buy-content-inner2
+      %h3 支払い方法
+      %p.buy-user-info-text
+        ************xxxx
+        = succeed "xx" do
+          %br/
+      %figure
+        %img{:alt => "master-card", :height => "20", :src => "//www-mercari-jp.akamaized.net/assets/img/card/master-card.svg?3466462615", :width => "34"}/
+      %a.buy-user-info-fix{:href => "https://www.mercari.com/jp/transaction/select_card/m99710133600/"}
+        %span 変更する
+        = fa_icon 'chevron-right'
