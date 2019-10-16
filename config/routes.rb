@@ -19,8 +19,13 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :user do
+    collection do
+      get 'edit' => 'user#user-profile-edit' 
+    end
+  end
 
-  root to: 'home#index'
-  get 'mypage' => 'home#mypage' # マイページ
-  get 'user-profile-edit' => 'home#user-profile-edit'
-end
+
+    root to: 'home#index'
+    get 'mypage' => 'home#mypage' # マイページ
+  end
