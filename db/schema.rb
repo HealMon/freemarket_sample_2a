@@ -35,7 +35,8 @@ ActiveRecord::Schema.define(version: 2019_10_17_022459) do
 
   create_table "credit_cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "card_number", null: false
-    t.string "exporation_date", null: false
+    t.integer "exporation_year", null: false
+    t.integer "exporation_month", null: false
     t.integer "cvc", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
@@ -48,10 +49,10 @@ ActiveRecord::Schema.define(version: 2019_10_17_022459) do
     t.string "description", null: false
     t.integer "price", null: false
     t.string "condition", null: false
-    t.string "shipping_charge", null: false
+    t.integer "shipping_charge_id", null: false
     t.string "shipping_method", null: false
     t.integer "prefecture_id", null: false
-    t.string "estimated_delivery", null: false
+    t.integer "estimated_delivery_id", null: false
     t.integer "trade_status", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -72,7 +73,9 @@ ActiveRecord::Schema.define(version: 2019_10_17_022459) do
     t.string "city", null: false
     t.string "address", null: false
     t.string "building"
-    t.integer "birthday", null: false
+    t.integer "birth_year", null: false
+    t.integer "birth_month", null: false
+    t.integer "birth_day", null: false
     t.string "last_name", null: false
     t.string "first_name", null: false
     t.string "last_name_kana", null: false

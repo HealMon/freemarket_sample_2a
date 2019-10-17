@@ -38,7 +38,7 @@
 |----|------|----|-------|
 |商品ID|     |    |       |
 |商品名|name|string|null: false|
-|商品説明 ( 1000字まで)|description|string|null: false|
+|商品説明 (1000字まで)|description|string|null: false|
 |価格|price|integer|null: false|
 |カテゴリーID|category_id|references|null: false,foreign_key: true|
 |状態(汚れなど)|condition|string|null: false|

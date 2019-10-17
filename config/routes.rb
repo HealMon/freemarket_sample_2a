@@ -30,7 +30,7 @@ Rails.application.routes.draw do
 
   resources :credit_card, only: [:new]
 
-  resources :items do
+  resources :items, only: [:create] do 
     collection do
       get '/sell' => 'items#new'
     end
@@ -45,3 +45,4 @@ Rails.application.routes.draw do
   get 'mypage/card/' => 'home#mypage_card'
 
 end
+  

@@ -1,7 +1,7 @@
 .container
   %header.header
     %h1
-      = link_to "" do
+      = link_to "#" do
         = image_tag "https://www-mercari-jp.akamaized.net/assets/img/common/common/logo.svg?3054050720"
   %main.main
     %section.sell-container-main
@@ -9,7 +9,7 @@
         .sell-container-inner
           %h2.container-main__head
             商品の情報を入力
-          %form.sell-form
+          = form_for @item, url: items_path, method: :post, html:{class:'sell-form'} do |f|
             .sell-upload-head
               %h3.sell-upload-text
                 出品画像
@@ -17,6 +17,7 @@
               %p 最大10枚までアップロードできます
               .sell-image-uploader
                 .sell-image-container
+                = f.file_field :image
                   .sell-image-items-0
                     %ul
                 .sell-image-drop-box-0
@@ -28,12 +29,12 @@
                 %label 商品名
                 %span.form-group--require 必須
                 %br/
-                %input.input-default{placeholder:"商品名(必須40文字まで)",value:""}
+                = f.text_field :name, class: "input-default", placeholder:"商品名(必須40文字まで)",value:""
               .form-group
                 %label 商品の説明
                 %span.form-group--require 必須
                 %br/
-                %text_area.textarea-default{placeholder: "商品の説明(必須1,000文字以内) (色、素材、重さ、定価、注意点など) 例)2010年頃に1万円で購入したジャケットです。ライドグレーで傷はありません。合わせやすいのでおすすめです。",rows:"5",value:""}
+                = f.text_area :description, class:"textarea-default", placeholder: "商品の説明(必須1,000文字以内) (色、素材、重さ、定価、注意点など) 例)2010年頃に1万円で購入したジャケットです。ライドグレーで傷はありません。合わせやすいのでおすすめです。",rows:"5",value:""
             .sell-content
               %h3.sell-head
                 商品の詳細
@@ -42,12 +43,13 @@
                   %label カテゴリー
                   %span.form-group--require 必須
                   .select-wrap
-                    %select.select-default
+                    -# = f.select :, class:"select-default"
+                  -# category_id
                 .form-group
                   %label 商品の状態
                   %span.form-group--require 必須
                   .select-wrap
-                    %select.select-default
+                    -# = f.select :, class:"select-default"
             .sell-content
               %h3.sell-head 配送について
               = link_to "https://www.mercari.com/jp/help_center/article/68", class:"form-question" do
@@ -57,17 +59,17 @@
                   %label 配送料の負担
                   %span.form-group--require 必須
                   .select-wrap
-                    %select.select-default
+                    = f.collection_select :shipping_charge_id, ShippingCharge.all, :id, :name, class: 'select-default' ,prompt: "---"
                 .form-group
                   %label 発送元の地域
                   %span.form-group--require 必須
                   .select-wrap
-                    %select.select-default
+                    = f.collection_select :prefecture_id, Prefecture.all, :id, :name, class: 'select-default' ,prompt: "---"
                 .form-group
                   %label 発送までの日数
                   %span.form-group--require 必須
                   .select-wrap
-                    %select.select-default
+                    = f.collection_select :estimated_delivery_id, EstimatedDelivery.all , :id, :name, class: 'select-default' ,prompt: "---"
             .sell-content
               %h3.sell-head
                 販売価格(300~9,999,999)
@@ -83,7 +85,7 @@
                       .l-right-sell-price-input
                         ¥
                         %div
-                          %input.input-default{placeholder:"例）300",value:""}
+                          = f.number_field :price ,class:"input.input-default",placeholder:"例）300",value:""
                   %li.clearfix
                     .l-left
                       販売手数料（10％）
