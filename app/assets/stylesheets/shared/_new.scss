@@ -56,6 +56,9 @@
         text-align: center;
         transition: box-shadow ease-out .3s, -webkit-box-shadow ease-out .3s;
         cursor: pointer;
+        .img_file{
+          display:none;
+        }
         input{
           border: 0;
           outline: 0;
@@ -195,6 +198,7 @@
             margin: 8px 0 0;
             select{
               width: 100%;
+              height: 48px;
             }
             .select-default{
               position: relative;

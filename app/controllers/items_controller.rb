@@ -14,7 +14,8 @@ class ItemsController < ApplicationController
       prefecture_id: item_params[:prefecture_id],
       name: item_params[:name],
       description: item_params[:description],
-      price: item_params[:price]
+      price: item_params[:price],
+      images: item_params[:images]
     )
 
     if @item.save
@@ -40,7 +41,8 @@ class ItemsController < ApplicationController
                             :shipping_method,
                             :prefecture_id,
                             :estimated_delivery_id,
-                            :trade_status
+                            :trade_status,
+                            images: []
                           )
   end
 end

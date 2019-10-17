@@ -17,11 +17,10 @@
               %p 最大10枚までアップロードできます
               .sell-image-uploader
                 .sell-image-container
-                = f.file_field :image
                   .sell-image-items-0
                     %ul
-                .sell-image-drop-box-0
-                  %input.sell-image-drop-file{}
+                %label.sell-image-drop-box-0
+                  = f.file_field :images, multiple: true, class: "img_file"
                   %pre.visible-pc
                     ドラッグ&ドロップまたはクリックしてファイルをアップロード
             .sell-content
@@ -85,7 +84,7 @@
                       .l-right-sell-price-input
                         ¥
                         %div
-                          = f.number_field :price ,class:"input.input-default",placeholder:"例）300",value:""
+                          = f.number_field :price ,class:"input-default",placeholder:"例）300",value:""
                   %li.clearfix
                     .l-left
                       販売手数料（10％）
