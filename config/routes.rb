@@ -30,9 +30,9 @@ Rails.application.routes.draw do
 
   resources :credit_card, only: [:new]
 
-  resources :item do
+  resources :items do
     collection do
-      get '/sell' => 'item#new'
+      get '/sell' => 'items#new'
     end
   end
 
