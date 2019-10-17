@@ -10,25 +10,10 @@
     .item-photo
       .owl-carousel.owl-loaded.owl-drag
         .owl-stage-outer
-          .owl-stage{:style => "left: 0px;,width:1500px;"}
-            .owl-item.active{:style => "width: 300px;"}
+          .owl-stage
+            .owl-item.active
               .owl-item-inner.is-higher-height
-                %img.owl-lazy{:alt => "COACHショルダーバッグ", "data-src" => "https://static.mercdn.net/item/detail/orig/photos/m61354018553_1.jpg?1570595655", :src => "https://static.mercdn.net/item/detail/orig/photos/m61354018553_1.jpg?1570595655", :style => "opacity: 1;"}/
-            -# .owl-item{:style => "width: 300px;"}
-            -#   .owl-item-inner.is-higher-height
-            -#     %img.owl-lazy{:alt => "COACHショルダーバッグ", "data-src" => "https://static.mercdn.net/item/detail/orig/photos/m61354018553_2.jpg?1570595655", :src => "https://static.mercdn.net/item/detail/orig/photos/m61354018553_2.jpg?1570595655", :style => "opacity: 1;"}/
-            -# .owl-item{:style => "width: 300px;"}
-            -#   .owl-item-inner.is-higher-height
-            -#     %img.owl-lazy{:alt => "COACHショルダーバッグ", "data-src" => "https://static.mercdn.net/item/detail/orig/photos/m61354018553_3.jpg?1570595655", :src => "https://static.mercdn.net/item/detail/orig/photos/m61354018553_3.jpg?1570595655", :style => "opacity: 1;"}/
-            -# .owl-item{:style => "width: 300px;"}
-            -#   .owl-item-inner.is-higher-height
-            -#     %img.owl-lazy{:alt => "COACHショルダーバッグ", "data-src" => "https://static.mercdn.net/item/detail/orig/photos/m61354018553_4.jpg?1570595655", :src => "https://static.mercdn.net/item/detail/orig/photos/m61354018553_4.jpg?1570595655", :style => "opacity: 1;"}/
-            -# .owl-item{:style => "width: 300px;"}
-            -#   .owl-item-inner.is-higher-width
-            -#     %img.owl-lazy{:alt => "COACHショルダーバッグ", "data-src" => "https://static.mercdn.net/item/detail/orig/photos/m61354018553_5.jpg?1570595655", :src => "https://static.mercdn.net/item/detail/orig/photos/m61354018553_5.jpg?1570595655", :style => "opacity: 1;"}/
-            -# .owl-item{:style => "width: 300px;"}
-            -#   .owl-item-inner.is-higher-width
-            -#     %img.owl-lazy{:alt => "COACHショルダーバッグ", "data-src" => "https://static.mercdn.net/item/detail/orig/photos/m61354018553_6.jpg?1570595655", :src => "https://static.mercdn.net/item/detail/orig/photos/m61354018553_6.jpg?1570595655", :style => "opacity: 1;"}/
+                = image_tag "https://static.mercdn.net/item/detail/orig/photos/m61354018553_1.jpg?1570595655",class:"owl-lazy"
         .owl-nav.disabled
           .owl-prev prev
           .owl-next next
@@ -36,27 +21,27 @@
           .owl-dot.active
             %span
             .owl-dot-inner
-              %img.is-higher-height{:src => "https://static.mercdn.net/item/detail/orig/photos/m61354018553_1.jpg?1570595655"}/
+              = image_tag "https://static.mercdn.net/item/detail/orig/photos/m61354018553_1.jpg?1570595655",class:"is-higher-height"
           .owl-dot
             %span
             .owl-dot-inner
-              %img.is-higher-height{:src => "https://static.mercdn.net/item/detail/orig/photos/m61354018553_2.jpg?1570595655"}/
+              = image_tag "https://static.mercdn.net/item/detail/orig/photos/m61354018553_2.jpg?1570595655" ,class:"is-higher-height"
           .owl-dot
             %span
             .owl-dot-inner
-              %img.is-higher-height{:src => "https://static.mercdn.net/item/detail/orig/photos/m61354018553_3.jpg?1570595655"}/
+              = image_tag "https://static.mercdn.net/item/detail/orig/photos/m61354018553_3.jpg?1570595655",class:"is-higher-height"
           .owl-dot
             %span
             .owl-dot-inner
-              %img.is-higher-height{:src => "https://static.mercdn.net/item/detail/orig/photos/m61354018553_4.jpg?1570595655"}/
+              = image_tag "https://static.mercdn.net/item/detail/orig/photos/m61354018553_4.jpg?1570595655",class:"is-higher-height"
           .owl-dot
             %span
             .owl-dot-inner
-              %img.is-higher-width{:src => "https://static.mercdn.net/item/detail/orig/photos/m61354018553_5.jpg?1570595655"}/
+              = image_tag "https://static.mercdn.net/item/detail/orig/photos/m61354018553_5.jpg?1570595655",class:"is-higher-height"
           .owl-dot
             %span
             .owl-dot-inner
-              %img.is-higher-width{:src => "https://static.mercdn.net/item/detail/orig/photos/m61354018553_6.jpg?1570595655"}/
+              = image_tag "https://static.mercdn.net/item/detail/orig/photos/m61354018553_6.jpg?1570595655",class:"is-higher-height"
     %table.item-detail-table
       %tbody
         %tr
@@ -134,16 +119,16 @@
       送料込みなので、簡易包装にさせていただきます。
   .item-button-container.clearfix
     .item-button-left
-      %button.item-button.item-button-like{"data-ga" => "element", "data-ga-category" => "LIKE", "data-ga-label" => "like!", "data-id" => "m61354018553", "data-toggle" => "like", :name => "like!", :type => "button"}
+      %button.item-button.item-button-like
         %i.icon-like-border
         %span いいね!
-        %span.fade-in-down{"data-num" => "like"} 9
-      %button.item-button.item-button-report.clearfix{"data-modal" => "report-item", "data-open" => "modal", :href => ""}
+        %span.fade-in-down 9
+      %button.item-button.item-button-report.clearfix
         %i.icon-flag
         %span 不適切な商品の報告
-      %input{:name => "like_add_url", :type => "hidden", :value => "https://www.mercari.com/jp/like/add/m61354018553/"}/
-      %input{:name => "like_del_url", :type => "hidden", :value => "https://www.mercari.com/jp/like/delete/m61354018553/"}/
-      %input{:name => "__csrf_value", :type => "hidden", :value => "2ee3ef87b93078e25e5f53367d18bdf4ff687f333b583923c2174940bd0a5cd24d3e642fc3fe5d15afdd5713b614794da3f4331ba51dc85ebe905ad8bde490282"}/
+      %input{name: "like_add_url", type: "hidden", value: "https://www.mercari.com/jp/like/add/m61354018553/"}
+      %input{name: "like_del_url", type: "hidden", value: "https://www.mercari.com/jp/like/delete/m61354018553/"}
+      %input{name: "__csrf_value", type: "hidden", value: "2ee3ef87b93078e25e5f53367d18bdf4ff687f333b583923c2174940bd0a5cd24d3e642fc3fe5d15afdd5713b614794da3f4331ba51dc85ebe905ad8bde490282"}
     .item-button-right
       = link_to"https://www.mercari.com/jp/safe/description/" do
         %i.icon-lock
@@ -152,13 +137,13 @@
 .item-detail-message.pb-4
   .message-container
     .message-content
-      %form.message-form{:action => "https://www.mercari.com/jp/comment/add/", :method => "POST"}
-        %input{:name => "__csrf_value", :type => "hidden", :value => "2ee3ef87b93078e25e5f53367d18bdf4ff687f333b583923c2174940bd0a5cd24d3e642fc3fe5d15afdd5713b614794da3f4331ba51dc85ebe905ad8bde490282"}/
+      %form.message-form{action: "https://www.mercari.com/jp/comment/add/", method: "POST"}
+        %input{name: "__csrf_value", type: "hidden", value: "2ee3ef87b93078e25e5f53367d18bdf4ff687f333b583923c2174940bd0a5cd24d3e642fc3fe5d15afdd5713b614794da3f4331ba51dc85ebe905ad8bde490282"}
         %p 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
-        %input{:name => "item_id", :type => "hidden", :value => "m61354018553"}/
-        %input{:name => "redirect_url_key", :type => "hidden", :value => "item_detail"}/
-        %textarea.textarea-default{:name => "body", :type => "text", :value => ""}
-        %button.message-submit.btn-default.btn-gray{:type => "submit"}
+        %input{name: "item_id", type: "hidden", value: "m61354018553"}
+        %input{name: "redirect_url_key", type: "hidden", value: "item_detail"}
+        %textarea.textarea-default{name: "body", type: "text",value: ""}
+        %button.message-submit.btn-default.btn-gray{type: "submit"}
           %span コメントする
       
   
