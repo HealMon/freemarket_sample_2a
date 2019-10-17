@@ -1,0 +1,26 @@
+.global
+  = render './shared/global-header'
+  = render './shared/bread-crumbs'
+
+  %main.main-container
+    .content
+      %h2.container-main__head
+        支払い方法
+      .container-main__inner
+        .container-main__inner__content
+          %section
+            %h3 クレジットカード一覧
+          %section.settings-add-card
+            = link_to new_credit_card_path, class: 'btn-default btn-mail' do
+              = fa_icon 'credit-card'
+              クレジットカードを追加する
+
+
+        %p.container-main__text-right
+          = link_to '支払い方法について ', '#'
+          = fa_icon 'chevron-right'
+
+    // サイドメニュー
+    = render './shared/mypage-sidebar'
+  // フッター
+  = render './shared/global-footer'
