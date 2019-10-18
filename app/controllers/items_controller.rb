@@ -1,7 +1,6 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: :new
-
   def new
+    @item = Item.new
   end
 
   def create
@@ -23,14 +22,9 @@ class ItemsController < ApplicationController
     else
       render sell_items_path
     end
-    
   end
 
   private
-  def set_item
-    @item = Item.new
-  end
-
   def item_params
     params.require(:item).permit(
                             :name,

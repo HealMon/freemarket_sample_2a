@@ -86,7 +86,7 @@ belongs_to :item
 | |Column|Type|Options|
 |-|------|----|-------|
 |カテゴリーID| | | |
-|カテゴリー名|name|string| |
+|カテゴリー名|name|string|null: false|
 |カテゴリー子要素ID|categorie_group_id|integer||
 
  ### Association

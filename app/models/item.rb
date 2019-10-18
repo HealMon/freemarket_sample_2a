@@ -5,4 +5,5 @@ class Item < ApplicationRecord
   belongs_to_active_hash :prefecture
 
   has_many_attached :images
+  belongs_to :category
 end
