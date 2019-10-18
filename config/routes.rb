@@ -33,6 +33,8 @@ Rails.application.routes.draw do
   resources :items, only: [:create] do 
     collection do
       get '/sell' => 'items#new'
+      get '/search_children' => 'items#search_children'
+      get '/search_grandchildren' => 'items#search_grandchildren'
     end
   end
 

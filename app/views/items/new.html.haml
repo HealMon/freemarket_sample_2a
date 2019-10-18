@@ -34,16 +34,15 @@
                 %span.form-group--require 必須
                 %br/
                 = f.text_area :description, class:"textarea-default", placeholder: "商品の説明(必須1,000文字以内) (色、素材、重さ、定価、注意点など) 例)2010年頃に1万円で購入したジャケットです。ライドグレーで傷はありません。合わせやすいのでおすすめです。",rows:"5",value:""
-            .sell-content
+            .sell-content#category-parent
               %h3.sell-head
                 商品の詳細
               .sell-select-box
                 .form-group
                   %label カテゴリー
                   %span.form-group--require 必須
-                  .select-wrap
-                    -# = f.select :, class:"select-default"
-                  -# category_id
+                  .select-wrap#category
+                    = f.collection_select :category_id, @parents, :id, :name,{prompt: "---"}, class: "select-default", id: "parent-form", name: 'item[category_ids][]'
                 .form-group
                   %label 商品の状態
                   %span.form-group--require 必須

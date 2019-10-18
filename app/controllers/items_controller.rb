@@ -1,6 +1,9 @@
 class ItemsController < ApplicationController
   def new
     @item = Item.new
+    @parents = Category.all.order("id ASC").limit(3)
+    # @child = Category.where(ancestry: '1/2').order("id ASC")
+    # @grandchild = Category.where(ancestry: '1/3').order("id ASC")
   end
 
   def create
@@ -8,6 +11,7 @@ class ItemsController < ApplicationController
       shipping_method: "123",
       trade_status: 1,
       condition: "123",
+      category_id: item_params[:category_id],
       shipping_charge_id: item_params[:shipping_charge_id],
       estimated_delivery_id: item_params[:estimated_delivery_id],
       prefecture_id: item_params[:prefecture_id],
@@ -24,6 +28,25 @@ class ItemsController < ApplicationController
     end
   end
 
+  def search_children
+    respond_to do |format|
+      format.html
+      format.json do
+        @children = Category.find(params[:parent_id]).children
+        #親ボックスのidから子ボックスのidの配列を作成してインスタンス変数で定義
+      end
+    end
+  end
+  
+  def search_grandchildren
+    respond_to do |format|
+      format.html
+      format.json do
+        @grandchildren = Category.find(params[:child_id]).children
+      end
+    end
+  end
+  
   private
   def item_params
     params.require(:item).permit(
@@ -36,6 +59,7 @@ class ItemsController < ApplicationController
                             :prefecture_id,
                             :estimated_delivery_id,
                             :trade_status,
+                            :category_id,
                             images: []
                           )
   end
