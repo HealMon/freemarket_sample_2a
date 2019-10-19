@@ -8,7 +8,7 @@
   %section.l-single-head
     %h2 購入内容の確認
   / #区分け２
-  %section.buy-item-container
+  %section
     %div.buy-content-inner
       / #スタイルシートにて横にまとめる
       %h3
@@ -20,13 +20,13 @@
         %span.item-shipping-fee.f14.bold 送料込み
       %ul.buy-accordion
         %li.accordion-parent
-          .accordion-toggle ポイントはありません
+          ポイントはありません
       %ul.buy-price-table
         %li.buy-price-row
           .buy-price-cell-left 支払い金額
           .buy-price-cell-right
             %span{"data-buy-pay" => "3800"} ¥3,800
-      %button.btn-red{:type => "submit"} 購入する
+      %button.btn-default.btn-red{:type => "submit"} 購入する
   / #区分け3
   %section.buy-content
     .buy-content-inner2
@@ -49,7 +49,7 @@
         ************xxxx
         = succeed "xx" do
           %br/
-      %figure
+      %figur
         %img{:alt => "master-card", :height => "20", :src => "//www-mercari-jp.akamaized.net/assets/img/card/master-card.svg?3466462615", :width => "34"}/
       %a.buy-user-info-fix{:href => "https://www.mercari.com/jp/transaction/select_card/m99710133600/"}
         %span 変更する
