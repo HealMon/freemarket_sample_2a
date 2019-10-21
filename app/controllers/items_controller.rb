@@ -2,16 +2,20 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
     @parents = Category.all.order("id ASC").limit(3)
-    # @child = Category.where(ancestry: '1/2').order("id ASC")
-    # @grandchild = Category.where(ancestry: '1/3').order("id ASC")
   end
 
   def create
+
+    # session[:category]            = item_params[:category]
+    # session[:category] = item_params[:category][0] + "|" + item_params[:category][1] + "|" + item_params[:category][2]
+    byebug
+
     @item = Item.new(
       shipping_method: "123",
       trade_status: 1,
-      condition: "123",
-      category_id: item_params[:category_id],
+      condition: item_params[:condition],
+      # category: session[:category],
+      category_id: item_params[:category_id][2],
       shipping_charge_id: item_params[:shipping_charge_id],
       estimated_delivery_id: item_params[:estimated_delivery_id],
       prefecture_id: item_params[:prefecture_id],
@@ -21,10 +25,11 @@ class ItemsController < ApplicationController
       images: item_params[:images]
     )
 
+    byebug
     if @item.save
       redirect_to root_path
     else
-      render sell_items_path
+      render '/items/new'
     end
   end
 
@@ -59,7 +64,7 @@ class ItemsController < ApplicationController
                             :prefecture_id,
                             :estimated_delivery_id,
                             :trade_status,
-                            :category_id,
+                            category_id: [],
                             images: []
                           )
   end

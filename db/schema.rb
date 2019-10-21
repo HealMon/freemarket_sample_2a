@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(version: 2019_10_18_022107) do
     t.integer "prefecture_id", null: false
     t.integer "estimated_delivery_id", null: false
     t.integer "trade_status", null: false
-    t.integer "category_id", null: false
+    t.string "category_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

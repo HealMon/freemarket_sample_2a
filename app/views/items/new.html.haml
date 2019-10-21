@@ -42,12 +42,12 @@
                   %label カテゴリー
                   %span.form-group--require 必須
                   .select-wrap#category
-                    = f.collection_select :category_id, @parents, :id, :name,{prompt: "---"}, class: "select-default", id: "parent-form", name: 'item[category_ids][]'
+                    = f.collection_select :category_id, Category.all.order("id ASC").limit(3), :id, :name,{prompt: "---"}, class: "select-default", id: "parent-form", name: 'item[category_id][]'
                 .form-group
                   %label 商品の状態
                   %span.form-group--require 必須
                   .select-wrap
-                    -# = f.select :, class:"select-default"
+                    = f.collection_select :condition, Condition.all, :id, :name, class: 'select-default' ,prompt: "---"
             .sell-content
               %h3.sell-head 配送について
               = link_to "https://www.mercari.com/jp/help_center/article/68", class:"form-question" do
@@ -84,11 +84,11 @@
                         ¥
                         %div
                           = f.number_field :price ,class:"input-default",placeholder:"例）300",value:""
-                  %li.clearfix
+                  %li#sell_tex.clearfix
                     .l-left
                       販売手数料（10％）
                     .l-right -
-                  %li.clearfix-bold
+                  %li#sell_return.clearfix-bold
                     .l-left
                       販売利益
                     .l-right -

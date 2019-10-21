@@ -1,12 +1,12 @@
 $(function () {
     function appendOption(category){
-        var html = `<option value="${category.name}" data-category="${category.id}">${category.name}</option>`;
+        var html = `<option value="${category.id}" data-category="${category.id}">${category.name}</option>`;
         return html;
       }
       // 子カテゴリーの表示作成
         function appendChidrenBox(insertHTML){
         var childSelectHtml = '';
-        childSelectHtml = `<select class="select-default" id="child_category" name="category_id">
+        childSelectHtml = `<select class="select-default" id="child_category" name="item[category_id][]">
                                 <option value="---" data-category="---">---</option>
                                 ${insertHTML}
                           </select>`;
@@ -15,7 +15,7 @@ $(function () {
         // 孫カテゴリーの表示作成
         function appendGrandchidrenBox(insertHTML){
         var grandchildSelectHtml = '';
-        grandchildSelectHtml = ` <select class="select-default" id="grandchild_category" name="category_id">
+        grandchildSelectHtml = ` <select class="select-default" id="grandchild_category" name="item[category_id][]">
                                     <option value="---" data-category="---">---</option>
                                     ${insertHTML}
                                 </select> `;
@@ -64,7 +64,6 @@ $(function () {
       })
       .done(function (grandchildren) {
         if (grandchildren.length != 0) {
-          debugger
             $('#grandchild_category').remove(); //子が変更された時、孫以下を削除するする
             var insertHTML = '';
             grandchildren.forEach(function (grandchild) {
@@ -83,3 +82,4 @@ $(function () {
 
 });
 
+// https://github.com/stefankroes/ancestry
