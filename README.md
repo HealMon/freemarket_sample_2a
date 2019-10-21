@@ -44,8 +44,8 @@
 |状態(汚れなど)|condition|string|null: false|
 |ブランドID|brand|references|foreign_key: true|
 |サイズID|size_id|references|foreign_key: true|
-|配送料の負担(どっちも)|shipping_charge|string|null: false|
-|発送の方法|shipping_method|string|null: false|
+|配送料の負担(どっちも)ID|shipping_charge_id|string|null: false|
+|発送の方法|shipping_method_id|string|null: false|
 |都道府県ID(発送の地域)|prefecture_id|integer|null: false|
 |発送の目安|estimated_delivery|string|null: false|
 |商品出品状態（出品中,売却済み)|trade_status|integer|null: false|

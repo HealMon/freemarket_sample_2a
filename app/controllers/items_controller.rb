@@ -11,10 +11,9 @@ class ItemsController < ApplicationController
     byebug
 
     @item = Item.new(
-      shipping_method: "123",
       trade_status: 1,
+      shipping_method_id: item_params[:shipping_method_id],
       condition: item_params[:condition],
-      # category: session[:category],
       category_id: item_params[:category_id][2],
       shipping_charge_id: item_params[:shipping_charge_id],
       estimated_delivery_id: item_params[:estimated_delivery_id],
@@ -51,6 +50,15 @@ class ItemsController < ApplicationController
       end
     end
   end
+
+  def search_shipping_methods
+    respond_to do |format|
+      format.html
+      format.json do
+        @shipping_methods = ShippingMethod.all
+      end
+    end
+  end
   
   private
   def item_params
@@ -60,7 +68,7 @@ class ItemsController < ApplicationController
                             :price,
                             :condition,
                             :shipping_charge_id,
-                            :shipping_method,
+                            :shipping_method_id,
                             :prefecture_id,
                             :estimated_delivery_id,
                             :trade_status,

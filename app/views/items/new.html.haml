@@ -53,11 +53,11 @@
               = link_to "https://www.mercari.com/jp/help_center/article/68", class:"form-question" do
                 ?
               .sell-select-box
-                .form-group
+                .form-group#delivery
                   %label 配送料の負担
                   %span.form-group--require 必須
                   .select-wrap
-                    = f.collection_select :shipping_charge_id, ShippingCharge.all, :id, :name, class: 'select-default' ,prompt: "---"
+                    = f.collection_select :shipping_charge_id, ShippingCharge.all, :id, :name, class: 'select-default' ,prompt: "---",id:"shipping_charge"
                 .form-group
                   %label 発送元の地域
                   %span.form-group--require 必須
