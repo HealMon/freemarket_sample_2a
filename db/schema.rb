@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_08_090240) do
+ActiveRecord::Schema.define(version: 2019_10_23_050641) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -35,12 +35,29 @@ ActiveRecord::Schema.define(version: 2019_10_08_090240) do
 
   create_table "credit_cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "card_number", null: false
-    t.string "exporation_date", null: false
+    t.integer "exporation_year", null: false
+    t.integer "exporation_month", null: false
     t.integer "cvc", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_credit_cards_on_user_id"
+  end
+
+  create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "description", null: false
+    t.integer "price", null: false
+    t.string "condition", null: false
+    t.integer "shipping_charge_id", null: false
+    t.integer "shipping_method_id", null: false
+    t.integer "prefecture_id", null: false
+    t.integer "estimated_delivery_id", null: false
+    t.integer "trade_status", null: false
+    t.string "category_id", null: false
+    t.text "image", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "prefectures", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -53,12 +70,14 @@ ActiveRecord::Schema.define(version: 2019_10_08_090240) do
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "phone_number"
-    t.string "zipcode"
-    t.integer "prefecture"
-    t.string "city"
-    t.string "address"
+    t.string "zipcode", null: false
+    t.integer "prefecture_id", null: false
+    t.string "city", null: false
+    t.string "address", null: false
     t.string "building"
-    t.integer "birthday", null: false
+    t.integer "birth_year", null: false
+    t.integer "birth_month", null: false
+    t.integer "birth_day", null: false
     t.string "last_name", null: false
     t.string "first_name", null: false
     t.string "last_name_kana", null: false
