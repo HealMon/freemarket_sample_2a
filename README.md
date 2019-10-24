@@ -57,7 +57,7 @@
 - belongs_to :category
 - belongs_to :user
 
-## item_image TB
+### item_image TB
 |     |Column|Type|Options|
 |-----|------|----|-------|
 |商品イメージID| |   |   |
@@ -67,20 +67,30 @@
 ### Association
 belongs_to :item
 
-## size TB
-|-|Colimn|Type|Options|
-|-|------|----|-------|
-|サイズID| |   |   |
-|サイズ名|name|string|null: false,unique: true|
+### category_size TB
+|     |Column|Type|Options|
+|-----|------|----|-------|
+|カテゴリサイズID| |   |   |
+|カテゴリID|category_id|references|foreign_key: true|
+|プロダクトサイズID|products_size_id|references|foreign_key: true|
 
-## brand TB
+### Association
+belongs_to :category
+belongs_to :products_size
+
+## products_sizes TB
 | |Column|Type|Options|
 |-|------|----|-------|
-|ブランドID| |    |   |
-|ブランドID|name|string|null: false,unique: true|
+|プロダクトサイズID| |    |   |
+|サイズ|size|string|null: false|
+|アンセストリー|ansectry|string||
 
 ### Association
 - has_many :items
+- has_many :category_sizes
+- has_many :products_sizes, through: :category_sizes
+- has_ancestry
+
 
 ## categorie TB
 | |Column|Type|Options|
@@ -91,6 +101,9 @@ belongs_to :item
 
  ### Association
 - has_many :items
+- has_many :category_sizes
+- has_many :products_sizes, through: :category_sizes
+- has_ancestry
 
 ## order TB
 | |Column|Type|Options|

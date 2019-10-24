@@ -6,7 +6,18 @@ class Item < ApplicationRecord
   belongs_to_active_hash :prefecture
 
   has_many_attached :images
+  
   belongs_to :category
 
-  
+  validates :images, attached: true, content_type: ['image/png', 'image/jpg', 'image/jpeg']
+  validates :name,                    presence: true
+  validates :description,             presence: true
+  validates :category_id,             presence: true
+  validates :condition,               presence: true
+  validates :shipping_charge_id,      presence: true
+  validates :shipping_method_id,      presence: true
+  validates :prefecture_id,           presence: true
+  validates :estimated_delivery_id,   presence: true
+  validates :price,                   numericality: {greater_than_or_equal_to: 300 , less_than_or_equal_to: 9999999}
+
 end

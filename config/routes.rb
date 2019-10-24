@@ -36,6 +36,7 @@ Rails.application.routes.draw do
       get '/search_children' => 'items#search_children'
       get '/search_grandchildren' => 'items#search_grandchildren'
       get '/search_shipping_charge' => 'items#search_shipping_methods'
+      get '/get_size' => 'items#get_size'
     end
   end
 

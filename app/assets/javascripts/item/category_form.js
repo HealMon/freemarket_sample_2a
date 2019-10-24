@@ -21,10 +21,33 @@ $(function () {
                                 </select> `;
         $('#category').append(grandchildSelectHtml);
       }
+        
+    function appendSizeOption(size){
+      var html = `<option value="${size.id}" data-category="${size.id}">${size.size}</option>`;
+      return html;
+    }
+    // サイズの表示作成
+    function appendSizeBox(insertHTML){
+      var sizeSelectHtml = '';
+      sizeSelectHtml = `
+        <div class="form_group" id="size_remove">
+          <label>サイズ</label>
+          <span class="form-group--require">必須</span>
+          <div class="select-wrap">
+            <select class="select-default" id="size_category" name="item[size_id]">
+            <option value="---" data-category="---">---</option>
+            ${insertHTML}
+            </select>
+          </div>
+        </div>`;
+      
+      $('#size').append(sizeSelectHtml);
+  }
 
   $("#parent-form").on("change", function () {
     // 親ボックスのidを取得してそのidをAjax通信でコントローラーへ送る
     var parentValue = document.getElementById("parent-form").value;
+
     //　("parent-form")は親ボックスのid属性
     if (parentValue != "---") { //親カテゴリーが初期値でないことを確認
       $.ajax({
@@ -37,7 +60,11 @@ $(function () {
       })
         .done(function (children) {
           console.log(children) // responseの中身をログ出力
+          
           $('#child_category').remove();
+          $('#grandchild_category').remove();
+          $('#size_remove').remove();
+
           var insertHTML = '';
           children.forEach(function (child) {
             insertHTML += appendOption(child);
@@ -51,10 +78,9 @@ $(function () {
   });
 
   // 子カテゴリー選択後のイベント
-  // $('#child_category').on("change", function () {
   $('.sell-select-box').on('change', '#child_category', function () {
-    // var childId = $('#child_category option:selected').data('category'); //選択された子カテゴリーのidを取得
     var childId = $("#child_category option:selected").data('category');
+
     if (childId != "---") { //子カテゴリーが初期値でないことを確認
       $.ajax({
         url: '/items/search_grandchildren',
@@ -65,6 +91,7 @@ $(function () {
       .done(function (grandchildren) {
         if (grandchildren.length != 0) {
             $('#grandchild_category').remove(); //子が変更された時、孫以下を削除するする
+            $('#size_remove').remove();
             var insertHTML = '';
             grandchildren.forEach(function (grandchild) {
               insertHTML += appendOption(grandchild);
@@ -80,6 +107,32 @@ $(function () {
     }
   });
 
+  // 孫カテゴリー選択後のイベント
+  $('.sell-select-box').on('change', '#grandchild_category', function () {
+    var grandchildId = $("#grandchild_category option:selected").data('category');
+    console.log(grandchildId)
+    if (grandchildId != "---") { //子カテゴリーが初期値でないことを確認
+      $.ajax({
+        url: '/items/get_size',
+        type: 'GET',
+        data: { grandchild_id: grandchildId },
+        dataType: 'json'
+      })
+        .done(function (sizes) {
+          if (sizes.length != 0) {
+            $('#size_remove').remove(); //子が変更された時、孫以下を削除するする
+            var insertHTML = '';
+            sizes.forEach(function (size) {
+              insertHTML += appendSizeOption(size);
+            });
+            appendSizeBox(insertHTML);
+          }
+        })
+        .fail(function () {
+          alert('カテゴリー取得に失敗しました');
+        })
+    } else {
+      $('#size_category').remove(); //子カテゴリーが初期値になった時、孫以下を削除する
+    }
+  });
 });
-
-// https://github.com/stefankroes/ancestry

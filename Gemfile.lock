@@ -26,6 +26,8 @@ GEM
       rails-html-sanitizer (~> 1.0, >= 1.0.3)
     active_hash (3.0.0)
       activesupport (>= 5.0.0)
+    active_storage_validations (0.8.3)
+      rails (>= 5.2.0)
     activejob (5.2.3)
       activesupport (= 5.2.3)
       globalid (>= 0.3.6)
@@ -302,6 +304,7 @@ PLATFORMS
 
 DEPENDENCIES
   active_hash
+  active_storage_validations
   ancestry
   aws-sdk-s3
   bootsnap (>= 1.1.0)

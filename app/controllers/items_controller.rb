@@ -5,11 +5,6 @@ class ItemsController < ApplicationController
   end
 
   def create
-
-    # session[:category]            = item_params[:category]
-    # session[:category] = item_params[:category][0] + "|" + item_params[:category][1] + "|" + item_params[:category][2]
-    byebug
-
     @item = Item.new(
       trade_status: 1,
       shipping_method_id: item_params[:shipping_method_id],
@@ -21,10 +16,10 @@ class ItemsController < ApplicationController
       name: item_params[:name],
       description: item_params[:description],
       price: item_params[:price],
-      images: item_params[:images]
+      images: item_params[:images],
+      products_sizes_id: item_params[:size_id].to_i 
     )
 
-    byebug
     if @item.save
       redirect_to root_path
     else
@@ -51,6 +46,20 @@ class ItemsController < ApplicationController
     end
   end
 
+  def get_size
+    respond_to do |format|
+      format.html
+      format.json do
+        selected_child_category = Category.find("#{params[:grandchild_id]}").parent #子カテゴリーを取得
+        if (selected_child_category.products_sizes != [])
+          product_size = selected_child_category.products_sizes
+          related_size_parent = ProductsSize.find(product_size.ids[0])
+          @sizes = related_size_parent.children #紐づいたサイズ（親）の子供の配列を取得
+        end
+      end
+    end
+  end
+
   def search_shipping_methods
     respond_to do |format|
       format.html
@@ -72,8 +81,11 @@ class ItemsController < ApplicationController
                             :prefecture_id,
                             :estimated_delivery_id,
                             :trade_status,
+                            :size_id,
                             category_id: [],
                             images: []
                           )
   end
 end
+
+
