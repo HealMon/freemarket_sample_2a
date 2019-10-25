@@ -75,5 +75,10 @@ gem 'rspec-rails'
 gem 'haml-rails'
 gem "font-awesome-rails"
 gem 'active_hash'
+gem 'ancestry'
+gem 'jquery-rails'
+gem 'pry-rails'
+gem 'pry-byebug'
+gem 'active_storage_validations'
 gem 'factory_bot_rails'
 

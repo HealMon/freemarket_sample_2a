@@ -1,7 +1,7 @@
 .container
   %header.header
     %h1
-      = link_to "" do
+      = link_to root_path do
         = image_tag "https://www-mercari-jp.akamaized.net/assets/img/common/common/logo.svg?3054050720"
   %main.main
     %section.sell-container-main
@@ -9,7 +9,7 @@
         .sell-container-inner
           %h2.container-main__head
             商品の情報を入力
-          %form.sell-form
+          = form_for @item, url: items_path, method: :post, html:{class:'sell-form'} do |f|
             .sell-upload-head
               %h3.sell-upload-text
                 出品画像
@@ -19,55 +19,88 @@
                 .sell-image-container
                   .sell-image-items-0
                     %ul
-                .sell-image-drop-box-0
-                  %input.sell-image-drop-file{}
+                %label.sell-image-drop-box-0
+                  = f.file_field :images, multiple: true, class: "img_file"
                   %pre.visible-pc
                     ドラッグ&ドロップまたはクリックしてファイルをアップロード
+              - if @item.errors.messages[:images].present?  
+                - @item.errors.messages[:images].each do |message|
+                  %ul.error-message
+                    %li= "正しい画像を添付してください。(png,jpeg,jpg)"      
             .sell-content
               .form-group
                 %label 商品名
                 %span.form-group--require 必須
                 %br/
-                %input.input-default{placeholder:"商品名(必須40文字まで)",value:""}
+                = f.text_field :name, class: "input-default", placeholder:"商品名(必須40文字まで)",value:""
+                - if @item.errors.messages[:name].present?
+                  - @item.errors.messages[:name].each do |message|
+                    %ul.error-message
+                      %li= "商品名#{message}"
               .form-group
                 %label 商品の説明
                 %span.form-group--require 必須
                 %br/
-                %text_area.textarea-default{placeholder: "商品の説明(必須1,000文字以内) (色、素材、重さ、定価、注意点など) 例)2010年頃に1万円で購入したジャケットです。ライドグレーで傷はありません。合わせやすいのでおすすめです。",rows:"5",value:""}
-            .sell-content
+                = f.text_area :description, class:"textarea-default", placeholder: "商品の説明(必須1,000文字以内) (色、素材、重さ、定価、注意点など) 例)2010年頃に1万円で購入したジャケットです。ライドグレーで傷はありません。合わせやすいのでおすすめです。",rows:"5",value:""
+                - if @item.errors.messages[:description].present?
+                  - @item.errors.messages[:description].each do |message|
+                    %ul.error-message
+                      %li= "商品の説明#{message}"
+            .sell-content#category-parent
               %h3.sell-head
                 商品の詳細
               .sell-select-box
                 .form-group
                   %label カテゴリー
                   %span.form-group--require 必須
-                  .select-wrap
-                    %select.select-default
+                  .select-wrap#category
+                    = f.collection_select :category_id, Category.all.order("id ASC").limit(3), :id, :name,{prompt: "---"}, class: "select-default", id: "parent-form", name: 'item[category_id][]'
+                    - if @item.errors.messages[:category_id].present?
+                      - @item.errors.messages[:category_id].each do |message|
+                        %ul.error-message
+                          %li= "カテゴリー#{message}"
+                #size
                 .form-group
                   %label 商品の状態
                   %span.form-group--require 必須
                   .select-wrap
-                    %select.select-default
+                    = f.collection_select :condition, Condition.all, :id, :name, class: 'select-default' ,prompt: "---"
+                    - if @item.errors.messages[:condition].present?
+                      - @item.errors.messages[:condition].each do |message|
+                        %ul.error-message
+                          %li= "商品の状態#{message}"
             .sell-content
               %h3.sell-head 配送について
               = link_to "https://www.mercari.com/jp/help_center/article/68", class:"form-question" do
                 ?
               .sell-select-box
-                .form-group
+                .form-group#delivery
                   %label 配送料の負担
                   %span.form-group--require 必須
                   .select-wrap
-                    %select.select-default
+                    = f.collection_select :shipping_charge_id, ShippingCharge.all, :id, :name, class: 'select-default' ,prompt: "---",id:"shipping_charge"
+                    - if @item.errors.messages[:shipping_charge_id].present?
+                      - @item.errors.messages[:shipping_charge_id].each do |message|
+                        %ul.error-message
+                          %li= "配送料の負担#{message}"
                 .form-group
                   %label 発送元の地域
                   %span.form-group--require 必須
                   .select-wrap
-                    %select.select-default
+                    = f.collection_select :prefecture_id, Prefecture.all, :id, :name, class: 'select-default' ,prompt: "---"
+                    - if @item.errors.messages[:prefecture_id].present?
+                      - @item.errors.messages[:prefecture_id].each do |message|
+                        %ul.error-message
+                          %li= "発送元の地域#{message}"
                 .form-group
                   %label 発送までの日数
                   %span.form-group--require 必須
                   .select-wrap
-                    %select.select-default
+                    = f.collection_select :estimated_delivery_id, EstimatedDelivery.all , :id, :name, class: 'select-default' ,prompt: "---"
+                    - if @item.errors.messages[:estimated_delivery_id].present?
+                      - @item.errors.messages[:estimated_delivery_id].each do |message|
+                        %ul.error-message
+                          %li= "発送までの日数#{message}"
             .sell-content
               %h3.sell-head
                 販売価格(300~9,999,999)
@@ -83,12 +116,16 @@
                       .l-right-sell-price-input
                         ¥
                         %div
-                          %input.input-default{placeholder:"例）300",value:""}
-                  %li.clearfix
+                          = f.number_field :price ,class:"input-default",placeholder:"例）300",value:""
+                  - if @item.errors.messages[:price].present?
+                    - @item.errors.messages[:price].each do |message|
+                      %ul.error-message
+                        %li= "価格#{message}"
+                  %li#sell_tex.clearfix
                     .l-left
                       販売手数料（10％）
                     .l-right -
-                  %li.clearfix-bold
+                  %li#sell_return.clearfix-bold
                     .l-left
                       販売利益
                     .l-right -

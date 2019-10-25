@@ -17,6 +17,8 @@
 @import "./products_details";
 @import "mypage-card";
 @import "mypage-card-edit";
+@import "item-sell";
+
 
 
 
@@ -131,14 +133,6 @@ body {
                 border-color: #ea352d !important;
               }
             }
-            ul.error-message {
-              color: #ea352d;
-              line-height: 1.5;
-              font-size: 14px;
-              li {
-                margin: 8px 0 0;
-              }
-            }
             .select-wrap {
               display: inline-block;
               position: relative;
@@ -241,4 +235,13 @@ body {
 a {
   color: #0099e8;
   text-decoration: none;
+}
+
+ul.error-message {
+  color: #ea352d;
+  line-height: 1.5;
+  font-size: 14px;
+  li {
+    margin: 8px 0 0;
+  }
 }

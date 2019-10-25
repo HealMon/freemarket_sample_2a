@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     get 'signup' => 'devise/registrations#index', as: :new_user_information
     get 'login' => 'devise/sessions#new', as: :new_user_session
     post 'login' => 'devise/sessions#create', as: :user_registration
+    delete 'logout' => 'devise/sessions#destroy', as: :user_logout
   end
 
   resources :signup do
@@ -33,9 +34,13 @@ Rails.application.routes.draw do
 
   resources :credit_card, only: [:new]
 
-  resources :item do
+  resources :items, only: [:create] do 
     collection do
-      get '/sell' => 'item#new'
+      get '/sell' => 'items#new'
+      get '/search_children' => 'items#search_children'
+      get '/search_grandchildren' => 'items#search_grandchildren'
+      get '/search_shipping_charge' => 'items#search_shipping_methods'
+      get '/get_size' => 'items#get_size'
     end
   end
 

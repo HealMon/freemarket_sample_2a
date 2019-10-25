@@ -4,7 +4,7 @@
   %main.main-container
     .content
       .content__inner
-        = link_to new_user_session_path, class: 'btn-default btn-mail' do
+        = link_to user_logout_path, method: :delete,  class: 'btn-default btn-mail' do
           ログアウト
     // サイドメニュー
     = render './shared/mypage-sidebar'

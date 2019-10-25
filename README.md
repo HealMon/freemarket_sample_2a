@@ -38,14 +38,14 @@
 |----|------|----|-------|
 |商品ID|     |    |       |
 |商品名|name|string|null: false|
-|商品説明 ( 1000字まで)|description|string|null: false|
+|商品説明 (1000字まで)|description|string|null: false|
 |価格|price|integer|null: false|
-|カテゴリーID|category_id|references|null: false,foreign_key: true|
+|カテゴリー|category|references|null: false,foreign_key: true|
 |状態(汚れなど)|condition|string|null: false|
 |ブランドID|brand|references|foreign_key: true|
 |サイズID|size_id|references|foreign_key: true|
-|配送料の負担(どっちも)|shipping_charge|string|null: false|
-|発送の方法|shipping_method|string|null: false|
+|配送料の負担(どっちも)ID|shipping_charge_id|string|null: false|
+|発送の方法|shipping_method_id|string|null: false|
 |都道府県ID(発送の地域)|prefecture_id|integer|null: false|
 |発送の目安|estimated_delivery|string|null: false|
 |商品出品状態（出品中,売却済み)|trade_status|integer|null: false|
@@ -57,7 +57,7 @@
 - belongs_to :category
 - belongs_to :user
 
-## item_image TB
+### item_image TB
 |     |Column|Type|Options|
 |-----|------|----|-------|
 |商品イメージID| |   |   |
@@ -67,30 +67,43 @@
 ### Association
 belongs_to :item
 
-## size TB
-|-|Colimn|Type|Options|
-|-|------|----|-------|
-|サイズID| |   |   |
-|サイズ名|name|string|null: false,unique: true|
+### category_size TB
+|     |Column|Type|Options|
+|-----|------|----|-------|
+|カテゴリサイズID| |   |   |
+|カテゴリID|category_id|references|foreign_key: true|
+|プロダクトサイズID|products_size_id|references|foreign_key: true|
 
-## brand TB
+### Association
+belongs_to :category
+belongs_to :products_size
+
+## products_sizes TB
 | |Column|Type|Options|
 |-|------|----|-------|
-|ブランドID| |    |   |
-|ブランドID|name|string|null: false,unique: true|
+|プロダクトサイズID| |    |   |
+|サイズ|size|string|null: false|
+|アンセストリー|ansectry|string||
 
 ### Association
 - has_many :items
+- has_many :category_sizes
+- has_many :products_sizes, through: :category_sizes
+- has_ancestry
+
 
 ## categorie TB
 | |Column|Type|Options|
 |-|------|----|-------|
 |カテゴリーID| | | |
-|カテゴリー名|name|string| |
+|カテゴリー名|name|string|null: false|
 |カテゴリー子要素ID|categorie_group_id|integer||
 
  ### Association
 - has_many :items
+- has_many :category_sizes
+- has_many :products_sizes, through: :category_sizes
+- has_ancestry
 
 ## order TB
 | |Column|Type|Options|

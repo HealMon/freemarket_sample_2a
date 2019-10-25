@@ -68,11 +68,11 @@
         %li
           = link_to 'United States', '#'
   .footer-bottom
-    = link_to '#', class: 'footer-logo' do
+    = link_to root_path, class: 'footer-logo' do
       = image_tag 'logo-white.svg'
     %span.footer-copyright
       %small © 2019 Mercari
 
-  = link_to '#', class: 'footer-sell-btn' do
+  = link_to sell_items_path, class: 'footer-sell-btn' do
     %div 出品
     = fa_icon 'camera'

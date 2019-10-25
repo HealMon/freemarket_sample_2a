@@ -9,7 +9,11 @@
         = link_to '#' do
           %figure
             = image_tag 'member_photo_noimage_thumb.png'
-          %h2.bold テスト太郎
+          %h2.bold 
+            - if user_signed_in?
+              = current_user.nickname
+            - else
+              テスト太郎
           .mypage-number
             %div
               評価
