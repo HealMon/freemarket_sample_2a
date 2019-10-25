@@ -10,7 +10,7 @@
           %figure
             = image_tag 'member_photo_noimage_thumb.png'
           %h2.bold 
-            - if current_user
+            - if user_signed_in?
               = current_user.nickname
             - else
               テスト太郎

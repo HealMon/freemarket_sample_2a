@@ -4,9 +4,7 @@ describe "item#new (/items/sell)" do
     category = Category.create(name: "レディース")
     category_id = Category.last.id
     user = create(:user)
-
-    byebug
-
+    
     # カテゴリーを元にitemインスタンスを作成
     item = user.items.build(
       trade_status: 1,

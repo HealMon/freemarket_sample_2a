@@ -23,7 +23,7 @@
 
       .header-inner__nav-box--right
         %ul.header-inner__nav-box--right__user-nav
-          - if current_user
+          - if user_signed_in?
             %li
               = link_to '#', class: 'menu-link' do
                 = fa_icon 'heart'
