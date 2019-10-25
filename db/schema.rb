@@ -65,18 +65,29 @@ ActiveRecord::Schema.define(version: 2019_10_23_023002) do
     t.string "name", null: false
     t.string "description", null: false
     t.integer "price", null: false
+<<<<<<< HEAD
     t.integer "condition", null: false
+=======
+    t.string "condition", null: false
+>>>>>>> master
     t.integer "shipping_charge_id", null: false
     t.integer "shipping_method_id", null: false
     t.integer "prefecture_id", null: false
     t.integer "estimated_delivery_id", null: false
     t.integer "trade_status", null: false
+<<<<<<< HEAD
     t.integer "category_id", null: false
     t.integer "products_sizes_id"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_items_on_user_id"
+=======
+    t.string "category_id", null: false
+    t.text "image", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+>>>>>>> master
   end
 
   create_table "prefectures", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

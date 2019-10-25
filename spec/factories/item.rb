@@ -2,7 +2,7 @@ FactoryBot.define do
   factory :category do
     name {"レディース"}
   end
-  
+
   factory :item do
     name                   {"test"}      
     description            {"test description"}   
@@ -18,5 +18,6 @@ FactoryBot.define do
     after(:build) do |image|
       image.attached = fixture_file_upload(Rails.root.join('spec', 'fixtures', 'files', 'test.jpg'), 'image/jpg')
     end
+
   end
 end
