@@ -18,6 +18,5 @@ FactoryBot.define do
     after(:build) do |image|
       image.attached = fixture_file_upload(Rails.root.join('spec', 'fixtures', 'files', 'test.jpg'), 'image/jpg')
     end
-
   end
 end
