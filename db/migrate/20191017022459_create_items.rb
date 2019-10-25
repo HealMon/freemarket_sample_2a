@@ -11,7 +11,8 @@ class CreateItems < ActiveRecord::Migration[5.2]
       t.integer :estimated_delivery_id,   null: false
       t.integer :trade_status,            null: false
       t.integer :category_id,             null: false
-      t.integer :products_sizes_id    
+      t.integer :products_sizes_id
+      t.references :user
 
       t.timestamps
     end

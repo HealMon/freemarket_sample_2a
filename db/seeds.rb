@@ -6,6 +6,28 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+# テストユーザー
+User.create(
+  nickname: "teamA",
+  email: "test@gmail.com",
+  password: "testtest123",
+  last_name: "A",
+  first_name: "チーム",
+  last_name_kana: "エー",
+  first_name_kana: "チーム",
+  birth_year: 1900,
+  birth_month: 1,             
+  birth_day: 31,               
+  zipcode: 7010001,                 
+  prefecture_id: 1,           
+  city: "高知市",                    
+  address: "1-1",                 
+  delivery_last_name: "A",      
+  delivery_first_name: "チーム",     
+  delivery_last_name_kana: "エー", 
+  delivery_first_name_kana: "チーム",
+)
+
 #親要素
 lady = Category.create(:name=>"レディース")
 

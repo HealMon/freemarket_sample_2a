@@ -23,21 +23,27 @@
 
       .header-inner__nav-box--right
         %ul.header-inner__nav-box--right__user-nav
-          %li
-            = link_to '#', class: 'menu-link' do
-              = fa_icon 'heart'
-              %span いいね！一覧
-          %li
-            = link_to '#', class: 'menu-link' do
-              = fa_icon 'bell'
-              %span お知らせ
-            %ul
-          %li
-            = link_to '#', class: 'menu-link' do
-              = fa_icon 'check'
-              %span やることリスト
-            %ul
-          %li
-            = link_to '/mypage', class: 'menu-link' do
-              = fa_icon 'user'
-              %span マイページ
+          - if current_user
+            %li
+              = link_to '#', class: 'menu-link' do
+                = fa_icon 'heart'
+                %span いいね！一覧
+            %li
+              = link_to '#', class: 'menu-link' do
+                = fa_icon 'bell'
+                %span お知らせ
+              %ul
+            %li
+              = link_to '#', class: 'menu-link' do
+                = fa_icon 'check'
+                %span やることリスト
+              %ul
+            %li
+              = link_to '/mypage', class: 'menu-link' do
+                = fa_icon 'user'
+                %span マイページ
+          - else
+            = link_to '/signup', class: 'btn-default btn-mail' do
+              新規会員登録
+            = link_to '/login', class: 'btn-default btn-mail login' do
+              ログイン

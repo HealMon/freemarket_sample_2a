@@ -1,24 +1,28 @@
 class ItemsController < ApplicationController
+  before_action :authenticate_user!
+
   def new
-    @item = Item.new
+    @item = current_user.items.build
     @parents = Category.all.order("id ASC").limit(3)
   end
 
   def create
-    @item = Item.new(
-      trade_status: 1,
-      shipping_method_id: item_params[:shipping_method_id],
-      condition: item_params[:condition],
-      category_id: item_params[:category_id][2],
-      shipping_charge_id: item_params[:shipping_charge_id],
-      estimated_delivery_id: item_params[:estimated_delivery_id],
-      prefecture_id: item_params[:prefecture_id],
-      name: item_params[:name],
-      description: item_params[:description],
-      price: item_params[:price],
-      images: item_params[:images],
-      products_sizes_id: item_params[:size_id].to_i 
-    )
+    if current_user
+      @item = current_user.items.build(
+        trade_status: 1,
+        shipping_method_id: item_params[:shipping_method_id],
+        condition: item_params[:condition],
+        category_id: item_params[:category_id][2],
+        shipping_charge_id: item_params[:shipping_charge_id],
+        estimated_delivery_id: item_params[:estimated_delivery_id],
+        prefecture_id: item_params[:prefecture_id],
+        name: item_params[:name],
+        description: item_params[:description],
+        price: item_params[:price],
+        images: item_params[:images],
+        products_sizes_id: item_params[:size_id].to_i 
+      )
+    end
 
     if @item.save
       redirect_to root_path

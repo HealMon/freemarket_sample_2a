@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     get 'signup' => 'devise/registrations#index', as: :new_user_information
     get 'login' => 'devise/sessions#new', as: :new_user_session
     post 'login' => 'devise/sessions#create', as: :user_registration
+    delete 'logout' => 'devise/sessions#destroy', as: :user_logout
   end
 
   resources :signup do
@@ -49,4 +50,3 @@ Rails.application.routes.draw do
   get 'mypage/card/' => 'home#mypage_card'
 
 end
-  

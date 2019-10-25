@@ -7,6 +7,7 @@ class Item < ApplicationRecord
 
   has_many_attached :images
   
+  belongs_to :user
   belongs_to :category
 
   validates :images, attached: true, content_type: ['image/png', 'image/jpg', 'image/jpeg'] if !Rails.env.test? # テスト環境ではiamgeのvalidation
