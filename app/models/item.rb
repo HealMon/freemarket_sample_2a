@@ -9,7 +9,7 @@ class Item < ApplicationRecord
   
   belongs_to :category
 
-  validates :images, attached: true, content_type: ['image/png', 'image/jpg', 'image/jpeg']
+  validates :images, attached: true, content_type: ['image/png', 'image/jpg', 'image/jpeg'] if !Rails.env.test? # テスト環境ではiamgeのvalidation
   validates :name,                    presence: true
   validates :description,             presence: true
   validates :category_id,             presence: true
@@ -18,6 +18,6 @@ class Item < ApplicationRecord
   validates :shipping_method_id,      presence: true
   validates :prefecture_id,           presence: true
   validates :estimated_delivery_id,   presence: true
+  validates :trade_status,            presence: true
   validates :price,                   numericality: {greater_than_or_equal_to: 300 , less_than_or_equal_to: 9999999}
-
 end
