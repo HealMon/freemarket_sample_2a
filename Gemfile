@@ -81,4 +81,4 @@ gem 'pry-rails'
 gem 'pry-byebug'
 gem 'active_storage_validations'
 gem 'factory_bot_rails'
-
+gem 'mini_magick'

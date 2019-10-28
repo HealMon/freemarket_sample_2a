@@ -12,6 +12,8 @@ class ItemsController < ApplicationController
         trade_status: 1,
         shipping_method_id: item_params[:shipping_method_id],
         condition: item_params[:condition],
+        grand_category_id: item_params[:category_id][0],
+        parent_category_id: item_params[:category_id][1],
         category_id: item_params[:category_id][2],
         shipping_charge_id: item_params[:shipping_charge_id],
         estimated_delivery_id: item_params[:estimated_delivery_id],
