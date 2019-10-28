@@ -40,8 +40,10 @@
 |商品名|name|string|null: false|
 |商品説明 (1000字まで)|description|string|null: false|
 |価格|price|integer|null: false|
-|カテゴリー|category|references|null: false,foreign_key: true|
-|状態(汚れなど)|condition|string|null: false|
+|親カテゴリー|grand_category_id|integer|null: false|
+|子カテゴリー|parent_category_id|integer|null: false|
+|孫カテゴリー|category_id|integer|null: false,foreign_key: true|
+|状態(汚れなど)|condition|integer|null: false|
 |ブランドID|brand|references|foreign_key: true|
 |サイズID|size_id|references|foreign_key: true|
 |配送料の負担(どっちも)ID|shipping_charge_id|string|null: false|

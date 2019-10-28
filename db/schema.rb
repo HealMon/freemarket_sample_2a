@@ -71,6 +71,8 @@ ActiveRecord::Schema.define(version: 2019_10_23_023002) do
     t.integer "prefecture_id", null: false
     t.integer "estimated_delivery_id", null: false
     t.integer "trade_status", null: false
+    t.integer "grand_category_id", null: false
+    t.integer "parent_category_id", null: false
     t.integer "category_id", null: false
     t.integer "products_sizes_id"
     t.bigint "user_id"
