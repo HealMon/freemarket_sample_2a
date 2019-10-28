@@ -21,7 +21,7 @@ Rails.application.routes.draw do
     end
   end
 
-  get 'product_details' => 'home#products_details'
+  get 'product_details/:id' => 'home#products_details',as: :product_details
 
 
   resources :user do

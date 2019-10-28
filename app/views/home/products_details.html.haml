@@ -3,7 +3,9 @@
   = render './shared/bread-crumbs'
 
 %section.item-box-container
-  %h1.item-name COACHショルダーバッグ
+  -# - @detailed_information.each do |item|
+  %h1.item-name
+    %span=@detailed_information.name
   %p.item-wording
     coachショルダーバックです。
   .item-main-content.clearfix
@@ -48,7 +50,7 @@
           %th 出品者
           %td
             = link_to "https://www.mercari.com/jp/u/108778184/" do 
-              sugi
+              %span=@detailed_information.user.nickname
             %div
               .item-user-ratings
                 %i.icon-good
@@ -97,7 +99,8 @@
           %td 2~3日で発送
 
   .item-price-box.text-center
-    %span.item-price.bold ¥7,900
+    %span.item-price.bold
+      =@detailed_information.price.to_s(:currency,format: '¥ %n')
     %span.item-tax (税込)
     %span.item-shipping-fee 送料込み
   = link_to "https://www.mercari.com/jp/transaction/buy/m61354018553/",class:"item-buy-btn" do

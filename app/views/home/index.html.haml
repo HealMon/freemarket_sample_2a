@@ -31,7 +31,7 @@
         .item-container-category__content__cards
           - @items_lady.each do |item|
             %div
-              = link_to '#', class: 'style_link' do
+              = link_to product_details_path(item.id), class: 'style_link' do
                 %figure.style_card
                   .style_thumbnail
                     %span=item.price.to_s(:currency,format: '¥ %n')
@@ -47,7 +47,7 @@
         .item-container-category__content__cards
           - @items_men.each do |item|
             %div
-              = link_to '#', class: 'style_link' do
+              = link_to product_details_path(item.id), class: 'style_link' do
                 %figure.style_card
                   .style_thumbnail
                     %span=item.price.to_s(:currency,format: '¥ %n')
@@ -63,7 +63,7 @@
         .item-container-category__content__cards
           - @items_interia.each do |item|
             %div
-              = link_to '#', class: 'style_link' do
+              = link_to product_details_path(item.id), class: 'style_link' do
                 %figure.style_card
                   .style_thumbnail
                     %span=item.price.to_s(:currency,format: '¥ %n')
