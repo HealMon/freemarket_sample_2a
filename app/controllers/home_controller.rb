@@ -13,6 +13,6 @@ class HomeController < ApplicationController
   end
 
   def products_details
-    @detailed_information = Item.find(params[:id])
+    @item = Item.find(params[:id])
   end
 end

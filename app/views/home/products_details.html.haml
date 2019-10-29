@@ -5,9 +5,7 @@
 %section.item-box-container
   -# - @detailed_information.each do |item|
   %h1.item-name
-    %span=@detailed_information.name
-  %p.item-wording
-    coachショルダーバックです。
+    %span=@item.name
   .item-main-content.clearfix
     .item-photo
       .owl-carousel.owl-loaded.owl-drag
@@ -50,7 +48,7 @@
           %th 出品者
           %td
             = link_to "https://www.mercari.com/jp/u/108778184/" do 
-              %span=@detailed_information.user.nickname
+              %span=@item.user.nickname
             %div
               .item-user-ratings
                 %i.icon-good
@@ -65,15 +63,16 @@
           %th カテゴリー
           %td
             = link_to "https://www.mercari.com/jp/category/1/" do
-              %div レディース
+              %div
+                %span=@item.category.parent.parent.name
             = link_to"https://www.mercari.com/jp/category/20/" do
               .item-detail-table-sub-category
                 %i.icon-arrow-right
-                バッグ
+                %span=@item.category.parent.name
             = link_to"https://www.mercari.com/jp/category/214/" do
               .item-detail-table-sub-sub-category
                 %i.icon-arrow-right
-                ショルダーバッグ
+                %span=@item.category.name
         %tr
           %th ブランド
           %td
@@ -100,27 +99,14 @@
 
   .item-price-box.text-center
     %span.item-price.bold
-      =@detailed_information.price.to_s(:currency,format: '¥ %n')
+      =@item.price.to_s(:currency,format: '¥ %n')
     %span.item-tax (税込)
     %span.item-shipping-fee 送料込み
   = link_to "https://www.mercari.com/jp/transaction/buy/m61354018553/",class:"item-buy-btn" do
     購入画面に進む
   .item-description.f14
     %p.item-description-inner
-      ご覧いただきありがとうございます。
-      
-      黒のパンチングネクチャー
-      
-      大きさ 幅32cm、高さ20cm、マチ8cm
-      
-      状態は良好ですが、新品ではないので、神経質な方はご遠慮下さい。
-      
-      人気の黒の革製で上品なバッグなので、年齢、洋服等気にせず合わせやすいと思います。
-      
-      ご不明な点がございましたらコメントよろしくお願いします。
-      
-      送料込みなので、簡易包装にさせていただきます。
-  .item-button-container.clearfix
+      %span=@item.description
     .item-button-left
       %button.item-button.item-button-like
         %i.icon-like-border
