@@ -203,6 +203,8 @@
   }
   .item-description-inner {
     white-space: pre-wrap;
+    word-break: break-all	;
+    margin: 0 0 10px 0;
   }
   .item-button-container {
     margin: 16px 0 0;
