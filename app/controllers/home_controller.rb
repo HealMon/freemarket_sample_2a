@@ -5,14 +5,6 @@ class HomeController < ApplicationController
     @items_interia = Item.where(grand_category_id:3).order(id: "DESC").limit(10)
   end
 
-  # def show
-  #   @detailed_information = Item.find(params[:id])
-  # end
-
   def mypage
-  end
-
-  def products_details
-    @item = Item.find(params[:id])
   end
 end

@@ -83,8 +83,12 @@
       =@item.price.to_s(:currency,format: '¥ %n')
     %span.item-tax (税込)
     %span.item-shipping-fee 送料込み
-  = link_to "https://www.mercari.com/jp/transaction/buy/m61354018553/",class:"item-buy-btn" do
-    購入画面に進む
+  - unless @item.user_id == current_user&.id
+    = link_to "https://www.mercari.com/jp/transaction/buy/m61354018553/", class:"item-buy-btn" do
+      購入画面に進む
+  - else
+    = link_to item_edit_items_path, class:"item-buy-btn" do
+      商品を編集する
   .item-description.f14
     %p.item-description-inner
       %span=@item.description

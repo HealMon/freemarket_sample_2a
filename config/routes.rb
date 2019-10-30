@@ -21,9 +21,6 @@ Rails.application.routes.draw do
     end
   end
 
-  get 'product_details/:id' => 'home#products_details',as: :product_details
-
-
   resources :user do
     collection do
       get 'edit' => 'user#user-profile-edit'
@@ -41,6 +38,9 @@ Rails.application.routes.draw do
       get '/search_grandchildren' => 'items#search_grandchildren'
       get '/search_shipping_charge' => 'items#search_shipping_methods'
       get '/get_size' => 'items#get_size'
+      get '/:id' => 'items#show', as: :item_show
+      get '/:id/edit' => 'items#edit', as: :item_edit
+      post '/:id/update' => 'items#update', as: :item_update
     end
   end
 

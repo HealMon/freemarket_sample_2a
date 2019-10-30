@@ -1,11 +1,11 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: :show
 
   def new
     @item = current_user.items.build
     @parents = Category.all.order("id ASC").limit(3)
   end
-
+  
   def create
     if current_user
       @item = current_user.items.build(
@@ -33,6 +33,42 @@ class ItemsController < ApplicationController
     end
   end
 
+  def show
+    @item = Item.find(params[:id])
+  end
+
+  def edit
+    @item = Item.find(params[:id])
+  end
+  
+  def update
+    @item = Item.find(params[:id])
+
+    unless @item.valid?
+      render action: :edit and return
+    end
+    
+    @item.update(
+      shipping_method_id: item_params[:shipping_method_id],
+      images: item_params[:images],
+      products_sizes_id: item_params[:size_id].to_i,
+      category_id: item_params[:category_id][2],
+      parent_category_id: item_params[:category_id][1],
+      grand_category_id: item_params[:category_id][0],
+      condition: item_params[:condition],
+      shipping_charge_id: item_params[:shipping_charge_id],
+      estimated_delivery_id: item_params[:estimated_delivery_id],
+      prefecture_id: item_params[:prefecture_id],
+      name: item_params[:name],
+      description: item_params[:description],
+      price: item_params[:price],
+      user_id: current_user.id
+    )
+
+    redirect_to action: :show
+  end
+
+  # JSからのアクセス
   def search_children
     respond_to do |format|
       format.html
