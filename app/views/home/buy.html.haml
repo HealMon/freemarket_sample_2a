@@ -1,14 +1,15 @@
 %header.single-header
   %section
     %h1
-      %a{href: "https://www.mercari.com/jp/"}
-      = image_tag 'logo.svg'
+      = link_to root_path do
+        = image_tag 'logo.svg'
 / #区分け１
 .buy-item-container
   %section.l-single-head
     %h2 購入内容の確認
   / #区分け２
   %section
+  = form_for pay_path, method: :post do
     %div.buy-content-inner
       / #スタイルシートにて横にまとめる
       %h3

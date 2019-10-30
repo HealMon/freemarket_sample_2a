@@ -33,6 +33,15 @@ ActiveRecord::Schema.define(version: 2019_10_23_023002) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "card_id", null: false
+    t.string "customer_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_cards_on_user_id"
+  end
+
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
@@ -50,17 +59,6 @@ ActiveRecord::Schema.define(version: 2019_10_23_023002) do
     t.index ["products_size_id"], name: "index_category_sizes_on_products_size_id"
   end
 
-  create_table "credit_cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "card_number", null: false
-    t.integer "exporation_year", null: false
-    t.integer "exporation_month", null: false
-    t.integer "cvc", null: false
-    t.bigint "user_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_credit_cards_on_user_id"
-  end
-
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.string "description", null: false
@@ -75,6 +73,7 @@ ActiveRecord::Schema.define(version: 2019_10_23_023002) do
     t.integer "parent_category_id", null: false
     t.integer "category_id", null: false
     t.integer "products_sizes_id"
+    t.integer "buyer_id"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -127,5 +126,5 @@ ActiveRecord::Schema.define(version: 2019_10_23_023002) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "credit_cards", "users"
+  add_foreign_key "cards", "users"
 end
