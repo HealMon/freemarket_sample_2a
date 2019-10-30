@@ -13,35 +13,17 @@
           .owl-stage
             .owl-item.active
               .owl-item-inner.is-higher-height
-                = image_tag "https://static.mercdn.net/item/detail/orig/photos/m61354018553_1.jpg?1570595655",class:"owl-lazy"
+                = image_tag @item.images[0]
         .owl-nav.disabled
           .owl-prev prev
           .owl-next next
         .owl-dots
-          .owl-dot.active
-            %span
             .owl-dot-inner
-              = image_tag "https://static.mercdn.net/item/detail/orig/photos/m61354018553_1.jpg?1570595655",class:"is-higher-height"
-          .owl-dot
-            %span
-            .owl-dot-inner
-              = image_tag "https://static.mercdn.net/item/detail/orig/photos/m61354018553_2.jpg?1570595655" ,class:"is-higher-height"
-          .owl-dot
-            %span
-            .owl-dot-inner
-              = image_tag "https://static.mercdn.net/item/detail/orig/photos/m61354018553_3.jpg?1570595655",class:"is-higher-height"
-          .owl-dot
-            %span
-            .owl-dot-inner
-              = image_tag "https://static.mercdn.net/item/detail/orig/photos/m61354018553_4.jpg?1570595655",class:"is-higher-height"
-          .owl-dot
-            %span
-            .owl-dot-inner
-              = image_tag "https://static.mercdn.net/item/detail/orig/photos/m61354018553_5.jpg?1570595655",class:"is-higher-height"
-          .owl-dot
-            %span
-            .owl-dot-inner
-              = image_tag "https://static.mercdn.net/item/detail/orig/photos/m61354018553_6.jpg?1570595655",class:"is-higher-height"
+          - @item.images.each do |image|
+            .owl-dot.active
+              %span
+              .owl-dot-inner
+                = image_tag image
     %table.item-detail-table
       %tbody
         %tr
@@ -81,21 +63,21 @@
                 コーチ
         %tr
           %th 商品の状態
-          %td 目立った傷や汚れなし
+          %td=Condition.find(@item.condition).name
         %tr
           %th 配送料の負担
-          %td 送料込み(出品者負担)
+          %td=@item.shipping_charge.name
         %tr
           %th 配送の方法
-          %td らくらくメルカリ便
+          %td=@item.shipping_method.name
         %tr
           %th 配送元地域
           %td
             = link_to"https://www.mercari.com/jp/area/27/" do
-              大阪府
+              = @item.prefecture.name
         %tr
           %th 発送日の目安
-          %td 2~3日で発送
+          %td=@item.estimated_delivery.name
 
   .item-price-box.text-center
     %span.item-price.bold
