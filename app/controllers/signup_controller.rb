@@ -18,26 +18,15 @@ class SignupController < ApplicationController
 
   def address
     @user = User.new
-
   end
 
   def payment
-    @credit_card = CreditCard.new
   end
 
-  def congrats
-    
+  def congrats 
   end
 
   def create
-      if @credit_card.valid? # credit_cardもvalid: trueなら
-        @credit_card.save
-        session[:id] = @user.id
-        redirect_to congrats_signup_index_path
-      else 
-        User.last.delete
-        render action: :payment 
-      end
   end
 
 
@@ -67,10 +56,6 @@ class SignupController < ApplicationController
       :delivery_first_name_kana,
       :delivery_phone_number
     )
-  end
-
-  def credit_card_params
-    params.require(:credit_card).permit(:card_number, :exporation_year,:exporation_month, :cvc)
   end
 
   def validates_step1
@@ -114,6 +99,7 @@ class SignupController < ApplicationController
   end
 
   def validates_step2
+
     session[:delivery_last_name]        = user_params[:delivery_last_name]
     session[:delivery_first_name]       = user_params[:delivery_first_name]
     session[:delivery_last_name_kana]   = user_params[:delivery_last_name_kana]
@@ -154,41 +140,51 @@ class SignupController < ApplicationController
   end
 
   def validates_step3
-      session[:card_number]      = credit_card_params[:card_number]
-      session[:exporation_year]  = credit_card_params[:exporation_year]
-      session[:exporation_month]  = credit_card_params[:exporation_month]
-      session[:cvc]              = credit_card_params[:cvc]
-      
-      @user = User.create(
-        nickname:                 session[:nickname],
-        email:                    session[:email],
-        password:                 session[:password],
-        password_confirmation:    session[:password_confirmation],
-        last_name:                session[:last_name],
-        first_name:               session[:first_name],
-        last_name_kana:           session[:last_name_kana],
-        first_name_kana:          session[:first_name_kana],
-        phone_number:             session[:phone_number],
-        zipcode:                  session[:zipcode],
-        prefecture_id:            session[:prefecture_id],
-        city:                     session[:city],
-        address:                  session[:address],
-        birth_year:               session[:birth_year],
-        birth_month:              session[:birth_month],
-        birth_day:                session[:birth_day],
-        delivery_last_name:       session[:delivery_last_name],
-        delivery_first_name:      session[:delivery_first_name],
-        delivery_last_name_kana:  session[:delivery_last_name_kana],
-        delivery_first_name_kana: session[:delivery_first_name_kana],
-        delivery_phone_number:    session[:delivery_phone_number]
-      )
-      @credit_card = @user.credit_cards.build(
-        card_number:            session[:card_number],
-        exporation_year:        session[:exporation_year],
-        exporation_month:       session[:exporation_month],
-        cvc:                    session[:cvc]
-      )
-      
-  end
+    @user = User.create(
+      nickname:                 session[:nickname],
+      email:                    session[:email],
+      password:                 session[:password],
+      password_confirmation:    session[:password_confirmation],
+      last_name:                session[:last_name],
+      first_name:               session[:first_name],
+      last_name_kana:           session[:last_name_kana],
+      first_name_kana:          session[:first_name_kana],
+      phone_number:             session[:phone_number],
+      zipcode:                  session[:zipcode],
+      prefecture_id:            session[:prefecture_id],
+      city:                     session[:city],
+      address:                  session[:address],
+      birth_year:               session[:birth_year],
+      birth_month:              session[:birth_month],
+      birth_day:                session[:birth_day],
+      delivery_last_name:       session[:delivery_last_name],
+      delivery_first_name:      session[:delivery_first_name],
+      delivery_last_name_kana:  session[:delivery_last_name_kana],
+      delivery_first_name_kana: session[:delivery_first_name_kana],
+      delivery_phone_number:    session[:delivery_phone_number]
+    )
 
+    get_user_id = User.last.id # 先程登録したユーザーのid
+    secret_key = Rails.application.credentials[:secret_payjp_key]
+    Payjp.api_key = secret_key
+    if params['payjpToken'].blank?
+      # paramsの中にjsで作った'payjpTokenが存在するか確かめる
+      redirect_to action: "payment"
+    else
+      customer = Payjp::Customer.create(
+      card: params['payjpToken'],
+      metadata: {user_id: get_user_id}
+      )
+      # ↑ここでpay.jpに保存
+      @card = Card.new(user_id: get_user_id, customer_id: customer.id, card_id: customer.default_card)
+      # ここでdbに保存
+      if @card.save
+        session[:id] = @user.id # TODO: ユーザーのログイン処理を入れる
+        redirect_to action: "congrats"
+      else
+        User.last.delete
+        redirect_to action: "payment"
+      end
+    end
+  end
 end

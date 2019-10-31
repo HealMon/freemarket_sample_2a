@@ -1,0 +1,63 @@
+%header.single-header
+  %section
+    %h1
+      = link_to root_path do
+        = image_tag 'logo.svg'
+
+.done-item-container
+  %main.single-main
+    %section.buy-item-container
+      .transact-attention
+        %h3
+          = fa_icon 'history'
+          %span 発送をお待ちください
+        %p 出品者からの発送通知をお待ちください
+      %h2.header-title 購入が完了しました
+      %section.buy-content.buy-item
+        .buy-content-inner
+          %h3.buy-item-image
+            = image_tag @item.images[0]
+            %p.buy-item-name.bold
+              = @item.name
+      %section.buy-content.buy-user-info.buy-item
+        .buy-content-inner
+          %p.buy-price-ja.bold
+            = @item.price.to_s(:currency,format: '¥ %n')
+            %span.item-shipping-fee.f14.bold 着払い
+      %section.buy-content.buy-user-info
+        .buy-content-inner2
+          %h3 配送先
+          %address.buy-user-info-text
+            〒
+            = format_zipcode(current_user.zipcode)
+            %br/
+            = formated_address
+            %br/
+            = formated_address_name
+            %br/
+      %section.buy-content.buy-user-info{"data-buy" => "pay-method"}
+        .buy-content-inner2
+          %h3 支払い方法
+          %p.buy-user-info-text
+            = formated_card_number(@card)
+            %br/
+            = formated_card_time_limit(@card)
+          %figur  
+            = image_tag "#{formated_card_brand(@card)}"
+      %section.buy-content.buy-done-flow
+        %h3 発送通知後の流れ
+        %div
+          %i.icon-good
+          %i.icon-normal
+          %i.icon-bad
+        %p
+          商品を受け取ったら
+          %br>/
+          出品者の評価をしましょう。
+          %br>/
+          購入代金が出品者に振り込まれます。
+          %br>/
+          評価後に取引は完了です。
+        = link_to mypage_path, class: "bold" do
+          マイページへもどる
+= render 'devise/shared/footer'

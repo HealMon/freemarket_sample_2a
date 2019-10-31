@@ -15,14 +15,11 @@ Rails.application.routes.draw do
       get 'sms_confirmation/sms' => 'signup#phone2'
       get 'address' => 'signup#address'
       get 'credit_card' => 'signup#payment'
-      get 'congrats' => 'signup#congrats'
       get 'user_profile_edit' => 'signup#user_profile_edit'
-      post 'congrats' => 'signup#create'
+      get 'congrats' => 'signup#congrats'
+      post 'congrats' => 'signup#create', as: :signup_create
     end
   end
-
-  get 'product_details/:id' => 'home#products_details',as: :product_details
-
 
   resources :user do
     collection do
@@ -32,7 +29,14 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :credit_card, only: [:new]
+  #他のブランチで作業していることがあるのでマージしてからresoucesに変えます。
+  resources :mypage, only: [:new] do
+    collection do
+      get 'card' => 'cards#mypage_card'
+      get 'card/create' => 'cards#new' # 新規登録ページに飛ぶ
+      post 'card/create' => 'cards#create'
+    end
+  end
 
   resources :items, only: [:create] do 
     collection do
@@ -44,12 +48,11 @@ Rails.application.routes.draw do
     end
   end
 
-
+  #他のブランチで作業していることがあるのでマージしてからresoucesに変えます。
   root to: 'home#index'
   get 'mypage' => 'home#mypage' # マイページ
-  
-  get 'purchase' => 'home#purchase' # 商品購入ページ
-
-  get 'mypage/card/' => 'home#mypage_card'
-
+  get ':id' => 'home#item_detail', as: :item_detail # 商品詳細
+  get 'buy/:id' => 'home#buy', as: :buy # 購入内容の確認
+  post 'buy/:id' => 'home#pay', as: :pay
+  get 'buy/:id/done' => 'home#done', as: :done
 end
