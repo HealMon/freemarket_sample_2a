@@ -30,7 +30,7 @@ class CardsController < ApplicationController
     end
 
     def mypage_card
-      unless current_user.card.blank?        
+      if current_user.card.present?        
         Payjp.api_key = Rails.application.credentials[:secret_payjp_key]
         card = Card.where(user_id: current_user.id)[0]
         customer = Payjp::Customer.retrieve(card.customer_id)
