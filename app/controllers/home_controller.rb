@@ -6,14 +6,20 @@ class HomeController < ApplicationController
   end
 
   def mypage
+    
   end
 
   def item_detail
-    @detailed_information = Item.find(params[:id])
+    @item = Item.find(params[:id])
   end
 
   def buy
-
+    @item = Item.find(params[:id])
+    require 'payjp'
+    Payjp.api_key = Rails.application.credentials[:secret_payjp_key]
+    card = Card.where(user_id: current_user.id)[0]
+    customer = Payjp::Customer.retrieve(card.customer_id)
+    @card = customer.cards.retrieve(card.card_id)
   end
 
   def pay
@@ -37,7 +43,7 @@ class HomeController < ApplicationController
       )
     # ↑商品の金額をamountへ、cardの顧客idをcustomerへ、currencyをjpyへ入れる
       if @item.update(trade_status: 2, buyer_id: current_user.id) #TODO: 出品者は自分の物は買えない
-        redirect_to root_path # TODO: flashの追加
+        redirect_to done_path(@item.id) # TODO: flashの追加
       else
         redirect_to controller: "products", action: 'show'
       end
@@ -45,5 +51,13 @@ class HomeController < ApplicationController
     end
   end
 
+  def done
+    @item = Item.find(params[:id])
+    require 'payjp'
+    Payjp.api_key = Rails.application.credentials[:secret_payjp_key]
+    card = Card.where(user_id: current_user.id)[0]
+    customer = Payjp::Customer.retrieve(card.customer_id)
+    @card = customer.cards.retrieve(card.card_id)
+  end
 
 end

@@ -30,5 +30,10 @@ class CardsController < ApplicationController
     end
 
     def mypage_card
+      require 'payjp'
+      Payjp.api_key = Rails.application.credentials[:secret_payjp_key]
+      card = Card.where(user_id: current_user.id)[0]
+      customer = Payjp::Customer.retrieve(card.customer_id)
+      @card = customer.cards.retrieve(card.card_id)
     end
 end

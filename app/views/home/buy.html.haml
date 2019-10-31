@@ -15,9 +15,10 @@
       %h3
         %a{href: "https://www.mercari.com/jp/"}
         = image_tag 'member_photo_noimage_thumb.png', size: "64x64"
-      .item-name.bold ショルダーバッグコーチ　ショルダーバッグコーチ
+      .item-name.bold 
+        = @item.name
       .buy-price-ja.bold
-        ¥3,800
+        = @item.price.to_s(:currency,format: '¥ %n')
         %span.item-shipping-fee.f14.bold 送料込み
       %ul.buy-accordion
         %li.accordion-parent
@@ -26,18 +27,20 @@
         %li.buy-price-row
           .buy-price-cell-left 支払い金額
           .buy-price-cell-right
-            %span{"data-buy-pay" => "3800"} ¥3,800
+            %span= @item.price.to_s(:currency,format: '¥ %n')
       %button.btn-default.btn-red{:type => "submit"} 購入する
   / #区分け3
   %section.buy-content
     .buy-content-inner2
       %h3 配送先
       %address.buy-user-info-text
-        〒xxx-xxxx
-        = succeed "\u9AD8\u77E5\u770C" do
-          %br/
-        = succeed "\u771F\u934B" do
-          %br/
+        〒
+        = format_zipcode(current_user.zipcode)
+        %br/
+        = formated_address
+        %br/
+        = formated_address_name
+        %br/
       %p
       %a.buy-user-info-fix{:href => "https://www.mercari.com/jp/transaction/address/m99710133600/"}
         %span 変更する
@@ -47,11 +50,11 @@
     .buy-content-inner2
       %h3 支払い方法
       %p.buy-user-info-text
-        ************xxxx
-        = succeed "xx" do
-          %br/
+        = formated_card_number(@card)
+        %br/
+        = formated_card_time_limit(@card)
       %figur
-        %img{:alt => "master-card", :height => "20", :src => "//www-mercari-jp.akamaized.net/assets/img/card/master-card.svg?3466462615", :width => "34"}/
+        %img{:alt => "master-card", :height => "20", :src => "#{formated_card_brand(@card)}", :width => "34"}/
       %a.buy-user-info-fix{:href => "https://www.mercari.com/jp/transaction/select_card/m99710133600/"}
         %span 変更する
         = fa_icon 'chevron-right'

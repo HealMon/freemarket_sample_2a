@@ -3,9 +3,9 @@
   = render './shared/bread-crumbs'
 
 %section.item-box-container
-  -# - @detailed_information.each do |item|
+  -# - @item.each do |item|
   %h1.item-name
-    %span=@detailed_information.name
+    %span=@item.name
   %p.item-wording
     coachショルダーバックです。
   .item-main-content.clearfix
@@ -50,7 +50,7 @@
           %th 出品者
           %td
             = link_to "https://www.mercari.com/jp/u/108778184/" do 
-              %span=@detailed_information.user.nickname
+              %span=@item.user.nickname
             %div
               .item-user-ratings
                 %i.icon-good
@@ -100,11 +100,16 @@
 
   .item-price-box.text-center
     %span.item-price.bold
-      =@detailed_information.price.to_s(:currency,format: '¥ %n')
+      =@item.price.to_s(:currency,format: '¥ %n')
     %span.item-tax (税込)
     %span.item-shipping-fee 送料込み
-  = link_to buy_path(@item.id),class:"item-buy-btn" do
-    購入画面に進む
+  - if (@item.trade_status == 2)
+    = link_to "#", class:"btn-gry mt-4" do
+      売り切れました
+  - else
+    - unless @item.user_id == current_user&.id # 自分のアイテムの場合は「購入ボタン」表示しない
+      = link_to buy_path(@item.id), class:"item-buy-btn" do
+        購入画面に進む
   .item-description.f14
     %p.item-description-inner
       ご覧いただきありがとうございます。
@@ -137,6 +142,22 @@
         %i.icon-lock
         %span あんしん・あんぜんへの取り組み
 
+- if @item.user_id == current_user&.id
+  .control-area
+    .edit-button
+      = link_to "#", class:"btn-red" do
+        商品の編集
+      %p or
+      - if @item.trade_status == 1
+        = link_to "#", class:"btn-gry" do
+          出品を一旦停止する
+      - if @item.trade_status == 3 
+        = link_to "#", class:"btn-red" do
+          出品を再開する
+      %br  
+      = link_to "#", class:"btn-gry" do
+        この商品を削除する
+            
 .item-detail-message.pb-4
   .message-container
     .message-content
