@@ -8,19 +8,19 @@ class CardsController < ApplicationController
       Payjp.api_key = secret_key
       if params['payjpToken'].blank?
         # paramsの中にjsで作った'payjpTokenが存在するか確かめる
-        redirect_to action: "new"
+        redirect_to card_create_mypage_index_path
       else
         customer = Payjp::Customer.create(
-        card: params['payjpToken'],
-        metadata: {user_id: current_user.id}
+          card: params['payjpToken'],
+          metadata: {user_id: current_user.id}
         )
         # ↑ここでpay.jpに保存
         @card = Card.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
         # ここでdbに保存
         if @card.save
-          redirect_to action: "show"
+          redirect_to card_mypage_index_path
         else
-          redirect_to action: "new"
+          redirect_to card_create_mypage_index_path
         end
       end
     end
@@ -30,7 +30,6 @@ class CardsController < ApplicationController
     end
 
     def mypage_card
-      require 'payjp'
       Payjp.api_key = Rails.application.credentials[:secret_payjp_key]
       card = Card.where(user_id: current_user.id)[0]
       customer = Payjp::Customer.retrieve(card.customer_id)

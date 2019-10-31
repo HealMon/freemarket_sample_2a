@@ -28,21 +28,21 @@ class HomeController < ApplicationController
       redirect_to card_create_mypage_index_path # カード登録ページへ
     else 
       @item = Item.find(params[:id])
-    # 購入した際の情報を元に引っ張ってくる
+      # 購入した際の情報を元に引っ張ってくる
       Payjp.api_key = Rails.application.credentials[:secret_payjp_key]
-    # キーをセットする
+      # キーをセットする
       Payjp::Charge.create(
       amount: @item.price, #支払金額
       customer: card.customer_id, #顧客ID
       currency: 'jpy', #日本円
       )
-    # ↑商品の金額をamountへ、cardの顧客idをcustomerへ、currencyをjpyへ入れる
+      # ↑商品の金額をamountへ、cardの顧客idをcustomerへ、currencyをjpyへ入れる
       if @item.update(trade_status: 2, buyer_id: current_user.id) #TODO: 出品者は自分の物は買えない
         redirect_to done_path(@item.id) # TODO: flashの追加
       else
-        redirect_to controller: "products", action: 'show'
+        redirect_to item_detail_path
       end
-    #↑この辺はこちら側のテーブル設計どうりに色々しています
+      #↑この辺はこちら側のテーブル設計どうりに色々しています
     end
   end
 

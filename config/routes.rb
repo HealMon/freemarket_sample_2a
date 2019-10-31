@@ -29,7 +29,7 @@ Rails.application.routes.draw do
     end
   end
 
-
+  #他のブランチで作業していることがあるのでマージしてからresoucesに変えます。
   resources :mypage, only: [:new] do
     collection do
       get 'card' => 'cards#mypage_card'
@@ -48,7 +48,7 @@ Rails.application.routes.draw do
     end
   end
 
-
+  #他のブランチで作業していることがあるのでマージしてからresoucesに変えます。
   root to: 'home#index'
   get 'mypage' => 'home#mypage' # マイページ
   get ':id' => 'home#item_detail', as: :item_detail # 商品詳細
