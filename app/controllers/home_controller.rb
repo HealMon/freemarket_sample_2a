@@ -1,4 +1,7 @@
 class HomeController < ApplicationController
+  before_action set_item, only: [:item_detail, :buy, :done]
+  before_action set_card, only: [:buy, :done]
+
   def index
     @items_lady = Item.where(grand_category_id:1).order(id: "DESC").limit(10) # category指定を後で変更予定
     @items_men = Item.where(grand_category_id:2).order(id: "DESC").limit(10)
@@ -6,20 +9,12 @@ class HomeController < ApplicationController
   end
 
   def mypage
-    
   end
 
   def item_detail
-    @item = Item.find(params[:id])
   end
 
   def buy
-    @item = Item.find(params[:id])
-    require 'payjp'
-    Payjp.api_key = Rails.application.credentials[:secret_payjp_key]
-    card = Card.where(user_id: current_user.id)[0]
-    customer = Payjp::Customer.retrieve(card.customer_id)
-    @card = customer.cards.retrieve(card.card_id)
   end
 
   def pay
@@ -52,7 +47,16 @@ class HomeController < ApplicationController
   end
 
   def done
+    
+  end
+
+  
+  private
+  def set_item
     @item = Item.find(params[:id])
+  end
+
+  def set_card
     require 'payjp'
     Payjp.api_key = Rails.application.credentials[:secret_payjp_key]
     card = Card.where(user_id: current_user.id)[0]
