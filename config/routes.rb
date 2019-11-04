@@ -55,4 +55,5 @@ Rails.application.routes.draw do
   get 'buy/:id' => 'home#buy', as: :buy # 購入内容の確認
   post 'buy/:id' => 'home#pay', as: :pay
   get 'buy/:id/done' => 'home#done', as: :done
+  delete 'items/:id' => 'home#index', as: :item_delete # 削除
 end
