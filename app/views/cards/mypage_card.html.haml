@@ -11,7 +11,7 @@
             %section
               %h3 クレジットカード一覧
             - if current_user.card.present? # カードが存在するとき
-              = image_tag "#{formated_card_brand(@card)}"
+              = image_tag "#{formated_card_brand(@card)}", height: '60'
               %br
               = formated_card_number(@card)
               %br
