@@ -84,6 +84,13 @@ class ItemsController < ApplicationController
       end
     end
   end
+
+  def destroy
+    @item = Item.find(params[:id])
+      if user_signed_in? == current_user.id
+        item.destroy
+      end
+  end
   
   private
   def item_params

@@ -122,7 +122,7 @@
         = link_to "#", class:"btn-red" do
           出品を再開する
       %br  
-      = link_to "#", class:"btn-gry" do
+      = link_to item_delete_items_path, method: :delete, class:"btn-gry" do
         この商品を削除する
             
 .item-detail-message.pb-4
