@@ -3,7 +3,6 @@
   = render './shared/bread-crumbs'
 
 %section.item-box-container
-  -# - @item.each do |item|
   %h1.item-name
     %span=@item.name
 
@@ -89,7 +88,7 @@
       売り切れました
   - else
     - unless @item.user_id == current_user&.id # 自分のアイテムの場合は「購入ボタン」表示しない
-      = link_to buy_path(@item.id), class:"item-buy-btn" do
+      = link_to purchase_buy_path(@item.id), class:"item-buy-btn" do
         購入画面に進む
   .item-description.f14
     %p.item-description-inner

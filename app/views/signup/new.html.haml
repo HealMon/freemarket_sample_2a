@@ -56,7 +56,7 @@
               = f.label "パスワード"
               %span.form-group--require 必須
               %br/
-              = f.password_field :password, placeholder:"7文字以上",class:'input-default'
+              = f.password_field :password, placeholder:"７文字以上（数字含む）",class:'input-default'
               - if @user.errors.messages[:password].present?
                 - @user.errors.messages[:password].each do |message|
                   %ul.error-message
@@ -66,7 +66,7 @@
               = f.label "パスワード（確認）"
               %span.form-group--require 必須
               %br/
-              = f.password_field :password_confirmation, placeholder:"７文字以上",class:'input-default'
+              = f.password_field :password_confirmation, placeholder:"７文字以上（数字含む）",class:'input-default'
               - if @user.errors.messages[:password_confirmation].present?
                 - @user.errors.messages[:password_confirmation].each do |message|
                   %ul.error-message

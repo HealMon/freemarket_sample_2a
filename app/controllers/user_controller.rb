@@ -3,6 +3,8 @@ class UserController < ApplicationController
   end
 
   def update
+  end
 
+  def profile
   end
 end

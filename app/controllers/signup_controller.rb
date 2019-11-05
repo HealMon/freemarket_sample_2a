@@ -31,7 +31,6 @@ class SignupController < ApplicationController
 
 
   private
-
   def user_params
     params.require(:user).permit(
       :nickname, 
@@ -169,7 +168,7 @@ class SignupController < ApplicationController
     Payjp.api_key = secret_key
     if params['payjpToken'].blank?
       # paramsの中にjsで作った'payjpTokenが存在するか確かめる
-      redirect_to action: "payment"
+      render action: :payment
     else
       customer = Payjp::Customer.create(
       card: params['payjpToken'],
@@ -180,10 +179,11 @@ class SignupController < ApplicationController
       # ここでdbに保存
       if @card.save
         session[:id] = @user.id # TODO: ユーザーのログイン処理を入れる
-        redirect_to action: "congrats"
+        
+        redirect_to congrats_signup_index_path
       else
         User.last.delete
-        redirect_to action: "payment"
+        render action: :payment
       end
     end
   end

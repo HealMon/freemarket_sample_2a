@@ -1,18 +1,6 @@
-class HomeController < ApplicationController
-  before_action :set_item, only: [:item_detail, :buy, :done]
+class PurchaseController < ApplicationController
+  before_action :set_item, only: [:buy, :done]
   before_action :set_card, only: [:buy, :done]
-
-  def index
-    @items_lady = Item.where(grand_category_id:1).order(id: "DESC").limit(10) # category指定を後で変更予定
-    @items_men = Item.where(grand_category_id:2).order(id: "DESC").limit(10)
-    @items_interia = Item.where(grand_category_id:3).order(id: "DESC").limit(10)
-  end
-
-  def mypage
-  end
-
-  def item_detail
-  end
 
   def buy
   end
@@ -38,16 +26,15 @@ class HomeController < ApplicationController
       )
       # ↑商品の金額をamountへ、cardの顧客idをcustomerへ、currencyをjpyへ入れる
       if @item.update(trade_status: 2, buyer_id: current_user.id) #TODO: 出品者は自分の物は買えない
-        redirect_to done_path(@item.id) # TODO: flashの追加
+        redirect_to purchase_done_path(@item.id) # TODO: flashの追加
       else
-        redirect_to item_detail_path
+        redirect_to item_path
       end
       #↑この辺はこちら側のテーブル設計どうりに色々しています
     end
   end
 
   def done
-    
   end
 
   
@@ -58,7 +45,7 @@ class HomeController < ApplicationController
 
   def set_card
     if current_user.card.blank?
-      redirect_to card_create_mypage_index_path
+      redirect_to card_mypage_index_path
     else
       require 'payjp'
       Payjp.api_key = Rails.application.credentials[:secret_payjp_key]
@@ -67,5 +54,4 @@ class HomeController < ApplicationController
       @card = customer.cards.retrieve(card.card_id)
     end
   end
-
 end

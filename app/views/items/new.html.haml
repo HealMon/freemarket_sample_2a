@@ -32,7 +32,7 @@
                 %label 商品名
                 %span.form-group--require 必須
                 %br/
-                = f.text_field :name, class: "input-default", placeholder:"商品名(必須40文字まで)",value:""
+                = f.text_field :name, class: "input-default", placeholder:"商品名(必須40文字まで)", value: @item.name
                 - if @item.errors.messages[:name].present?
                   - @item.errors.messages[:name].each do |message|
                     %ul.error-message
@@ -41,7 +41,7 @@
                 %label 商品の説明
                 %span.form-group--require 必須
                 %br/
-                = f.text_area :description, class:"textarea-default", placeholder: "商品の説明(必須1,000文字以内) (色、素材、重さ、定価、注意点など) 例)2010年頃に1万円で購入したジャケットです。ライドグレーで傷はありません。合わせやすいのでおすすめです。",rows:"5",value:""
+                = f.text_area :description, class:"textarea-default", placeholder: "商品の説明(必須1,000文字以内) (色、素材、重さ、定価、注意点など) 例)2010年頃に1万円で購入したジャケットです。ライドグレーで傷はありません。合わせやすいのでおすすめです。",rows:"5",value: @item.description
                 - if @item.errors.messages[:description].present?
                   - @item.errors.messages[:description].each do |message|
                     %ul.error-message

@@ -1,5 +1,11 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:index, :show]
+
+  def index
+    @items_lady = Item.where(grand_category_id:1).order(id: "DESC").limit(10) # category指定を後で変更予定
+    @items_men = Item.where(grand_category_id:2).order(id: "DESC").limit(10)
+    @items_interia = Item.where(grand_category_id:3).order(id: "DESC").limit(10)
+  end
 
   def new
     @item = current_user.items.build
@@ -25,12 +31,16 @@ class ItemsController < ApplicationController
         products_sizes_id: item_params[:size_id].to_i 
       )
     end
-
+    
     if @item.save
       redirect_to root_path
     else
-      render '/items/new'
+      render 'items/new'
     end
+  end
+
+  def show
+    @item = Item.find(params[:id])
   end
 
   def search_children

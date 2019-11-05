@@ -52,13 +52,13 @@
               -#   %em
               -#     (#{@minimum_password_length} characters minimum)
               %br/
-              = f.password_field :password, placeholder:"7文字以上",class:'input-default'
+              = f.password_field :password, placeholder:"7文字以上（数字含む）",class:'input-default'
           .form-group
             .field
               = f.label "パスワード（確認）"
               %span.form-group--require 必須
               %br/
-              = f.password_field :password_confirmation, placeholder:"７文字以上",class:'input-default'
+              = f.password_field :password_confirmation, placeholder:"７文字以上（数字含む）",class:'input-default'
           .form-group
             = f.label "本人確認"  
             %p.container-main__text
