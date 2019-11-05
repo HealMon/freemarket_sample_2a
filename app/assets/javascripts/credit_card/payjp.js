@@ -4,7 +4,6 @@ $(function(){
   $("#card_btn").on("click", function (e) {
     e.preventDefault();
     
-    debugger
     var card = {
       number: $("#card_number").val(),
       cvc: $("#card_cvc").val(),

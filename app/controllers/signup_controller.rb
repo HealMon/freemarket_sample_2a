@@ -179,8 +179,9 @@ class SignupController < ApplicationController
       # ここでdbに保存
       if @card.save
         session[:id] = @user.id # TODO: ユーザーのログイン処理を入れる
-        
-        redirect_to congrats_signup_index_path
+
+        sign_in @user
+        redirect_to congrats_signup_index_path # 最初に記述していたもの
       else
         User.last.delete
         render action: :payment
