@@ -28,7 +28,7 @@
         %tr
           %th 出品者
           %td
-            = link_to "https://www.mercari.com/jp/u/108778184/" do 
+            = link_to "#" do 
               %span=@item.user.nickname
             %div
               .item-user-ratings
@@ -43,21 +43,21 @@
         %tr
           %th カテゴリー
           %td
-            = link_to "https://www.mercari.com/jp/category/1/" do
+            = link_to "#" do
               %div
                 %span=@item.category.parent.parent.name
-            = link_to"https://www.mercari.com/jp/category/20/" do
+            = link_to"#" do
               .item-detail-table-sub-category
                 %i.icon-arrow-right
                 %span=@item.category.parent.name
-            = link_to"https://www.mercari.com/jp/category/214/" do
+            = link_to"#" do
               .item-detail-table-sub-sub-category
                 %i.icon-arrow-right
                 %span=@item.category.name
         %tr
           %th ブランド
           %td
-            = link_to"https://www.mercari.com/jp/brand/539/" do
+            = link_to"#" do
               %div
                 コーチ
         %tr
@@ -72,7 +72,7 @@
         %tr
           %th 配送元地域
           %td
-            = link_to"https://www.mercari.com/jp/area/27/" do
+            = link_to"#" do
               = @item.prefecture.name
         %tr
           %th 発送日の目安
@@ -84,7 +84,7 @@
     %span.item-tax (税込)
     %span.item-shipping-fee 送料込み
   - if (@item.trade_status == 2)
-    = link_to "#", class:"btn-gry mt-4" do
+    = link_to "#", class:"btn-gry nonclick mt-4" do
       売り切れました
   - else
     - unless @item.user_id == current_user&.id # 自分のアイテムの場合は「購入ボタン」表示しない
@@ -109,7 +109,7 @@
         %i.icon-lock
         %span あんしん・あんぜんへの取り組み
 
-- if @item.user_id == current_user&.id
+- if (@item.user_id == current_user&.id) && (@item.trade_status != 2) 
   .control-area
     .edit-button
       = link_to "#", class:"btn-red" do
@@ -129,12 +129,9 @@
   .message-container
     .message-content
       %form.message-form{action: "https://www.mercari.com/jp/comment/add/", method: "POST"}
-        %input{name: "__csrf_value", type: "hidden", value: "2ee3ef87b93078e25e5f53367d18bdf4ff687f333b583923c2174940bd0a5cd24d3e642fc3fe5d15afdd5713b614794da3f4331ba51dc85ebe905ad8bde490282"}
         %p 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
-        %input{name: "item_id", type: "hidden", value: "m61354018553"}
-        %input{name: "redirect_url_key", type: "hidden", value: "item_detail"}
         %textarea.textarea-default{name: "body", type: "text",value: ""}
-        %button.message-submit.btn-default.btn-gray{type: "submit"}
+        %button.message-submit.btn-default.btn-gray{type: "button"}
           %span コメントする
       
   
