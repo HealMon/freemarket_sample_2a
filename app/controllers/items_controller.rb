@@ -38,11 +38,19 @@ class ItemsController < ApplicationController
       render 'items/new'
     end
   end
-
+  
   def show
     @item = Item.find(params[:id])
   end
-
+  
+  def destroy
+    @item = Item.find(params[:id])
+    if user_signed_in? && current_user.id == @item.user_id
+      @item.destroy
+      redirect_to root_path
+    end
+  end
+  
   def search_children
     respond_to do |format|
       format.html
@@ -85,12 +93,6 @@ class ItemsController < ApplicationController
     end
   end
 
-  def destroy
-    @item = Item.find(params[:id])
-      if user_signed_in? == current_user.id
-        item.destroy
-      end
-  end
   
   private
   def item_params

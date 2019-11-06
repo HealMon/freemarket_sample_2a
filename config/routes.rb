@@ -44,7 +44,6 @@ Rails.application.routes.draw do
       get '/search_grandchildren' => 'items#search_grandchildren'
       get '/search_shipping_charge' => 'items#search_shipping_methods'
       get '/get_size' => 'items#get_size'
-      delete '/:id'  => 'items#destroy', as: :item_delete
     end
   end
 
