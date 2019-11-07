@@ -45,6 +45,14 @@ class ItemsController < ApplicationController
   end
   
   def destroy
+    if user_signed_in? && current_user.id == @item.user_id
+      begin
+        @item.destroy
+        redirect_to root_path
+      rescue => error
+        puts error
+      end
+    end
   end
   
   def search_children
