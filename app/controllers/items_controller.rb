@@ -39,6 +39,39 @@ class ItemsController < ApplicationController
     end
   end
 
+  def edit
+    @item = Item.find(params[:id])
+    @parent_category = Category.find(@item.grand_category_id).children
+    @grand_category = Category.find(@item.parent_category_id).children
+  end
+
+  def update
+    @item = Item.find(params[:id])
+    if @item.user_id == current_user.id
+      @item.update(
+        shipping_method_id: item_params[:shipping_method_id],
+        condition: item_params[:condition],
+        grand_category_id: item_params[:category_id][0],
+        parent_category_id: item_params[:category_id][1],
+        category_id: item_params[:category_id][2],
+        shipping_charge_id: item_params[:shipping_charge_id],
+        estimated_delivery_id: item_params[:estimated_delivery_id],
+        prefecture_id: item_params[:prefecture_id],
+        name: item_params[:name],
+        description: item_params[:description],
+        price: item_params[:price],
+        images: item_params[:images],
+        products_sizes_id: item_params[:size_id].to_i
+      )
+      if @item.valid?
+        redirect_to item_path
+      else
+        render 'items/edit'
+      end
+    end
+  end
+
+
   def show
     @item = Item.find(params[:id])
   end
