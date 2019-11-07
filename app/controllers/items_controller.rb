@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
+  before_action :set_item, only: [:destroy]
 
   def index
     @items_lady = Item.where(grand_category_id:1).order(id: "DESC").limit(10) # category指定を後で変更予定
@@ -47,6 +48,8 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     if user_signed_in? && current_user.id == @item.user_id
       @item.destroy
+      redirect_to root_path
+    else
       redirect_to root_path
     end
   end
