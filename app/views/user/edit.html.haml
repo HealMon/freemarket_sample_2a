@@ -1,6 +1,8 @@
 .global
   = render './shared/global-header'
-  = render './shared/bread-crumbs'
+  .head-list
+    - breadcrumb :identification
+    = render "shared/breadcrumbs"
   %main.main-container
     .content
       %h2.content__head

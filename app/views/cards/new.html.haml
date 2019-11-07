@@ -1,7 +1,8 @@
 .global
   = render './shared/global-header'
-  = render './shared/bread-crumbs'
-
+  .head-list
+    - breadcrumb :create
+    = render "shared/breadcrumbs"
   %main.main-container-credit-card
     .content
       %h2.container-main__head
