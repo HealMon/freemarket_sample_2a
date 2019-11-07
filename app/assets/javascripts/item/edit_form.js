@@ -60,13 +60,11 @@ $(function () {
       })
       .done(function (children) {
           console.log(children) // responseの中身をログ出力
-          
           $('#item_parent_category_id').remove();
           $('#item_category_id').remove();
           $('#size_remove').remove();
           $('#child_category').remove();
           $('#grandchild_category').remove();
-
           var insertHTML = '';
           children.forEach(function (child) {
             insertHTML += appendOption(child);

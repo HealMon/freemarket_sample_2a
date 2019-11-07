@@ -38,7 +38,7 @@ $(function () {
         .done(function (children) {
           var insertHTML = '';
           $('#appended-group').remove();
-          
+          $('#shipping_method_edit').remove();
           if (ShippingChargeValue === "1") {
             children.forEach(function (child) { // 今は同じ
               insertHTML += appendOption(child);

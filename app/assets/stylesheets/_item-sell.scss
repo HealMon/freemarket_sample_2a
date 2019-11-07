@@ -234,6 +234,9 @@
 
                 .form-group {
                     margin: 40px 0 0;
+                    &#shipping_method_edit {
+                        margin: 0;
+                    }
 
                     .select-wrap {
                         margin: 8px 0 0;
@@ -303,14 +306,17 @@
 
 #size {
     margin-top: 30px;
+
     .form_group {
         margin: 40px 0 0;
         label{
             font-weight: 600;
         }
-        .select-wrap{
+
+        .select-wrap {
             margin: 8px 0 0;
-            .select-default{
+
+            .select-default {
                 position: relative;
                 width: 100%;
                 z-index: 2;

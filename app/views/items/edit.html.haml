@@ -20,7 +20,7 @@
                   .sell-image-items-0
                     %ul
                 %label.sell-image-drop-box-0
-                  = f.file_field :images, multiple: true, class: "img_file"
+                  = f.file_field :images, multiple: true, class: "img_file", value: @item.images[0]
                   %pre.visible-pc
                     ドラッグ&ドロップまたはクリックしてファイルをアップロード
               - if @item.errors.messages[:images].present?  
@@ -59,11 +59,8 @@
                       - @item.errors.messages[:category_id].each do |message|
                         %ul.error-message
                           %li= "カテゴリー#{message}"
-                    -# = f.collection_select :parent_category_id, options_for_select(@parent_category.map{ |category| [category.name, { 'data-id' => category.id }] }), prompt: 'select'
-                    = f.select :parent_category_id, @parent_category.map{ |category| [category.name, category.id, { 'data-category' => category.id }, {class: "#{category.id}"} ] }
-                    -# = f.collection_select :parent_category_id, @parent_category, :id, :name, prompt: "---", class: "select-default", name: 'item[category_id][]', "data-category": @item.parent_category_id
-                    -# = f.collection_select :category_id, @grand_category, :id, :name, prompt: "---", class: "select-default", name: 'item[category_id][]'
-                    = f.select :category_id, @grand_category.map{ |category| [category.name, category.id, { 'data-category' => category.id }, {class: "#{category.id}"} ] }
+                    = f.select :parent_category_id, @child_category.map{ |category| [category.name, category.id, { 'data-category' => category.id }, {class: "#{category.id}"} ] }
+                    = f.select :category_id, @grandgrchild_category.map{ |category| [category.name, category.id, { 'data-category' => category.id }, {class: "#{category.id}"} ] }
                 #size
                 .form-group
                   %label 商品の状態
@@ -88,6 +85,11 @@
                       - @item.errors.messages[:shipping_charge_id].each do |message|
                         %ul.error-message
                           %li= "配送料の負担#{message}"
+                .form-group#shipping_method_edit
+                  %label 配送の方法
+                  %span.form-group--require 必須
+                  .select-wrap
+                    = f.collection_select :shipping_method_id, @shipping_method, :id, :name, class: 'select-default', prompt: "---", id:"shipping_charge"      
                 .form-group
                   %label 発送元の地域
                   %span.form-group--require 必須
