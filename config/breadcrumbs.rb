@@ -12,11 +12,13 @@ crumb :profile do
 end
 
 crumb :identification do
+  link "本人情報の登録", identification_mypage_index_path
   parent :mypage
 end
 
 crumb :card do
   link "支払い方法", card_mypage_index_path
+  parent :mypage
 end
 
 crumb :create do
