@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
+  before_action :set_item, only: [:destroy]
 
   def index
     @items_lady = Item.where(grand_category_id:1).order(id: "DESC").limit(10) # category指定を後で変更予定
@@ -38,11 +39,21 @@ class ItemsController < ApplicationController
       render 'items/new'
     end
   end
-
+  
   def show
     @item = Item.find(params[:id])
   end
-
+  
+  def destroy
+    if user_signed_in? && current_user.id == @item.user_id
+      if @item.destroy
+        redirect_to root_path
+      else
+        redirect_to root_path
+      end
+    end
+  end
+  
   def search_children
     respond_to do |format|
       format.html
@@ -84,8 +95,13 @@ class ItemsController < ApplicationController
       end
     end
   end
+
   
   private
+  def set_item
+    @item = Item.find(params[:id])
+  end
+
   def item_params
     params.require(:item).permit(
                             :name,

@@ -37,7 +37,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :items, only: [:create, :show] do 
+  resources :items, only: [:create, :show, :destroy] do 
     collection do
       get '/sell' => 'items#new'
       get '/search_children' => 'items#search_children'
