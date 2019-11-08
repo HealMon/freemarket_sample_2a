@@ -1,6 +1,8 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_item, only: [:edit, :update, :show]
+  before_action :set_category, only: [:edit, :update]
+  before_action :set_shipping_method, only: [:edit, :update]
 
   def index
     @items_lady = Item.where(grand_category_id:1).order(id: "DESC").limit(10) # category指定を後で変更予定
@@ -44,26 +46,9 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    @child_category = Category.find(@item.grand_category_id).children
-    @grandgrchild_category = Category.find(@item.parent_category_id).children
-    
-    if @item.shipping_charge_id == 1
-      @shipping_method = ShippingMethod.all
-    else
-      @shipping_method = ShippingMethod.first(4)
-    end
   end
 
   def update
-    @child_category = Category.find(@item.grand_category_id).children
-    @grandgrchild_category = Category.find(@item.parent_category_id).children
-
-    if @item.shipping_charge_id == 1
-      @shipping_method = ShippingMethod.all
-    else
-      @shipping_method = ShippingMethod.first(4)
-    end
-    
     @item.images.detach #一旦、すべてのimageの紐つけを解除
     if @item.user_id == current_user.id
       @item.update(
@@ -80,7 +65,6 @@ class ItemsController < ApplicationController
         price: params[:item][:price],
         products_sizes_id: params[:item][:size_id].to_i
       )
-
       @item.update(images: uploaded_images)
       if @item.valid?
         redirect_to item_path
@@ -170,5 +154,18 @@ class ItemsController < ApplicationController
 
   def set_item
     @item = Item.find(params[:id])
+  end
+
+  def set_category
+    @child_category = Category.find(@item.grand_category_id).children
+    @grandgrchild_category = Category.find(@item.parent_category_id).children
+  end
+
+  def set_shipping_method
+    if @item.shipping_charge_id == 1
+      @shipping_method = ShippingMethod.all
+    else
+      @shipping_method = ShippingMethod.first(4)
+    end
   end
 end
