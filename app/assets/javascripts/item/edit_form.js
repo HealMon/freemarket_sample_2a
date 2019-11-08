@@ -59,7 +59,6 @@ $(function () {
         dataType: 'json'
       })
       .done(function (children) {
-          console.log(children) // responseの中身をログ出力
           $('#item_parent_category_id').remove();
           $('#item_category_id').remove();
           $('#size_remove').remove();
@@ -111,7 +110,6 @@ $(function () {
   // 孫カテゴリー選択後のイベント
   $('.select-wrap').on('change', '#grandchild_category', function () {
     var grandchildId = $("#grandchild_category option:selected").data('category');
-    console.log(grandchildId)
     if (grandchildId != "---") { //子カテゴリーが初期値でないことを確認
       $.ajax({
         url: '/items/get_size',

@@ -169,10 +169,6 @@ class ItemsController < ApplicationController
       content_type: uploading_file.content_type
   end
 
-  def set_item
-    @item = Item.find(params[:id])
-  end
-
   def set_category
     @child_category = Category.find(@item.grand_category_id).children
     @grandgrchild_category = Category.find(@item.parent_category_id).children
