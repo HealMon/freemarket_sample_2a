@@ -45,7 +45,6 @@ class ItemsController < ApplicationController
     @grandgrchild_category = Category.find(@item.parent_category_id).children
     
     if @item.shipping_charge_id == 1
-      # @shipping_method = ShippingMethod.where()
       @shipping_method = ShippingMethod.all
     else
       @shipping_method = ShippingMethod.first(4)
@@ -58,12 +57,12 @@ class ItemsController < ApplicationController
     @grandgrchild_category = Category.find(@item.parent_category_id).children
 
     if @item.shipping_charge_id == 1
-      # @shipping_method = ShippingMethod.where()
       @shipping_method = ShippingMethod.all
     else
       @shipping_method = ShippingMethod.first(4)
     end
-
+    
+    @item.images.detach #一旦、すべてのimageの紐つけを解除
     if @item.user_id == current_user.id
       @item.update(
         shipping_method_id: params[:item][:shipping_method_id],
@@ -77,9 +76,10 @@ class ItemsController < ApplicationController
         name: params[:item][:name],
         description: params[:item][:description],
         price: params[:item][:price],
-        images: params[:item][:images],
         products_sizes_id: params[:item][:size_id].to_i
       )
+
+      @item.update(images: uploaded_images)
       if @item.valid?
         redirect_to item_path
       else
@@ -134,6 +134,13 @@ class ItemsController < ApplicationController
       end
     end
   end
+
+  def upload_image
+    @image_blob = create_blob(params[:image])
+    respond_to do |format|
+      format.json { @image_blob }
+    end
+  end
   
   private
   def item_params
@@ -151,5 +158,16 @@ class ItemsController < ApplicationController
                             category_id: [],
                             images: []
                           )
+  end
+
+  def uploaded_images
+    params[:item][:images].map{|id| ActiveStorage::Blob.find(id)} if params[:item][:images]
+  end
+
+  def create_blob(uploading_file)
+    ActiveStorage::Blob.create_after_upload! \
+      io: uploading_file.open,
+      filename: uploading_file.original_filename,
+      content_type: uploading_file.content_type
   end
 end

@@ -13,7 +13,7 @@
           .owl-stage
             .owl-item.active
               .owl-item-inner.is-higher-height
-                = image_tag @item.images[0]
+                = image_tag @item.images[0] if @item.images[0]
         .owl-nav.disabled
           .owl-prev prev
           .owl-next next

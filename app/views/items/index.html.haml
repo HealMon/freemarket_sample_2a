@@ -35,7 +35,7 @@
                 %figure.style_card
                   .style_thumbnail
                     %span=item.price.to_s(:currency,format: '¥ %n')
-                    = image_tag item.images[0]
+                    = image_tag item.images[0] if item.images[0]
                   %figcaption
                     %span=item.name
                 
@@ -51,7 +51,7 @@
                 %figure.style_card
                   .style_thumbnail
                     %span=item.price.to_s(:currency,format: '¥ %n')
-                    = image_tag item.images[0]
+                    = image_tag item.images[0] if item.images[0]
                   %figcaption
                     %span=item.name
 
@@ -67,7 +67,7 @@
                 %figure.style_card
                   .style_thumbnail
                     %span=item.price.to_s(:currency,format: '¥ %n')
-                    = image_tag item.images[0]
+                    = image_tag item.images[0] if item.images[0]
                   %figcaption
                     %span=item.name
 

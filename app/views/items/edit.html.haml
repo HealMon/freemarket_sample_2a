@@ -15,19 +15,28 @@
                 出品画像
                 %span.form-group--require 必須
               %p 最大10枚までアップロードできます
-              .sell-image-uploader
-                .sell-image-container
+              .sell-image-uploader.images_field
+                .sell-image-container.upup
                   .sell-image-items-0
-                    %ul
+
+                  - if @item.images.attached?
+                    - @item.images.each do |image|
+                      .image-box
+                        = image_tag image
+                        .sell-upload-button
+                          = f.hidden_field :images , name: "item[images][]", value: "#{image.blob.id}", style: "display: none;", class: "item-images-input"
+                          = link_to "編集", "", class: "btn-edit"
+                          = file_field "edit-image","" , class: "edit-image-file-input file-input", style: "display: none;"
+                          = link_to "削除", "", class: "btn-delete"
                 %label.sell-image-drop-box-0
-                  = f.file_field :images, multiple: true, class: "img_file", value: @item.images[0]
+                  = f.file_field :images, multiple: true, class: "img_file", value: @item.images[0], id: "uploder"
                   %pre.visible-pc
                     ドラッグ&ドロップまたはクリックしてファイルをアップロード
               - if @item.errors.messages[:images].present?  
                 - @item.errors.messages[:images].each do |message|
                   %ul.error-message
                     %li= "正しい画像を添付してください。(png,jpeg,jpg)"      
-            .sell-content
+            .sell-content.clearfix
               .form-group
                 %label 商品名
                 %span.form-group--require 必須
