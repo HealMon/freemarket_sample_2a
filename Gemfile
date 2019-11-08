@@ -83,3 +83,4 @@ gem 'active_storage_validations'
 gem 'factory_bot_rails'
 gem 'mini_magick'
 gem 'payjp'
+gem "gretel"

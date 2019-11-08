@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_item, only: [:edit, :update, :show]
+  before_action :set_item, only: [:edit, :update, :show, :destroy]
   before_action :set_category, only: [:edit, :update]
   before_action :set_shipping_method, only: [:edit, :update]
 
@@ -74,6 +74,19 @@ class ItemsController < ApplicationController
     end
   end
 
+  def show
+  end
+  
+  def destroy
+    if user_signed_in? && current_user.id == @item.user_id
+      if @item.destroy
+        redirect_to root_path
+      else
+        redirect_to root_path
+      end
+    end
+  end
+
   def search_children
     respond_to do |format|
       format.html
@@ -122,8 +135,12 @@ class ItemsController < ApplicationController
       format.json { @image_blob }
     end
   end
-  
+
   private
+  def set_item
+    @item = Item.find(params[:id])
+  end
+
   def item_params
     params.require(:item).permit(
                             :name,
