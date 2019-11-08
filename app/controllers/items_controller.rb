@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
+  before_action :set_item, only: [:edit, :update, :show]
 
   def index
     @items_lady = Item.where(grand_category_id:1).order(id: "DESC").limit(10) # category指定を後で変更予定
@@ -38,9 +39,11 @@ class ItemsController < ApplicationController
       render 'items/new'
     end
   end
+  
+  def show
+  end
 
   def edit
-    @item = Item.find(params[:id])
     @child_category = Category.find(@item.grand_category_id).children
     @grandgrchild_category = Category.find(@item.parent_category_id).children
     
@@ -52,7 +55,6 @@ class ItemsController < ApplicationController
   end
 
   def update
-    @item = Item.find(params[:id])
     @child_category = Category.find(@item.grand_category_id).children
     @grandgrchild_category = Category.find(@item.parent_category_id).children
 
@@ -86,11 +88,6 @@ class ItemsController < ApplicationController
         render 'items/edit'
       end
     end
-  end
-
-
-  def show
-    @item = Item.find(params[:id])
   end
 
   def search_children
@@ -169,5 +166,9 @@ class ItemsController < ApplicationController
       io: uploading_file.open,
       filename: uploading_file.original_filename,
       content_type: uploading_file.content_type
+  end
+
+  def set_item
+    @item = Item.find(params[:id])
   end
 end
