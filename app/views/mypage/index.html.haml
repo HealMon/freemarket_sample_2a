@@ -1,7 +1,8 @@
 .global
   = render './shared/global-header'
-  = render './shared/bread-crumbs'
-
+  .head-list
+    - breadcrumb :mypage
+    = render "shared/breadcrumbs"
   // メインコンテンツエリア
   %main.main-container
     .content

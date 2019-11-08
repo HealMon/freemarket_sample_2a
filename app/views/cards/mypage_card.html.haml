@@ -1,7 +1,8 @@
 .global
   = render './shared/global-header'
-  = render './shared/bread-crumbs'
-
+  .head-list
+    - breadcrumb :card
+    = render "shared/breadcrumbs"
   %main.main-container
     .content
       %h2.container-main__head
