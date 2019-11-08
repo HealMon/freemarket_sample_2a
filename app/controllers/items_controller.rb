@@ -1,6 +1,8 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_item, only: [:destroy]
+  before_action :set_item, only: [:edit, :update, :show, :destroy]
+  before_action :set_category, only: [:edit, :update]
+  before_action :set_shipping_method, only: [:edit, :update]
 
   def index
     @items_lady = Item.where(grand_category_id:1).order(id: "DESC").limit(10) # category指定を後で変更予定
@@ -41,7 +43,38 @@ class ItemsController < ApplicationController
   end
   
   def show
-    @item = Item.find(params[:id])
+  end
+
+  def edit
+  end
+
+  def update
+    @item.images.detach #一旦、すべてのimageの紐つけを解除
+    if @item.user_id == current_user.id
+      @item.update(
+        shipping_method_id: params[:item][:shipping_method_id],
+        condition: params[:item][:condition],
+        grand_category_id: params[:item][:grand_category_id],
+        parent_category_id: params[:item][:parent_category_id],
+        category_id: params[:item][:category_id],
+        shipping_charge_id: params[:item][:shipping_charge_id],
+        estimated_delivery_id: params[:item][:estimated_delivery_id],
+        prefecture_id: params[:item][:prefecture_id],
+        name: params[:item][:name],
+        description: params[:item][:description],
+        price: params[:item][:price],
+        products_sizes_id: params[:item][:size_id].to_i
+      )
+      @item.update(images: uploaded_images)
+      if @item.valid?
+        redirect_to item_path
+      else
+        render 'items/edit'
+      end
+    end
+  end
+
+  def show
   end
   
   def destroy
@@ -53,7 +86,7 @@ class ItemsController < ApplicationController
       end
     end
   end
-  
+
   def search_children
     respond_to do |format|
       format.html
@@ -96,7 +129,13 @@ class ItemsController < ApplicationController
     end
   end
 
-  
+  def upload_image
+    @image_blob = create_blob(params[:image])
+    respond_to do |format|
+      format.json { @image_blob }
+    end
+  end
+
   private
   def set_item
     @item = Item.find(params[:id])
@@ -118,6 +157,28 @@ class ItemsController < ApplicationController
                             images: []
                           )
   end
+
+  def uploaded_images
+    params[:item][:images].map{|id| ActiveStorage::Blob.find(id)} if params[:item][:images]
+  end
+
+  def create_blob(uploading_file)
+    ActiveStorage::Blob.create_after_upload! \
+      io: uploading_file.open,
+      filename: uploading_file.original_filename,
+      content_type: uploading_file.content_type
+  end
+
+  def set_category
+    @child_category = Category.find(@item.grand_category_id).children
+    @grandgrchild_category = Category.find(@item.parent_category_id).children
+  end
+
+  def set_shipping_method
+    if @item.shipping_charge_id == 1
+      @shipping_method = ShippingMethod.all
+    else
+      @shipping_method = ShippingMethod.first(4)
+    end
+  end
 end
-
-

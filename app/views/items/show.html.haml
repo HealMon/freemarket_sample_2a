@@ -13,7 +13,7 @@
           .owl-stage
             .owl-item.active
               .owl-item-inner.is-higher-height
-                = image_tag @item.images[0]
+                = image_tag @item.images[0] if @item.images[0]
         .owl-nav.disabled
           .owl-prev prev
           .owl-next next
@@ -112,7 +112,7 @@
 - if (@item.user_id == current_user&.id) && (@item.trade_status != 2) 
   .control-area
     .edit-button
-      = link_to "#", class:"btn-red" do
+      = link_to edit_item_path, class:"btn-red" do
         商品の編集
       %p or
       - if @item.trade_status == 1
