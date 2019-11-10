@@ -12,19 +12,17 @@
     .popular-category__list-box
       %ul
         %li.popular-category__list-box__list
-          = link_to 'レディース', '#'
+          = link_to 'レディース', '#lady'
         %li.popular-category__list-box__list
-          = link_to 'メンズ', '#'
+          = link_to 'メンズ', '#men'
         %li.popular-category__list-box__list
-          = link_to '家電・スマホ・カメラ', '#'
-        %li.popular-category__list-box__list
-          = link_to 'おもちゃ・ホビー・グッズ', '#'
+          = link_to '家具　キッチン道具　ベッド', '#furniture'
 
   .item-container-category
     // レディース新着
     .item-container-category.ladies
       .item-container-category__header
-        %h3 レディース新着アイテム
+        %h3#lady レディース新着アイテム
         = link_to 'もっと見る　＞', '#'
       .item-container-category__content
         .item-container-category__content__cards
@@ -40,7 +38,7 @@
                 
     .item-container-category.mens
       .item-container-category__header
-        %h3 メンズ新着アイテム
+        %h3#men メンズ新着アイテム
         = link_to 'もっと見る　＞', '#'
       .item-container-category__content
         .item-container-category__content__cards
@@ -56,7 +54,7 @@
 
     .item-container-category.interia
       .item-container-category__header
-        %h3 家具　キッチン道具　ベッド
+        %h3#furniture 家具　キッチン道具　ベッド
         = link_to 'もっと見る　＞', '#'
       .item-container-category__content
         .item-container-category__content__cards
