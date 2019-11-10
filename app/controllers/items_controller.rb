@@ -36,6 +36,7 @@ class ItemsController < ApplicationController
     end
     
     if @item.save
+      flash[:success] = 'アイテムを投稿しました。'
       redirect_to root_path
     else
       render 'items/new'
@@ -68,6 +69,7 @@ class ItemsController < ApplicationController
       @item.update(images: uploaded_images)
       if @item.valid?
         redirect_to item_path
+        flash[:success] = 'アイテムを更新しました。'
       else
         render 'items/edit'
       end
