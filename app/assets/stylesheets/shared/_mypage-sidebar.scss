@@ -34,8 +34,14 @@
         i {
           position: absolute;
           top: 16px;
-          right: 13px;
+          right: 15px;
           color: #ccc;
+          transition: 0.2s ease-out;
+        }
+        &:hover i {
+          right: 11px;
+          transition: 0.2s ease-out;
+          color: #333;
         }
       }
     }
