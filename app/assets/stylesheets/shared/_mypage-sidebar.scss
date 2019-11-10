@@ -23,8 +23,13 @@
         background: #fff;
         font-size: 14px;
         color: #333;
-        &.active i{
+        &.active i {
           color: #333;
+        }
+        &:hover {
+          background: #fafafa;
+          text-decoration: none;
+          opacity: 1;
         }
         i {
           position: absolute;
