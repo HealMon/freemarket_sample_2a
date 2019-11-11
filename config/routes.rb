@@ -45,7 +45,9 @@ Rails.application.routes.draw do
       get '/search_shipping_charge' => 'items#search_shipping_methods'
       get '/get_size' => 'items#get_size'
       post '/upload_image' => 'items#upload_image'
+      post '/:id/comments' => 'comments#create', as: :comments
     end
+
   end
 
   resources :purchase do
@@ -53,4 +55,8 @@ Rails.application.routes.draw do
     post ':id' => 'purchase#pay', as: :pay
     get ':id/done' => 'purchase#done', as: :done
   end
+
+  post   '/like/:item_id' => 'likes#like',   as: 'like'
+  delete '/like/:item_id' => 'likes#unlike', as: 'unlike'
+
 end
