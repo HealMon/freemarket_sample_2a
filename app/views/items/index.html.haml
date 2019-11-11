@@ -1,10 +1,6 @@
 .global
   = render 'shared/global-header'
-
-  // コンテンツスライダー
-  .top-image-slider
-    = link_to '#' do
-      = image_tag 'top-page-slider-image.png', class: 'slider-image'
+  = render 'layouts/slider'
 
   // 人気のカテゴリ
   .popular-category
