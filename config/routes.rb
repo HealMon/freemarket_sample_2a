@@ -52,4 +52,8 @@ Rails.application.routes.draw do
     post ':id' => 'purchase#pay', as: :pay
     get ':id/done' => 'purchase#done', as: :done
   end
+
+  post   '/like/:item_id' => 'likes#like',   as: 'like'
+  delete '/like/:item_id' => 'likes#unlike', as: 'unlike'
+
 end
