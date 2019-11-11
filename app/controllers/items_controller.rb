@@ -36,6 +36,7 @@ class ItemsController < ApplicationController
     end
     
     if @item.save
+      flash[:success] = "アイテム「#{@item.name}」を投稿しました"
       redirect_to root_path
     else
       render 'items/new'
@@ -67,6 +68,7 @@ class ItemsController < ApplicationController
       )
       @item.update(images: uploaded_images)
       if @item.valid?
+        flash[:success] = "アイテム「#{@item.name}」を更新しました"
         redirect_to item_path
       else
         render 'items/edit'
@@ -80,6 +82,7 @@ class ItemsController < ApplicationController
   def destroy
     if user_signed_in? && current_user.id == @item.user_id
       if @item.destroy
+        flash[:success] = 'アイテムを削除しました'
         redirect_to root_path
       else
         redirect_to root_path

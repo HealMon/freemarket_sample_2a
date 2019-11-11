@@ -14,4 +14,5 @@
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
     %script{:src => "https://js.pay.jp/", :type => "text/javascript"}
   %body
+    = render 'shared/flash'
     = yield
