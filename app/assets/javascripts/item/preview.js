@@ -79,7 +79,6 @@ $(function () {
         if (imageCount >= 4) { // ５つ以上なら
           $('.sell-image-drop-box-0').css('display', 'none')
         } 
-
         return def.promise();
       }
     
