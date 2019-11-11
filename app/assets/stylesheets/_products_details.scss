@@ -43,11 +43,11 @@
             max-height: none;
             position: relative;
             overflow: hidden;
-            display: inline-block;
             width: 20%;
             max-height: 90px;
             opacity: 0.4;
             cursor: pointer;
+            float: left;
             &.active {
               opacity: 1;
               cursor: default;
