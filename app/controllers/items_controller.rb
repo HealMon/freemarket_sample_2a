@@ -75,6 +75,7 @@ class ItemsController < ApplicationController
   end
 
   def show
+<<<<<<< Updated upstream
   end
   
   def destroy
@@ -85,6 +86,12 @@ class ItemsController < ApplicationController
         redirect_to root_path
       end
     end
+=======
+    @item = Item.find(params[:id])
+    @comment = Comment.new
+    # @comments = @item.comments.include(:user)
+    @comments = @item.comments
+>>>>>>> Stashed changes
   end
 
   def search_children

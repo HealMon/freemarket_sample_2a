@@ -46,6 +46,8 @@ Rails.application.routes.draw do
       get '/get_size' => 'items#get_size'
       post '/upload_image' => 'items#upload_image'
     end
+
+    resources :comments, only: [:create]
   end
 
   resources :purchase do

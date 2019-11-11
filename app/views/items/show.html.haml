@@ -124,15 +124,26 @@
       %br  
       = link_to item_path, method: :delete, class:"btn-gry" do
         この商品を削除する
-            
+
 .item-detail-message.pb-4
   .message-container
     .message-content
-      %form.message-form{action: "https://www.mercari.com/jp/comment/add/", method: "POST"}
+      .comments   
+      aa
+                      -#   <% if @comments %>
+                      -#     <% @comments.each do |comment| %>
+                      -#       <p>
+                      -#         <strong><%= link_to comment.user.nickname, "/users/#{comment.user_id}" %>：</strong>
+                      -#         <%= comment.text %>
+                      -#       </p>
+                      -#     <% end %>
+                      -#   <% end %>
+                      -# </div>
+      = form_for @comment, html: {class: 'message-form'}, url: item_comments_path(@item), method: :post do |f|
         %p 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
-        %textarea.textarea-default{name: "body", type: "text",value: ""}
-        %button.message-submit.btn-default.btn-gray{type: "button"}
+        = f.text_area :content, class: "textarea-default"
+        %button.message-submit.btn-default.btn-gray{type: "submit"}
           %span コメントする
-      
-  
+
 = render './shared/global-footer'
+
