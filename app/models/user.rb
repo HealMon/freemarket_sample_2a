@@ -9,6 +9,8 @@ class User < ApplicationRecord
 
   has_one :card , dependent: :destroy
   has_many :items
+  has_many :likes, dependent: :destroy
+  has_many :like_items, through: :likes, source: :item
   has_many :comments
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i

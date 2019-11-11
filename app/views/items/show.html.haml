@@ -93,9 +93,7 @@
       %span=@item.description
     .item-button-left
       %button.item-button.item-button-like
-        %i.icon-like-border
-        %span いいね!
-        %span.fade-in-down 9
+        = render partial: 'items/iine', as: :item
       %button.item-button.item-button-report.clearfix
         %i.icon-flag
         %span 不適切な商品の報告
