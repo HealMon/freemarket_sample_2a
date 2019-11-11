@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   resources :user do
     collection do
       get 'destroy' => 'user#user-logout'
+      post 'tosaben' => 'user#tosaben'
     end
   end
 

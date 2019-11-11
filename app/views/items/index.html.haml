@@ -4,7 +4,7 @@
 
   // 人気のカテゴリ
   .popular-category
-    %h2 人気のカテゴリー
+    %h2= tosaben("人気のカテゴリー", "土佐弁やきね")
     .popular-category__list-box
       %ul
         %li.popular-category__list-box__list
@@ -65,3 +65,4 @@
                     %span=item.name
 
   = render 'shared/global-footer'
+  = render 'shared/tosaben-switch'
