@@ -1,7 +1,5 @@
 .global
   = render './shared/global-header'
-  -# = render './shared/bread-crumbs'
-
 %section.item-box-container
   %h1.item-name
     %span=@item.name
@@ -127,23 +125,18 @@
 
 .item-detail-message.pb-4
   .message-container
-    .message-content
-      .comments   
-      aa
-                      -#   <% if @comments %>
-                      -#     <% @comments.each do |comment| %>
-                      -#       <p>
-                      -#         <strong><%= link_to comment.user.nickname, "/users/#{comment.user_id}" %>：</strong>
-                      -#         <%= comment.text %>
-                      -#       </p>
-                      -#     <% end %>
-                      -#   <% end %>
-                      -# </div>
-      = form_for @comment, html: {class: 'message-form'}, url: item_comments_path(@item), method: :post do |f|
-        %p 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
-        = f.text_area :content, class: "textarea-default"
-        %button.message-submit.btn-default.btn-gray{type: "submit"}
-          %span コメントする
+    - if @comments.present?
+      .message-content
+        %ul.message-items
+          = render partial: 'user_comments',locals: { item: @item, comments: @comments}
+    - if user_signed_in?
+      .message-content
+        .new_comment   
+        = form_for @comment, url: comments_items_path(@item), method: :post do |f|
+          %p 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+          = f.text_area :content, class: "textarea-default"
+          %button.message-submit.btn-default.btn-gray{type: "submit"}
+            %span コメントする
 
 = render './shared/global-footer'
 
