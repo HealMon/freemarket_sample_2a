@@ -9,7 +9,7 @@ class User < ApplicationRecord
 
   has_one :card , dependent: :destroy
   has_many :items
-  
+  has_many :comments
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   PASSWORD_VALIDATION = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{7,128}+\z/i

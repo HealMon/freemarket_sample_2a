@@ -42,9 +42,6 @@ class ItemsController < ApplicationController
       render 'items/new'
     end
   end
-  
-  def show
-  end
 
   def edit
   end
@@ -77,6 +74,8 @@ class ItemsController < ApplicationController
   end
 
   def show
+    @comment = Comment.new
+    @comments = @item.comments
   end
   
   def destroy
