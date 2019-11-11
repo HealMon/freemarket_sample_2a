@@ -1,8 +1,17 @@
 .flash {
-    height: 49px;
-    line-height: 49px;
-    background-color: #c2edfb;
-    text-align: center;
-    font-size: 17px;
-    color: #777;
+  height: 49px;
+  line-height: 49px;
+  background-color: #c2edfb;
+  text-align: center;
+  font-size: 17px;
+  color: #777;
+  #flash-delete {
+    float: right;
+    margin-right: 22px;
+    font-size: 18px;
+    cursor: pointer;
+    &:hover {
+      color: #5a5a5a;
+    }
+  }
 }
