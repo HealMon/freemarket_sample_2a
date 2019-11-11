@@ -249,15 +249,19 @@ ul.error-message {
 }
 .head-list{
   background-color: white;
-  height: 49px;
+  height: auto;
   box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
   position: relative;
   z-index: 3;
-  padding: 15px 200px;
+  padding: 15px;
   a{
     color: #333;
   }
   span{
     font-weight:  bold;
+  }
+  .breadcrumbs{
+    width: 1020px;
+    margin: 0 auto;
   }
 }

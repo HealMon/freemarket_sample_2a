@@ -37,14 +37,17 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :items, only: [:create, :show] do 
+  resources :items, only: [:create, :show, :edit, :update, :destroy] do 
     collection do
       get '/sell' => 'items#new'
       get '/search_children' => 'items#search_children'
       get '/search_grandchildren' => 'items#search_grandchildren'
       get '/search_shipping_charge' => 'items#search_shipping_methods'
       get '/get_size' => 'items#get_size'
+      post '/upload_image' => 'items#upload_image'
+      post '/:id/comments' => 'comments#create', as: :comments
     end
+
   end
 
   resources :purchase do

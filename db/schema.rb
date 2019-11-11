@@ -59,6 +59,16 @@ ActiveRecord::Schema.define(version: 2019_11_08_025557) do
     t.index ["products_size_id"], name: "index_category_sizes_on_products_size_id"
   end
 
+  create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "item_id"
+    t.bigint "user_id"
+    t.text "content", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_comments_on_item_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.string "description", null: false
@@ -138,4 +148,6 @@ ActiveRecord::Schema.define(version: 2019_11_08_025557) do
   add_foreign_key "cards", "users"
   add_foreign_key "likes", "items"
   add_foreign_key "likes", "users"
+  add_foreign_key "comments", "items"
+  add_foreign_key "comments", "users"
 end
