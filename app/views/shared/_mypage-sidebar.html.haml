@@ -3,39 +3,39 @@
     %ul.mypage-nav__list
       %li
         = link_to '#', class: 'mypage-nav__list__item active' do
-          = tosaben("マイページ", "あいのページ！")
+          = tosaben("マイページ", "あいのページ")
           = fa_icon 'chevron-right', class: 'icon-arrow-right'
       %li
         = link_to '#', class: 'mypage-nav__list__item' do
-          = tosaben("マイページ", "知っちょきよ、あんた！")
+          = tosaben("お知らせ", "知っちょきよ！")
           = fa_icon 'chevron-right', class: 'icon-arrow-right'
       %li
         = link_to '#', class: 'mypage-nav__list__item' do
-          = tosaben("マイページ", "やらんかよ、おまん！")
+          = tosaben("やることリスト", "やらんかよ！")
           = fa_icon 'chevron-right', class: 'icon-arrow-right'
       %li
         = link_to '#', class: 'mypage-nav__list__item' do
-          = tosaben("いいね！一覧", "えいねぇ〜！一覧！")
+          = tosaben("いいね！一覧", "えいねぇ〜！一覧")
           = fa_icon 'chevron-right', class: 'icon-arrow-right'
       %li
         = link_to sell_items_path, class: 'mypage-nav__list__item' do
-          = tosaben("出品する", "出品ぜよ！")
+          = tosaben("出品する", "出品中ぜよ！")
           = fa_icon 'chevron-right', class: 'icon-arrow-right'
       %li
         = link_to '#', class: 'mypage-nav__list__item' do
-          = tosaben("出品した商品 - 出品中", "出品しちゅう商品 - 出品ちゅうぜよ！")
+          = tosaben("出品した商品 - 出品中", "出品しちゅう商品 - 出品中ぜよ！")
           = fa_icon 'chevron-right', class: 'icon-arrow-right'
       %li
         = link_to '#', class: 'mypage-nav__list__item' do
-          = tosaben("出品した商品 - 取引中", "出品しちゅう商品 - 取引ちゅうちや！")
+          = tosaben("出品した商品 - 取引中", "出品しちゅう商品 - 取引中ちや")
           = fa_icon 'chevron-right', class: 'icon-arrow-right'
       %li
         = link_to '#', class: 'mypage-nav__list__item' do
-          = tosaben("出品した商品 - 売却済み", "出品しちゅう商品 - 売れたきねえ！")
+          = tosaben("出品した商品 - 売却済み", "出品しちゅう商品 - 売れたきねえ")
           = fa_icon 'chevron-right', class: 'icon-arrow-right'
       %li
         = link_to '#', class: 'mypage-nav__list__item' do
-          = tosaben("購入した商品 - 取引中", "買うた商品 - 取引ちゅうぜよ！")
+          = tosaben("購入した商品 - 取引中", "買うた商品 - 取引中ぜよ！")
           = fa_icon 'chevron-right', class: 'icon-arrow-right'
       %li
         = link_to '#', class: 'mypage-nav__list__item' do
@@ -43,11 +43,11 @@
           = fa_icon 'chevron-right', class: 'icon-arrow-right'
       %li
         = link_to '#', class: 'mypage-nav__list__item' do
-          = tosaben("ニュース一覧", "見ちょきよ、ニュースやき！")
+          = tosaben("ニュース一覧", "見ちょきよ、ニュースやき")
           = fa_icon 'chevron-right', class: 'icon-arrow-right'
       %li
         = link_to '#', class: 'mypage-nav__list__item' do
-          = tosaben("評価一覧", "評価がきにならんかえ！")
+          = tosaben("評価一覧", "評価がきにならんかえ")
           = fa_icon 'chevron-right', class: 'icon-arrow-right'
       %li
         = link_to '#', class: 'mypage-nav__list__item' do
@@ -61,17 +61,17 @@
     %ul.mypage-nav__list
       %li
         = link_to '#', class: 'mypage-nav__list__item' do
-          = tosaben("売上・振込申請", "売上・振込申請とお金のことよ！")
+          = tosaben("売上・振込申請", "儲けたろうか？")
           = fa_icon 'chevron-right', class: 'icon-arrow-right'
       %li
         = link_to '#', class: 'mypage-nav__list__item' do
-          = tosaben("ポイント", "ポイント、みとうせ！")
+          = tosaben("ポイント", "ポイントたまっちゅうよ")
           = fa_icon 'chevron-right', class: 'icon-arrow-right'
     %h3.mypage-nav__head 設定
     %ul.mypage-nav__list
       %li
         = link_to profile_mypage_index_path, class: 'mypage-nav__list__item' do
-          = tosaben("プロフィール", "おいのことはここで！")
+          = tosaben("プロフィール", "おいのこと")
           = fa_icon 'chevron-right', class: 'icon-arrow-right'
       %li
         = link_to '#', class: 'mypage-nav__list__item' do
@@ -87,13 +87,13 @@
           = fa_icon 'chevron-right', class: 'icon-arrow-right'
       %li
         = link_to identification_mypage_index_path, class: 'mypage-nav__list__item' do
-          = tosaben("本人情報", "おいの情報！")
+          = tosaben("本人情報", "おいの情報")
           = fa_icon 'chevron-right', class: 'icon-arrow-right'
       %li
         = link_to '#', class: 'mypage-nav__list__item' do
-          = tosaben("電話番号の確認", "電話番号も気にしいよ！")
+          = tosaben("電話番号の確認", "電話番号も気にしいよ")
           = fa_icon 'chevron-right', class: 'icon-arrow-right'
       %li
         = link_to user_index_path, class: 'mypage-nav__list__item' do
-          = tosaben("ログアウト", "ばいぞー！")
+          = tosaben("ログアウト", "バイぞっ！")
           = fa_icon 'chevron-right', class: 'icon-arrow-right'

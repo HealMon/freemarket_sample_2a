@@ -1,9 +1,8 @@
 $(function () {
   
   $('#tosaben-btn').on('change', function () {
-    // スイッチの状態を取り出す
-    // $("#tosaben-btn input").prop("checked", false) 
-    console.log($("#tosaben-btn input").prop("checked"))
+    var curentUrl = location.href;
+    var isMypage = curentUrl.indexOf("mypage") == 22; // mypageの記述があればtrue
     
     if ($("#tosaben-btn input").prop("checked") == false) {
       $.ajax({
@@ -15,13 +14,15 @@ $(function () {
         dataType: 'json'
       })
       .then(
-        // 1つめは通信成功時のコールバック
         function (data) {
-          location.href = "./";
+          if (isMypage) { // マイページの場合マイページにリダイレクト
+            location.href = "./mypage";
+          } else {
+            location.href = "./";
+          }
         },
-        // 2つめは通信失敗時のコールバック
         function () {
-          location.href = "./";
+          alert('土佐弁には変えれなーよ')
         });
     } else {
       $.ajax({
@@ -33,13 +34,15 @@ $(function () {
         dataType: 'json'
       })
       .then(
-        // 1つめは通信成功時のコールバック
         function (data) {
-          location.href = "./";
+          if (isMypage) {
+            location.href = "./mypage";
+          } else {
+            location.href = "./";
+          }
         },
-        // 2つめは通信失敗時のコールバック
         function () {
-          location.href = "./";
+          alert('土佐弁には変えれなーよ')
         });
     }
   })
