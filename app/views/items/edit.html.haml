@@ -34,7 +34,7 @@
               - if @item.errors.messages[:images].present?  
                 - @item.errors.messages[:images].each do |message|
                   %ul.error-message
-                    %litosaben("正しい画像を添付してください。(png,jpeg,jpg)", "ちゃんとした画像を添付してよ。(png,jpeg,jpg)")      
+                    %li= tosaben("正しい画像を添付してください。(png,jpeg,jpg)", "ちゃんとした画像を添付してよ。(png,jpeg,jpg)")      
             .sell-content.clearfix
               .form-group
                 %label 商品名
