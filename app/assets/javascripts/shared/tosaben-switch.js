@@ -16,9 +16,9 @@ $(function () {
       .then(
         function (data) {
           if (isMypage) { // マイページの場合マイページにリダイレクト
-            location.href = "./mypage";
+            location.href = "/mypage";
           } else {
-            location.href = "./";
+            location.href = "/";
           }
         },
         function () {
@@ -36,9 +36,9 @@ $(function () {
       .then(
         function (data) {
           if (isMypage) {
-            location.href = "./mypage";
+            location.href = "/mypage";
           } else {
-            location.href = "./";
+            location.href = "/";
           }
         },
         function () {
