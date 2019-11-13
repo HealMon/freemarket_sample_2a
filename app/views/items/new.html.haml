@@ -15,8 +15,8 @@
                 = tosaben("出品画像", "出品画像で")
                 %span.form-group--require 必須
               %p= tosaben("最大5枚までアップロードできます", "5枚までやったらアップロードできるきねぇ")
-              .sell-image-uploader
-                .sell-image-container
+              .sell-image-uploader.images_field
+                .sell-image-container.upup
                   .sell-image-items-0
                   - if @item.images.attached?
                     - @item.images.each do |image|
