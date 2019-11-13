@@ -40,4 +40,13 @@ module ApplicationHelper
       return "https://www-mercari-jp.akamaized.net/assets/img/card/discover.svg?3466462615"
     end
   end
+
+  # 土佐弁モード
+  def tosaben(normal, tosaben)
+    if session[:tosaben] == "true"
+      return tosaben
+    else
+      return normal
+    end
+  end
 end

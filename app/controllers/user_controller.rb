@@ -7,4 +7,8 @@ class UserController < ApplicationController
 
   def profile
   end
+
+  def tosaben
+    session[:tosaben] = params[:tosaben]
+  end
 end

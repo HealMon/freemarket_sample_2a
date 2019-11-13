@@ -74,5 +74,16 @@
       %small © 2019 Mercari
 
   = link_to sell_items_path, class: 'footer-sell-btn' do
-    %div 出品
-    = fa_icon 'camera'
+    %div=tosaben("出品", "出品ぜよ！")
+    - if session[:tosaben] == 'true'
+      = image_tag 'ryoma.png', class: "ryoma", style: "height: 80px; margin-top: 7px"
+    - else
+      = fa_icon 'camera'
+
+  #tosaben-btn.sample3Area
+    - if session[:tosaben] == "true"
+      %input#sample3check{checked: "checked", type: "checkbox"}/
+    - else
+      %input#sample3check{type: "checkbox"}/
+    %label{for: "sample3check"}
+      %span

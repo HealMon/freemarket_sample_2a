@@ -4,7 +4,8 @@
 
   // 人気のカテゴリ
   .popular-category
-    %h2 人気のカテゴリー
+    -# %h2= tosaben("人気のカテゴリー", "りぐったしんきがあがって来ちゅう！")
+    %h2= tosaben("人気のカテゴリー", "りぐったがぁ〜届いちゅうで！")
     .popular-category__list-box
       %ul
         %li.popular-category__list-box__list
@@ -18,7 +19,7 @@
     // レディース新着
     .item-container-category.ladies
       .item-container-category__header
-        %h3#lady レディース新着アイテム
+        %h3#lady= tosaben("レディース新着アイテム", "はちきんのしんき！")
         = link_to 'もっと見る　＞', '#'
       .item-container-category__content
         .item-container-category__content__cards
@@ -34,7 +35,7 @@
                 
     .item-container-category.mens
       .item-container-category__header
-        %h3#men メンズ新着アイテム
+        %h3#men= tosaben("メンズ新着アイテム", "いごっそうにもしんき！")
         = link_to 'もっと見る　＞', '#'
       .item-container-category__content
         .item-container-category__content__cards
@@ -50,7 +51,7 @@
 
     .item-container-category.interia
       .item-container-category__header
-        %h3#furniture 家具　キッチン道具　ベッド
+        %h3#furniture= tosaben("家具　キッチン道具　ベッド", "ちゃがまらん家具もあがっちゅう〜！")
         = link_to 'もっと見る　＞', '#'
       .item-container-category__content
         .item-container-category__content__cards
