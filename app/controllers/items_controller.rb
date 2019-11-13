@@ -37,7 +37,7 @@ class ItemsController < ApplicationController
     end
     if @item.save
       flash[:success] = "アイテム「#{@item.name}」を投稿しました"
-      redirect_to root_path
+      redirect_to item_path(@item.id)
     else
       render 'items/new'
     end

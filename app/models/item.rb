@@ -7,7 +7,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :prefecture
 
   has_many_attached :images
-  has_many :comments
+  has_many :comments,dependent: :destroy
   
   belongs_to :user
   belongs_to :category
