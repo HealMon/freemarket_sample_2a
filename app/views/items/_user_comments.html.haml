@@ -1,0 +1,34 @@
+- comments.each_with_index do |comment, i|
+  - if comment.user_id != item.user_id
+    %li.message-left
+      = link_to '#', class: 'message-user' do
+        %figure
+          %div
+            = image_tag "//static.mercdn.net/images/member_photo_noimage_thumb.png", alt: ""
+          %figcaption.bold
+            = comment.user.nickname
+      .message-body
+        .message-body-text
+          = comment.content
+        .message-icons.clearfix
+          %time.message-icon-left
+            %i.fa.fa-clock-o
+            %span
+              = time_ago_in_words(comment.created_at)+"前"
+  - else
+    %li.message-right
+      = link_to '#', class: 'message-user' do
+        %figure
+          %div
+            = image_tag "//static.mercdn.net/images/member_photo_noimage_thumb.png", alt: ""
+         
+        .message-is-seller 出品者
+      .message-body
+        .message-body-text
+          = comment.content
+        .message-icons.clearfix
+          %time.message-icon-left
+            %i.fa.fa-clock-o
+            %span
+              = time_ago_in_words(comment.created_at)+"前"
+        

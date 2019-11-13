@@ -14,12 +14,22 @@
               %h3.sell-upload-text
                 = tosaben("出品画像", "出品画像で")
                 %span.form-group--require 必須
-              %p= tosaben("最大10枚までアップロードできます", "5枚までやったらアップロードできるきねぇ")
+              %p= tosaben("最大5枚までアップロードできます", "5枚までやったらアップロードできるきねぇ")
               .sell-image-uploader
                 .sell-image-container
                   .sell-image-items-0
+                  - if @item.images.attached?
+                    - @item.images.each do |image|
+                      .image-box
+                        = image_tag image
+                        .sell-upload-button
+                          = f.hidden_field :images , name: "item[images][]", value: "#{image.blob.id}", style: "display: none;", class: "item-images-input"
+                          = link_to "編集", "", class: "btn-edit"
+                          = file_field "edit-image","" , class: "edit-image-file-input file-input", style: "display: none;"
+                          = link_to "削除", "", class: "btn-delete"
+
                 %label.sell-image-drop-box-0
-                  = f.file_field :images, multiple: true, class: "img_file"
+                  = f.file_field :images, multiple: true, class: "img_file", id: "uploder"
                   %pre.visible-pc
                     = tosaben("ドラッグ&ドロップまたはクリックしてファイルをアップロード", "クリックしてファイルをアップロードしいよ。")
               - if @item.errors.messages[:images].present?  

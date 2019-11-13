@@ -7,9 +7,12 @@ class Item < ApplicationRecord
   belongs_to_active_hash :prefecture
 
   has_many_attached :images
+  has_many :comments
   
   belongs_to :user
   belongs_to :category
+  has_many :likes,dependent: :destroy
+  has_many :liking_users,through: :likes, source: :user
 
   validates :images, attached: true, content_type: ['image/png', 'image/jpg', 'image/jpeg'] if !Rails.env.test? # テスト環境ではiamgeのvalidation
   validates :name,                    presence: true

@@ -30,20 +30,17 @@ class ItemsController < ApplicationController
         name: item_params[:name],
         description: item_params[:description],
         price: item_params[:price],
-        images: item_params[:images],
-        products_sizes_id: item_params[:size_id].to_i 
+        products_sizes_id: item_params[:size_id].to_i,
+        images: item_params[:images]
       )
+
     end
-    
     if @item.save
       flash[:success] = "アイテム「#{@item.name}」を投稿しました"
       redirect_to root_path
     else
       render 'items/new'
     end
-  end
-  
-  def show
   end
 
   def edit
@@ -77,6 +74,8 @@ class ItemsController < ApplicationController
   end
 
   def show
+    @comment = Comment.new
+    @comments = @item.comments
   end
   
   def destroy
@@ -157,8 +156,7 @@ class ItemsController < ApplicationController
                             :trade_status,
                             :size_id,
                             category_id: [],
-                            images: []
-                          )
+                          ).merge(images: uploaded_images)
   end
 
   def uploaded_images
