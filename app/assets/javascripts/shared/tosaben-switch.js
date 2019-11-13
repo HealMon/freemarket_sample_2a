@@ -15,11 +15,7 @@ $(function () {
       })
       .then(
         function (data) {
-          if (isMypage) { // マイページの場合マイページにリダイレクト
-            location.href = "/mypage";
-          } else {
-            location.href = "/";
-          }
+          location.reload();
         },
         function () {
           alert('土佐弁には変えれなーよ')
@@ -35,11 +31,7 @@ $(function () {
       })
       .then(
         function (data) {
-          if (isMypage) {
-            location.href = "/mypage";
-          } else {
-            location.href = "/";
-          }
+          location.reload();
         },
         function () {
           alert('土佐弁には変えれなーよ')

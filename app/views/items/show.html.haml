@@ -83,11 +83,15 @@
     %span.item-shipping-fee 送料込み
   - if (@item.trade_status == 2)
     = link_to "#", class:"btn-gry nonclick mt-4" do
-      売り切れました
+      = tosaben("売り切れました", "売り切れたきね！")
+    - if @item.user_id == current_user&.id
+      %br  
+      = link_to item_path, method: :delete, class:"btn-gry", data: { confirm: '本当に削除しますか？' } do
+        = tosaben("この商品を削除する", "やめちょこう")
   - else
     - unless @item.user_id == current_user&.id # 自分のアイテムの場合は「購入ボタン」表示しない
       = link_to purchase_buy_path(@item.id), class:"item-buy-btn" do
-        購入画面に進む
+        = tosaben("購入画面に進む", "買おうかにぁあ")
   .item-description.f14
     %p.item-description-inner
       %span=@item.description
@@ -109,17 +113,17 @@
   .control-area
     .edit-button
       = link_to edit_item_path, class:"btn-red" do
-        商品の編集
+        = tosaben("商品の編集", "いかんこれ変えちょこう")
       %p or
       - if @item.trade_status == 1
         = link_to "#", class:"btn-gry" do
-          出品を一旦停止する
-      - if @item.trade_status == 3 
+          = tosaben("出品を一旦停止する", "一旦止めちょこうか")
+      - if @item.trade_status == 3
         = link_to "#", class:"btn-red" do
-          出品を再開する
+          = tosaben("出品を再開する" , "やっぱ出しちょこう")
       %br  
-      = link_to item_path, method: :delete, class:"btn-gry" do
-        この商品を削除する
+      = link_to item_path, method: :delete, data: { confirm: '本当に削除しますか？' }, class:"btn-gry" do
+        = tosaben("この商品を削除する", "やめちょこう")
 
 .item-detail-message.pb-4
   .message-container
@@ -134,7 +138,7 @@
           %p 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
           = f.text_area :content, class: "textarea-default"
           %button.message-submit.btn-default.btn-gray{type: "submit"}
-            %span コメントする
+            %span= tosaben("コメントする", "なんか言うかえ？") 
 
 = render './shared/global-footer'
 
