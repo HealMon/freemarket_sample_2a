@@ -83,7 +83,7 @@
     %span.item-shipping-fee 送料込み
   - if (@item.trade_status == 2)
     = link_to "#", class:"btn-gry nonclick mt-4" do
-      売り切れました
+      = tosaben("売り切れました", "売り切れたきね！"
   - else
     - unless @item.user_id == current_user&.id # 自分のアイテムの場合は「購入ボタン」表示しない
       = link_to purchase_buy_path(@item.id), class:"item-buy-btn" do
