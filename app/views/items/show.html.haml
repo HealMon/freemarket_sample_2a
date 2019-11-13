@@ -83,7 +83,11 @@
     %span.item-shipping-fee 送料込み
   - if (@item.trade_status == 2)
     = link_to "#", class:"btn-gry nonclick mt-4" do
-      = tosaben("売り切れました", "売り切れたきね！"
+      = tosaben("売り切れました", "売り切れたきね！")
+    - if @item.user_id == current_user&.id
+      %br  
+      = link_to item_path, method: :delete, class:"btn-gry", data: { confirm: '本当に削除しますか？' } do
+        = tosaben("この商品を削除する", "やめちょこう")
   - else
     - unless @item.user_id == current_user&.id # 自分のアイテムの場合は「購入ボタン」表示しない
       = link_to purchase_buy_path(@item.id), class:"item-buy-btn" do
@@ -114,11 +118,11 @@
       - if @item.trade_status == 1
         = link_to "#", class:"btn-gry" do
           = tosaben("出品を一旦停止する", "一旦止めちょこうか")
-      - if @item.trade_status == 3 
+      - if @item.trade_status == 3
         = link_to "#", class:"btn-red" do
           = tosaben("出品を再開する" , "やっぱ出しちょこう")
       %br  
-      = link_to item_path, method: :delete, class:"btn-gry" do
+      = link_to item_path, method: :delete, data: { confirm: '本当に削除しますか？' }, class:"btn-gry" do
         = tosaben("この商品を削除する", "やめちょこう")
 
 .item-detail-message.pb-4
