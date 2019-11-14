@@ -2,7 +2,10 @@
   %section
     %h1
       = link_to root_path do
-        = image_tag 'logo.svg'
+        - if session[:tosaben] == "true"
+          = image_tag 'tosaben-logo.png', class: 'logo tosaben-logo'
+        - else
+          = image_tag 'logo.svg', class: 'logo'
 / #区分け１
 .buy-item-container
   %section.l-single-head
