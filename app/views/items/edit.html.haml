@@ -2,7 +2,10 @@
   %header.header
     %h1
       = link_to root_path do
-        = image_tag "https://www-mercari-jp.akamaized.net/assets/img/common/common/logo.svg?3054050720"
+        - if session[:tosaben] == "true"
+          = image_tag 'tosaben-logo.png', class: 'logo tosaben-logo'
+        - else
+          = image_tagpng, class: 'logo'
   %main.main
     %section.sell-container-main
       #sell-container
